@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="App">
+  <head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="stylesheets/reset.css" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="wrapper" ng-controller="ApplicationCtrl">
+
+      <div class="sidebar" ng-class="{opened: menuItemIsOpen}">
+        <div class="sidebar-ico-open"></div>
+      </div>
+
+      <div class="container">
+        <div ng-view=""></div>
+      </div>
+
+    </div>
+
+    <script src="javascripts/angular/angular.min.js"></script>
+    <script src="javascripts/angular/angular-route.min.js"></script>
+    <script src="javascripts/angular/angular-animate.min.js"></script>
+    <script src="javascripts/angular/angular-sanitize.min.js"></script>
+
+    <script src="javascripts/app.js"></script>
+  </body>
+</html>

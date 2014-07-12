@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="App">
+  <head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="stylesheets/reset.css" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="wrapper" ng-controller="ApplicationCtrl">
+      <div class="sidebar" ng-class="{opened: menuItemIsOpen}">
+        <img class="ico" ng-src="{{sidebarIco.img}}" ng-class="sidebarIco.class">
+        <div class="title">{{sidebarTitle}}</div>
+      </div>
+
+      <div class="container">
+        <div class="main-menu">
+          <ul>
+            <li class="menu-item" ng-repeat="item in mainMenu" ng-click="openMenuItem($index)">
+              <div class="title">{{item.title}}</div>
+              <div class="summary">{{item.summary}}</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="menu-item-content" ng-class="{open: menuItemIsOpen && menuItem}">
+          <div class="ico-close" ng-click="closeMenuItem()"></div>
+          <div class="title">{{menuItem.title}}</div>
+          <div class="content" ng-bind-html="menuItem.content"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="javascripts/angular/angular.min.js"></script>
+    <script src="javascripts/angular/angular-route.min.js"></script>
+    <script src="javascripts/angular/angular-animate.min.js"></script>
+    <script src="javascripts/angular/angular-sanitize.min.js"></script>
+
+    <script src="javascripts/app.js"></script>
+  </body>
+</html>

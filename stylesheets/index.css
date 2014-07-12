@@ -1,0 +1,114 @@
+/*.page-block-index*/
+.page-block-index .header{
+    height: 550px;
+    background: url('../images/bg-index-header.png') no-repeat center bottom transparent;
+    background-size: cover;
+    padding: 80px 0
+}
+.page-block-index .header .inner{
+    width: 830px;
+    margin: 0 auto;
+}
+.page-block-index .header .title{
+    font-family: 'MuseoSansCyrl-700';
+    font-size: 40px;
+    text-align: center;
+}
+.page-block-index .header .summary{
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 30px;
+}
+.page-block-index .header .actions{
+    margin-top: 30px;
+    text-align: center;
+}
+.page-block-index .header .actions .action-item{
+    display: inline-block;
+    margin-right: 12px;
+    cursor: pointer;
+    font-family: 'MuseoSansCyrl-700';
+    font-size: 16px;
+    border: solid 2px #272e32;
+    padding: 10px 35px;
+}
+.page-block-index .header .actions .action-item:last-child{
+    margin-right: 0;
+}
+
+.page-block-index .brief{
+    display: table;
+    width: 100%;
+}
+.page-block-index .brief .brief-item{
+    display: table-cell;
+    border-right: solid 1px #e6e6e6;
+    padding: 25px 45px 35px;
+}
+.page-block-index .brief .brief-item:last-child{
+    border: medium none;
+}
+.page-block-index .brief .brief-item .ico{
+    margin: 0 auto;
+    display: block;
+}
+.page-block-index .brief .brief-item .title{
+    margin-top: 45px;
+    font-family: 'MuseoSansCyrl-700';
+    font-size: 18px;
+}
+.page-block-index .brief .brief-item .text{
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 28px;
+}
+.page-block-index .info{
+    height: 400px;
+    background: url('../images/bg-info-header.png') no-repeat center bottom transparent;
+    background-size: cover;
+    color: #fff;
+    padding: 160px 0 0 50px;
+}
+.page-block-index .info .title{
+    font-family: 'MuseoSansCyrl-700';
+    font-size: 36px;
+}
+.page-block-index .info .text{
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.page-block-index .reviews{
+    padding: 110px 75px;
+    position: relative;
+}
+.page-block-index .reviews .review-item{
+    width: 775px;
+    margin: 0 auto;
+    text-align: center;
+}
+.page-block-index .reviews .review-item .text{
+    font-size: 24px;
+    line-height: 44px;
+}
+.page-block-index .reviews .review-item .author{
+    margin-top: 35px;
+    font-family: 'MuseoSansCyrl-500';
+    font-size: 18px;
+}
+.page-block-index .reviews .review-arrow{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 75px;
+    cursor: pointer;
+}
+.page-block-index .reviews .review-arrow.review-prev{
+    left: 0;
+    background: url('../images/ico-review-prev.png') no-repeat center center transparent;
+}
+.page-block-index .reviews .review-arrow.review-next{
+    right: 0;
+    background: url('../images/ico-review-next.png') no-repeat center center transparent;
+}
