@@ -4,10 +4,10 @@ App.config([
   "$routeProvider", function($routeProvider) {
     return $routeProvider
     .when("/", {
-      templateUrl: "javascripts/templates/index.html",
+      templateUrl: "javascripts/templates/home.html"
     })
     .otherwise({
-      templateUrl: 'templates/404.html'
+      templateUrl: 'javascripts/templates/404.html'
     });
   }
 ]);
