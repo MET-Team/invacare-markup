@@ -7,10 +7,52 @@
     <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
-    <div class="wrapper" ng-controller="ApplicationCtrl">
+    <div class="wrapper" ng-controller="ApplicationCtrl" ng-class="{'sidebar-open': sidebarMenuIsOpen}">
 
-      <div class="sidebar" ng-class="{opened: menuItemIsOpen}">
-        <div class="sidebar-ico-open"></div>
+      <div class="sidebar">
+        <div class="sidebar-ico-open" ng-click="toggleSidebarMenu()"></div>
+      </div>
+      <div class="sidebar-menu">
+        <div class="header">
+          <a href="#/">
+            <img class="logo" src="images/logo.png" alt="" width="101" height="18" />
+          </a>
+        </div>
+        <div class="menu">
+          <ul>
+            <li class="selected">
+              <a href="javascript:void(0)">Механические коляски</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Электрические коляски</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="part-menu">
+          <ul>
+            <li>
+              <a href="javascript:void(0)">Доставка и оплата</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">О компании</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Контакты</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Полезная информация</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contacts">
+          <div class="phone">+7 495 765-56-56</div>
+          <div class="call-order">
+            <input type="button" value="Заказать звонок" class="button" />
+          </div>
+        </div>
+
       </div>
 
       <div class="container">

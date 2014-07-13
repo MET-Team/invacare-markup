@@ -3,8 +3,8 @@
   src: url('../fonts/MuseoSansCyrl-300.otf');
 }
 @font-face {
-    font-family: 'MuseoSansCyrl-500';
-    src: url('../fonts/MuseoSansCyrl-500.otf');
+  font-family: 'MuseoSansCyrl-500';
+  src: url('../fonts/MuseoSansCyrl-500.otf');
 }
 @font-face {
   font-family: 'MuseoSansCyrl-700';
@@ -43,13 +43,88 @@ body{
   z-index: 101;
 }
 .sidebar .sidebar-ico-open{
-    width: 20px;
-    height: 17px;
-    background: url('../images/sidebar-ico-open.png') no-repeat 0 0 transparent;
-    cursor: pointer;
-    position: absolute;
-    top: 30px;
-    left: 20px;
+  width: 20px;
+  height: 17px;
+  background: url('../images/sidebar-ico-open.png') no-repeat 0 0 transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  left: 20px;
+}
+
+.sidebar-menu{
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 285px;
+  background: none #272e32;
+  z-index: 100;
+
+  padding: 30px 40px 30px 0;
+
+  font-family: 'MuseoSansCyrl-500';
+  font-size: 16px;
+
+  overflow: auto;
+
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+.sidebar-open .sidebar-menu{
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  left: 60px;
+}
+.sidebar-menu .header{
+  padding-left: 30px;
+}
+
+.sidebar-menu .menu{
+  margin-top: 20px;
+}
+.sidebar-menu .menu li{
+  padding: 10px 0 10px 30px;
+}
+.sidebar-menu .menu a{
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar-menu .part-menu{
+  margin-top: 35px;
+}
+.sidebar-menu .part-menu li{
+  padding: 10px 0 10px 30px;
+}
+.sidebar-menu .part-menu a{
+  color: #686d70;
+  text-decoration: none;
+}
+
+.sidebar-menu .contacts{
+  margin-top: 180px;
+  padding-left: 30px;
+}
+.sidebar-menu .contacts .phone{
+  color: #fff;
+}
+.sidebar-menu .contacts .call-order{
+  margin-top: 30px;
+}
+.sidebar-menu .contacts .call-order .button{
+  background: none #505e66;
+  border: medium none;
+  font-family: 'MuseoSansCyrl-700';
+  font-size: 16px;
+  color: #a8afb3;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 0;
+  outline: medium none;
 }
 
 .container{
@@ -57,6 +132,11 @@ body{
   width: 100%;
   min-width: 1024px;
   position: relative;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.sidebar-open .container{
+  padding-left: 345px;
 }
 
 
