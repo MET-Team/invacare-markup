@@ -48,8 +48,17 @@
 
         <div class="contacts">
           <div class="phone">+7 495 765-56-56</div>
-          <div class="call-order">
-            <input type="button" value="Заказать звонок" class="button" />
+          <div class="call-order" ng-class="{'call-order-open': OrderCallFormIsOpen}">
+            <input type="button" value="Заказать звонок" class="button button-arrow" ng-click="toggleOrderCallForm()" />
+            <div class="order-form">
+              <form ng-submit="orderCall()">
+                <input type="text" class="order-phone" ng-model="orderCallData.phone" placeholder="Телефон" />
+                <div class="form-send">
+                  <input type="submit" value="Ок" class="button" />
+                  <div class="form-close" ng-click="toggleOrderCallForm()"></div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
 

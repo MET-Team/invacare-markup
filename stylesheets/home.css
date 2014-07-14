@@ -39,6 +39,42 @@
     margin-right: 0;
 }
 
+.page-block-index .header .actions .action-buttons{
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+.page-block-index .header .actions .order-form{
+  display: inline-block;
+
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+.page-block-index .header .actions .order-form .order-phone{
+  width: 240px;
+  padding: 9px;
+  font-size: 16px;
+}
+.page-block-index .header .actions .order-form .button{
+  background: none #5098de;
+  border: medium none;
+  font-family: 'MuseoSansCyrl-700';
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  width: 102px;
+  padding: 10px 0;
+  outline: medium none;
+}
+.page-block-index .header .actions .order-form .form-close{
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url('../images/ico-form-close-dark.png') no-repeat 0 0 transparent;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
 .page-block-index .brief{
     display: table;
     width: 100%;

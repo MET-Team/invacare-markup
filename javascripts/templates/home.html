@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="stylesheets/index.css" />
+<link rel="stylesheet" href="stylesheets/home.css" />
 
 <div class="page-block page-block-index">
 
@@ -9,8 +9,19 @@
         Ещё одна причина — высокая мотивация сотрудников. Все хотят сделать хорошо — к большому сожалению, в русских студиях я такого не замечал. Здесь, когда нужно сделать
       </div>
       <div class="actions">
-        <div class="action-item">Получить консультацию</div>
-        <a href="#/catalog/" class="action-item">Перейти в каталог</a>
+        <div class="action-buttons" ng-hide="HeaderOrderCallFormIsOpen" ng-animate="">
+          <div class="action-item" ng-click="toggleHeaderOrderCallForm()">Получить консультацию</div>
+          <a class="action-item" href="#/catalog/">Перейти в каталог</a>
+        </div>
+
+        <div class="order-form" ng-show="HeaderOrderCallFormIsOpen" ng-animate="">
+          <form ng-submit="orderCall()">
+            <input type="text" class="order-phone" ng-model="orderCallData.phone" placeholder="Введите телефон" />
+              <input type="submit" value="Ок" class="button" />
+              <div class="form-close" ng-click="toggleHeaderOrderCallForm()"></div>
+          </form>
+        </div>
+
       </div>
     </div>
   </div>

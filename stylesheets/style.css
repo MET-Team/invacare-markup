@@ -54,7 +54,7 @@ body{
 
 .sidebar-menu{
   position: fixed;
-  left: 0;
+  left: -100%;
   top: 0;
   bottom: 0;
   width: 285px;
@@ -68,15 +68,10 @@ body{
 
   overflow: auto;
 
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 .sidebar-open .sidebar-menu{
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
   left: 60px;
 }
 .sidebar-menu .header{
@@ -114,7 +109,9 @@ body{
 }
 .sidebar-menu .contacts .call-order{
   margin-top: 30px;
+  position: relative;
 }
+
 .sidebar-menu .contacts .call-order .button{
   background: none #505e66;
   border: medium none;
@@ -125,6 +122,57 @@ body{
   width: 100%;
   padding: 10px 0;
   outline: medium none;
+}
+.sidebar-menu .contacts .call-order.call-order-open:before{
+  content: "";
+  border-color: #505e66 transparent transparent transparent;
+  border-style: solid;
+  border-width: 7px 8px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 50%;
+  top: 40px;
+  z-index: 111;
+  margin-right: -8px;
+
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.sidebar-menu .contacts .call-order .order-form{
+  margin-top: 10px;
+  opacity: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.sidebar-menu .contacts .call-order.call-order-open .order-form{
+  opacity: 1;
+}
+
+.sidebar-menu .contacts .call-order .order-form .order-phone{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+.sidebar-menu .contacts .call-order .order-form .form-send{
+  margin-top: 5px;
+}
+.sidebar-menu .contacts .call-order .order-form .form-send .button{
+  color: #fff;
+  background: none #5098de;
+  width: 100px;
+  padding: 10px;
+  vertical-align: middle;
+}
+.sidebar-menu .contacts .call-order .order-form .form-send .form-close{
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url('../images/ico-form-close.png') no-repeat 0 0 transparent;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
 .container{
