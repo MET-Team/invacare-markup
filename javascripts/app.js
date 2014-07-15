@@ -6,7 +6,10 @@ App.config([
     .when("/", {
       templateUrl: "javascripts/templates/home.html",
       reloadOnSearch: false
-    })
+    }).when("/catalog", {
+        templateUrl: "javascripts/templates/catalog.html",
+        reloadOnSearch: false
+      })
     .otherwise({
       templateUrl: 'javascripts/templates/404.html',
       reloadOnSearch: false
@@ -46,5 +49,84 @@ App.controller('ApplicationCtrl', function($scope, $location, $document){
       $scope.sidebarMenuIsOpen = false;
     }
   });
+
+});
+
+App.controller('CatalogCtrl', function($scope, $http){
+
+  $scope.carriageTypes = {
+    0 : {
+      'type': 'electric',
+      'title': 'Электрические'
+    },
+    1 : {
+      'type': 'mechanic',
+      'title': 'Механические'
+    }
+  };
+
+  $scope.carriageOptions = {
+    'electric' : {
+      0: 'Складные',
+      1: 'Большой запас хода',
+      2: 'Вертикализатор'
+    },
+    'mechanic' : {
+      0: 'Домашние',
+      1: 'Для улицы',
+      2: 'Высокая спинка'
+    }
+  };
+
+  $scope.sortType = [
+    {
+      'name': 'name',
+      'title': 'По названию'
+    },
+    {
+      'name': 'price',
+      'title': 'По ценам'
+    }
+  ];
+
+  $scope.carriageTypeSelected = 'mechanic';
+
+  $scope.activeOptionsFilter = [];
+
+  $scope.productsList = [];
+
+  $scope.getCarriageOptions = function(){
+    $scope.carriageOptionsByType = $scope.carriageOptions[$scope.carriageTypeSelected];
+  };
+
+  $scope.getProducts = function(){
+    var carriageType = $scope.carriageTypeSelected;
+    $http.get('javascripts/factories/carriage/'+ carriageType +'.json')
+      .success(function(data){
+        $scope.productsList = data;
+      }).error(function(){
+        console.error('Произошла ошибка');
+      });
+  };
+
+  $scope.getProducts();
+
+  $scope.getCarriageOptions();
+
+  $scope.changeType = function(type){
+    $scope.carriageTypeSelected = type;
+    $scope.getCarriageOptions();
+    $scope.activeOptionsFilter = [];
+    $scope.getProducts();
+  };
+
+  $scope.filterOptions = function (filter_item) {
+    var index = $scope.activeOptionsFilter.indexOf(filter_item);
+    if (index > -1) {
+      $scope.activeOptionsFilter.splice(index, 1);
+    }else {
+      $scope.activeOptionsFilter.push(filter_item);
+    }
+  };
 
 });

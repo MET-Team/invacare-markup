@@ -1,0 +1,89 @@
+.page-block-catalog{
+  padding: 40px 60px;
+}
+
+.page-block-catalog .filters .filter-type{
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.page-block-catalog .filters .filter-item{
+  padding: 10px 15px;
+  display: inline-block;
+  cursor: pointer;
+}
+.page-block-catalog .filters .filter-carriage-type{
+  margin-right: 40px;
+}
+.page-block-catalog .filters .filter-carriage-type .filter-item{
+  background: none #f2f2f2;
+}
+.page-block-catalog .filters .filter-carriage-type .filter-item.selected{
+  background: none #5098de;
+  color: #fff;
+  cursor: default;
+}
+
+.page-block-catalog .filters .filter-carriage-options{
+  margin-right: 40px;
+}
+.page-block-catalog .filters .filter-carriage-options .filter-item{
+  border: solid 1px #e6e6e6;
+  margin-right: 10px;
+}
+.page-block-catalog .filters .filter-carriage-options .filter-item:last-child{
+  margin-right: 0;
+}
+.page-block-catalog .filters .filter-carriage-options .filter-item .ico{
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  background: url('../images/ico-filter-radio.png') no-repeat 0 0 transparent;
+  margin-left: 10px;
+}
+.page-block-catalog .filters .filter-carriage-options .filter-item.checked{
+  color: #5098de;
+}
+.page-block-catalog .filters .filter-carriage-options .filter-item.checked .ico{
+  background: url('../images/ico-filter-radio-checked.png') no-repeat 0 0 transparent;
+}
+
+.page-block-catalog .filters .filter-carriage-order{
+  cursor: pointer;
+}
+.page-block-catalog .filters .filter-carriage-order .ico{
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px;
+  height: 6px;
+  background: url('../images/ico-filter-sort-caret.png') no-repeat 0 0 transparent;
+  margin-left: 10px;
+}
+
+.page-block-catalog .product-list{
+  margin-top: 30px;
+}
+.page-block-catalog .product-list .product-item{
+  width: 272px;
+  margin-right: 25px;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 50px;
+  position: relative;
+  text-decoration: none;
+  color: #272e32;
+}
+.page-block-catalog .product-list .product-item .price{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
+  color: #fff;
+  background: none #5098de;
+}
+.page-block-catalog .product-list .product-item .name{
+  margin-top: 30px;
+  font-size: 18px;
+  line-height: 25px;
+}
