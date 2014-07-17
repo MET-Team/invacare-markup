@@ -301,6 +301,9 @@ body{
 .rouble {
   font-family: 'PTSansLocal', serif;
 }
+.clear{
+  clear: both;
+}
 
 @-webkit-keyframes scaleDownUp {
   from { }
