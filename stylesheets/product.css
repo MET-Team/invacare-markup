@@ -1,0 +1,290 @@
+.page-block-product .main-card{
+  padding: 80px 60px;
+  box-shadow: 0 1px 10px #dedcdd;
+  position: relative;
+  z-index: 11;
+}
+
+.page-block-product .main-card .image-view{
+  position: absolute;
+  left: 60px;
+  top: 80px;
+  font-size: 18px;
+  z-index: 100;
+}
+.page-block-product .main-card .image-view .view-item{
+  cursor: pointer;
+  color: #5098de;
+  border: solid 2px #5098de;
+  text-align: center;
+  padding: 15px 5px;
+  margin-bottom: 10px;
+}
+.page-block-product .main-card .image-view .view-item:last-child{
+  margin-bottom: 0;
+}
+.page-block-product .main-card .image-view .view-item.selected{
+  background: none #5098de;
+  color: #fff;
+  cursor: default;
+}
+
+.page-block-product .main-card .card-container{
+  display: table;
+  width: 100%;
+}
+.page-block-product .main-card .card-container .card-col{
+  display: table-cell;
+  width: 50%;
+}
+.page-block-product .main-card .card-container .card-col.card-image{
+  text-align: center;
+  vertical-align: middle;
+}
+.page-block-product .main-card .card-container .card-col.card-details{
+  padding-left: 60px;
+  font-size: 18px;
+  font-family: 'MuseoSansCyrl-300';
+}
+
+.page-block-product .main-card .card-container .card-col.card-details .name{
+  font-size: 24px;
+  margin-top: 15px;
+  line-height: 30px;
+  font-family: 'MuseoSansCyrl-500';
+}
+
+.page-block-product .main-card .card-container .card-col.card-details .text{
+  margin-top: 30px;
+  line-height: 25px;
+}
+
+.page-block-product .main-card .card-container .card-col.card-details .other{
+  margin-top: 30px;
+}
+.page-block-product .main-card .card-container .card-col.card-details .other .other-item{
+  margin-bottom: 20px;
+}
+.page-block-product .main-card .card-container .card-col.card-details .other .other-item:last-child{
+  margin-bottom: 0;
+}
+.page-block-product .main-card .card-container .card-col.card-details .other .other-item .ico{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+.page-block-product .main-card .card-container .card-col.card-details .other .other-item.delivery .ico{
+  width: 42px;
+  height: 25px;
+  background: url('../images/ico-other-delivery.png') no-repeat 0 0 transparent;
+}
+.page-block-product .main-card .card-container .card-col.card-details .other .other-item.refunds .ico{
+  width: 25px;
+  height: 25px;
+  background: url('../images/ico-other-refunds.png') no-repeat 0 0 transparent;
+  margin-right: 25px;
+  margin-left: 8px;
+}
+.page-block-product .main-card .card-container .card-col.card-details .other .other-item.refunds .more{
+  cursor: pointer;
+  color: #5098de;
+  border-bottom: dotted 1px #5098de;
+  margin-left: 10px;
+}
+
+.page-block-product .main-card .card-container .card-col.card-details .buy-button{
+  margin-top: 30px;
+}
+.page-block-product .main-card .card-container .card-col.card-details .buy-button .button{
+  display: inline-block;
+  cursor: pointer;
+  background: none #5098de;
+  color: #fff;
+  font-size: 24px;
+  padding: 15px 30px;
+}
+
+.page-block-product .main-card.speciality{
+  background: none #f2f0f1;
+  box-shadow: none;
+  z-index: 10;
+}
+.page-block-product .main-card.speciality.speciality-white{
+  background: none #fff;
+}
+
+.page-block-product .main-card.speciality .card-container .card-col.card-details{
+  vertical-align: middle;
+  padding-right: 60px;
+}
+.page-block-product .main-card.speciality .card-container .card-col.card-details .title{
+  font-size: 36px;
+}
+.page-block-product .main-card.speciality .card-container .card-col.card-details .actions{
+  margin-top: 55px;
+}
+.page-block-product .main-card.speciality .card-container .card-col.card-details .actions .action-item{
+  text-transform: lowercase;
+  color: #5098de;
+}
+.page-block-product .main-card.speciality .card-container .card-col.card-details .actions .action-item .ico{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+  width: 80px;
+  height: 40px;
+  background: url('../images/ico-action-move.png') no-repeat 0 0 transparent;
+}
+.page-block-product .main-card.speciality .card-container .card-col.card-details .actions .action-item .caption{
+  display: inline-block;
+  vertical-align: middle;
+  width: 150px;
+}
+
+.page-block-product .main-card.speciality.speciality-control{
+  padding-bottom: 0;
+}
+.page-block-product .main-card.speciality.speciality-control .card-container .card-col.card-image{
+  vertical-align: bottom;
+}
+.page-block-product .main-card.speciality.speciality-control .card-container .card-col.card-details{
+  padding-bottom: 80px;
+}
+
+.page-block-product .main-card.speciality.speciality-description{
+  height: 500px;
+  background: url('../images/temp/bg-speciality-description.png') no-repeat 50% 50% fixed;
+  background-size: cover;
+}
+.page-block-product .main-card.speciality.speciality-description .card-container .card-col.card-details{
+  height: 340px
+}
+
+.page-block-product .main-card.schema{
+  padding: 120px 60px;
+}
+.page-block-product .main-card.schema .card-container{
+  padding: 0;
+}
+.page-block-product .main-card.schema .card-container .card-col{
+  width: 100%;
+}
+.page-block-product .main-card.schema .schema-list{
+  position: absolute;
+  top: 120px;
+  bottom: 120px;
+  left: 60px;
+  right: 60px;
+}
+.page-block-product .main-card.schema .schema-list .schema-item{
+  position: absolute;
+  border-top: solid 3px #5098de;
+  padding-top: 20px;
+}
+.page-block-product .main-card.schema .schema-list .schema-item:before{
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: -6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: none #5098de;
+}
+
+.page-block-product .main-card.schema .schema-list .schema-item .title{
+  font-size: 18px;
+  font-family: 'MuseoSansCyrl-700';
+}
+.page-block-product .main-card.schema .schema-list .schema-item .text{
+  margin-top: 20px;
+  display: inline-block;
+  width: 240px;
+}
+
+.page-block-product .main-card.schema .schema-list .schema-item.schema-item-1{
+  left: 50%;
+  margin-left: -450px;
+  width: 332px;
+  top: 77px;
+}
+
+.page-block-product .main-card.schema .schema-list .schema-item.schema-item-2{
+  left: 50%;
+  margin-left: -450px;
+  width: 420px;
+  top: 240px;
+}
+
+.page-block-product .main-card.schema .schema-list .schema-item.schema-item-3{
+  left: 50%;
+  margin-left: -450px;
+  width: 333px;
+  top: 395px;
+}
+
+.page-block-product .main-card.schema .schema-list .schema-item.schema-item-4{
+  right: 50%;
+  margin-right: -450px;
+  width: 380px;
+  top: 50px;
+  text-align: right;
+}
+
+.page-block-product .main-card.schema .schema-list .schema-item.schema-item-5{
+  right: 50%;
+  margin-right: -450px;
+  width: 395px;
+  top: 246px;
+  text-align: right;
+}
+
+.page-block-product .main-card.schema .schema-list .schema-item.schema-item-6{
+  right: 50%;
+  margin-right: -450px;
+  width: 293px;
+  top: 400px;
+  text-align: right;
+}
+
+.page-block-product .main-card.schema .schema-list .schema-item.schema-item-4:before,
+.page-block-product .main-card.schema .schema-list .schema-item.schema-item-5:before,
+.page-block-product .main-card.schema .schema-list .schema-item.schema-item-6:before{
+  right: auto;
+  left: -4px;
+}
+
+.page-block-product .gallery .gallery-item{
+  float: left;
+  width: 25%;
+  height: 322px;
+  background-size: cover;
+  position: relative;
+}
+
+.page-block-product .gallery .gallery-item .caption{
+  color: #fff;
+  text-align: center;
+  display: none;
+  position: absolute;
+  z-index: 11;
+  top: 45%;
+  width: 100%;
+}
+
+.page-block-product .gallery .gallery-item .overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: none rgba(0,0,0, 0.7);
+  display: none;
+  z-index: 10;
+}
+.page-block-product .gallery .gallery-item:hover .caption{
+  display: block;
+}
+.page-block-product .gallery .gallery-item:hover .overlay{
+  display: block;
+}

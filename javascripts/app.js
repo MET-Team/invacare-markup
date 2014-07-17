@@ -6,10 +6,15 @@ App.config([
     .when("/", {
       templateUrl: "javascripts/templates/home.html",
       reloadOnSearch: false
-    }).when("/catalog", {
-        templateUrl: "javascripts/templates/catalog.html",
-        reloadOnSearch: false
-      })
+    })
+    .when("/catalog", {
+      templateUrl: "javascripts/templates/catalog.html",
+      reloadOnSearch: false
+    })
+    .when("/catalog/:productId", {
+      templateUrl: "javascripts/templates/product.html",
+      reloadOnSearch: false
+    })
     .otherwise({
       templateUrl: 'javascripts/templates/404.html',
       reloadOnSearch: false
@@ -52,7 +57,7 @@ App.controller('ApplicationCtrl', function($scope, $location, $document){
 
 });
 
-App.controller('CatalogCtrl', function($scope, $http){
+App.controller('CatalogCtrl', function($scope, $http, $location){
 
   $scope.carriageTypes = {
     0 : {
@@ -91,6 +96,10 @@ App.controller('CatalogCtrl', function($scope, $http){
 
   $scope.carriageTypeSelected = 'mechanic';
 
+  if($location.search().type) {
+    $scope.carriageTypeSelected = $location.search().type;
+  }
+
   $scope.activeOptionsFilter = [];
 
   $scope.productsList = [];
@@ -111,6 +120,13 @@ App.controller('CatalogCtrl', function($scope, $http){
 
   $scope.getProducts();
 
+  $scope.$on('$routeUpdate', function() {
+    if($location.search().type) {
+      $scope.carriageTypeSelected = $location.search().type;
+      $scope.getProducts();
+    }
+  });
+
   $scope.getCarriageOptions();
 
   $scope.changeType = function(type){
@@ -128,5 +144,9 @@ App.controller('CatalogCtrl', function($scope, $http){
       $scope.activeOptionsFilter.push(filter_item);
     }
   };
+
+});
+
+App.controller('ProductCtrl', function($scope, $http, $location){
 
 });

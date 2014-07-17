@@ -11,6 +11,12 @@
   src: url('../fonts/MuseoSansCyrl-700.otf');
 }
 
+@font-face {
+  font-family: 'PTSansLocal';
+  src: url('../fonts/PTSans/PTSans.eot');
+  src: url('../fonts/PTSans/PTSans.eot?iefix') format("eot"), url('../fonts/PTSans/PTSans.woff') format("woff"), url('../fonts/PTSans/PTSans.ttf') format("truetype"), url('../fonts/PTSans/PTSans.svg#webfont') format("svg");
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -290,6 +296,10 @@ body{
 .scaleDown {
   -webkit-animation: scaleDown .5s ease both;
   animation: scaleDown .5s ease both;
+}
+
+.rouble {
+  font-family: 'PTSansLocal', serif;
 }
 
 @-webkit-keyframes scaleDownUp {
