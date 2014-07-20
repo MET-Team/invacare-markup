@@ -149,4 +149,59 @@ App.controller('CatalogCtrl', function($scope, $http, $location){
 
 App.controller('ProductCtrl', function($scope, $http, $location){
 
+  $scope.productsItemData = {};
+
+  $scope.functionTypes = [];
+  $scope.functionsList = [];
+
+  $scope.functionTypeSelected = 0;
+  $scope.functionsSelected = [];
+
+  $scope.functionTotalOpened = false;
+
+  $http.get('javascripts/factories/carriage/item.json')
+    .success(function(data){
+
+      $scope.productsItemData = data;
+
+      $scope.carriageFunctions = $scope.productsItemData.functions;
+
+      for(item in $scope.carriageFunctions){
+        if($scope.carriageFunctions.hasOwnProperty(item)){
+
+          $scope.functionTypes.push({
+            "name" : $scope.carriageFunctions[item].title,
+            "value" : item
+          });
+
+        }
+      }
+
+      $scope.showOptionsByType($scope.functionTypeSelected);
+
+    }).error(function(){
+      console.error('Произошла ошибка');
+    });
+
+  $scope.showOptionsByType = function(index){
+    $scope.functionsList = $scope.carriageFunctions[index];
+    $scope.functionTypeSelected = index;
+  };
+
+  $scope.toggleFunction = function(functionItem){
+
+    var functionSelectedIndex = $scope.functionsSelected.indexOf(functionItem);
+
+    if(functionSelectedIndex > -1){
+      $scope.functionsSelected.splice(functionSelectedIndex, 1)
+    }else{
+      $scope.functionsSelected.push(functionItem);
+    }
+
+  };
+
+  $scope.toggleSelectedFunctionsList = function(){
+    $scope.functionTotalOpened = $scope.functionTotalOpened ? false : true;
+  };
+
 });

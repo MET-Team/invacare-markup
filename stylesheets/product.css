@@ -289,6 +289,167 @@
   display: block;
 }
 
+.page-block-product .configurator{
+  padding: 100px 60px;
+  background: none #f2f2f2;
+}
+.page-block-product .configurator .title{
+  font-size: 36px;
+}
+.page-block-product .configurator .description{
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.page-block-product .configurator .functions-tabs{
+  margin-top: 30px;
+  font-size: 16px;
+}
+.page-block-product .configurator .functions-tabs .function-types{
+  display: inline-block;
+  background: none #fff;
+}
+.page-block-product .configurator .functions-tabs .function-types .type-item{
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.page-block-product .configurator .functions-tabs .function-types .type-item.selected{
+  cursor: default;
+  color: #fff;
+  background: none #5098de;
+}
+
+.page-block-product .configurator .functions-tabs .function-types .type-item:hover{
+  color: #fff;
+  background: none #5098de;
+}
+
+.page-block-product .configurator .functions-tabs .function-total{
+  float: right;
+  border: solid 2px #657680;
+  color: #657680;
+  position: relative;
+  width: 350px;
+  z-index: 101;
+}
+.page-block-product .configurator .functions-tabs .function-total .label{
+  cursor: pointer;
+  padding: 10px 90px;
+}
+.page-block-product .configurator .functions-tabs .function-total .functions-list{
+  position: absolute;
+  width: 100%;
+  top: -2px;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: none #fff;
+  display: none;
+  max-height: 575px;
+  overflow-y: auto;
+}
+.page-block-product .configurator .functions-tabs .function-total .functions-list .list-item{
+  background: none #f2f2f2;
+  padding: 20px 56px 20px 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.page-block-product .configurator .functions-tabs .function-total .functions-list .list-item .price{
+  font-family: 'MuseoSansCyrl-300';
+  color: #808080;
+  margin-top: 10px;
+}
+
+.page-block-product .configurator .functions-tabs .function-total .functions-list .list-item .ico-remove{
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url('../images/ico-function-remove.png') no-repeat 0 0 transparent;
+  right: 20px;
+  top: 50%;
+  margin-top: -8px;
+  cursor: pointer;
+}
+
+.page-block-product .configurator .functions-tabs .function-total .functions-list .list-item:last-child{
+  margin-bottom: 0;
+}
+.page-block-product .configurator .functions-tabs .function-total.opened{
+  background: none #657680;
+  border: none medium;
+}
+.page-block-product .configurator .functions-tabs .function-total.opened .label{
+  color: #fff;
+}
+.page-block-product .configurator .functions-tabs .function-total.opened .label:before{
+  content: "";
+  border-color: #657680 transparent transparent transparent;
+  border-style: solid;
+  border-width: 7px 8px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 50%;
+  bottom: -14px;
+  z-index: 111;
+  margin-right: -8px;
+
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.page-block-product .configurator .functions-tabs .function-total.opened .functions-list{
+  display: block;
+}
+
+.page-block-product .configurator .functions-list{
+  margin-top: 40px;
+}
+.page-block-product .configurator .functions-list .list-group{
+  margin-bottom: 50px;
+}
+.page-block-product .configurator .functions-list .list-group .group-title{
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.page-block-product .configurator .functions-list .function-item{
+  width: 277px;
+  background: none #fff;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 20px 20px 0;
+  padding: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+}
+.page-block-product .configurator .functions-list .function-item .price{
+  color: #5098de;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.page-block-product .configurator .functions-list .function-item:hover:before{
+  border: solid 2px #5098de;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.page-block-product .configurator .functions-list .function-item.selected{
+  background: none #5098de;
+  color: #fff;
+}
+.page-block-product .configurator .functions-list .function-item.selected .price{
+  color: #fff;
+}
+
 .page-block-product .technical-characteristics{
   padding: 100px 60px;
 }

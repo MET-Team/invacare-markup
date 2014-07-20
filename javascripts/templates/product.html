@@ -13,14 +13,10 @@
         <img src="images/temp/product-main-image.png" alt="" />
       </div>
       <div class="card-col card-details">
-        <div class="artikul">Артикул:  925</div>
-        <div class="name">Кресло-коляска с электроприводом и вертикализатором Dragon</div>
+        <div class="artikul">{{productsItemData.artikul}}</div>
+        <div class="name">{{productsItemData.name}}</div>
         <div class="text">
-          Электроприводное кресло-коляска с вертикализатором.
-          Система комфортного сидения с легкостью переведет вас
-          в вертикальное положение. Благодаря дополнительным
-          передним колесам, управления коляской возможно даже
-          в вертикальном положении
+          {{productsItemData.text}}
         </div>
 
         <div class="other">
@@ -36,7 +32,7 @@
         </div>
 
         <div class="buy-button">
-          <div class="button">Купить за <span class="price">430000 <span class="rouble">⃏</span></span></div>
+          <div class="button">Купить за <span class="price">{{productsItemData.price}} <span class="rouble">⃏</span></span></div>
         </div>
       </div>
     </div>
@@ -184,6 +180,46 @@
       <div class="caption">Латеральный тазобедренный фиксатор</div>
     </div>
     <div class="clear"></div>
+  </div>
+
+  <div class="configurator">
+    <div class="title">Конфигуратор</div>
+    <div class="description">Выбери необходимую функцию, ты весишь только унцию, получи инструкцию</div>
+
+    <div class="functions-tabs">
+
+      <div class="function-total" ng-if="functionsSelected.length" ng-class="{opened: functionTotalOpened}">
+        <div class="label" ng-click="toggleSelectedFunctionsList()">Выбрано функций ({{functionsSelected.length}})</div>
+
+        <div class="functions-list">
+          <div class="list-item" ng-repeat="item in functionsSelected">
+            {{item.title}}
+            <div class="price">{{item.price}} <span class="rouble">⃏</span></div>
+            <div class="ico-remove" ng-click="toggleFunction(item)"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="function-types" ng-if="functionTypes.length">
+        <div class="type-item" ng-repeat="item in functionTypes" ng-click="showOptionsByType(item.value)" ng-class="{selected: item.value == functionTypeSelected}">
+          {{item.name}}
+        </div>
+      </div>
+    </div>
+
+    <div class="functions-list" ng-if="functionsList">
+      <div class="list-group" ng-if="functionsList.group" ng-repeat="group in functionsList.group">
+        <div class="group-title">
+          {{group.title}}
+        </div>
+
+        <div class="function-item" ng-if="group.list" ng-repeat="function_item in group.list" ng-click="toggleFunction(function_item)" ng-class="{selected: functionsSelected.indexOf(function_item) > -1}">
+          {{function_item.title}}
+          <div class="price">{{function_item.price}} <span class="rouble">⃏</span></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="technical-characteristics">
