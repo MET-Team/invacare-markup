@@ -217,6 +217,10 @@ App.controller('ProductCtrl', function($scope, $http, $location){
       $scope.functionsSelected.push(functionItem);
     }
 
+    if($scope.functionsSelected.length == 0){
+      $scope.functionTotalOpened = false;
+    }
+
     $scope.recalcTotalPrice();
 
   };
