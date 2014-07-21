@@ -159,10 +159,15 @@ App.controller('ProductCtrl', function($scope, $http, $location){
 
   $scope.functionTotalOpened = false;
 
+  $scope.additionalPrice = 0;
+  $scope.totalPrice = 0;
+
   $http.get('javascripts/factories/carriage/item.json')
     .success(function(data){
 
       $scope.productsItemData = data;
+
+      $scope.totalPrice = $scope.productsItemData.price;
 
       $scope.carriageFunctions = $scope.productsItemData.functions;
 
@@ -188,6 +193,20 @@ App.controller('ProductCtrl', function($scope, $http, $location){
     $scope.functionTypeSelected = index;
   };
 
+  $scope.recalcTotalPrice = function(){
+
+    $scope.totalPrice = $scope.productsItemData.price;
+
+    $scope.additionalPrice = 0;
+
+    if($scope.functionsSelected.length > 0){
+      for(item in $scope.functionsSelected){
+        $scope.additionalPrice = $scope.additionalPrice + $scope.functionsSelected[item].price;
+        $scope.totalPrice = $scope.totalPrice + $scope.functionsSelected[item].price;
+      }
+    }
+  };
+
   $scope.toggleFunction = function(functionItem){
 
     var functionSelectedIndex = $scope.functionsSelected.indexOf(functionItem);
@@ -197,6 +216,8 @@ App.controller('ProductCtrl', function($scope, $http, $location){
     }else{
       $scope.functionsSelected.push(functionItem);
     }
+
+    $scope.recalcTotalPrice();
 
   };
 

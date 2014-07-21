@@ -197,6 +197,11 @@
             <div class="price">{{item.price}} <span class="rouble">⃏</span></div>
             <div class="ico-remove" ng-click="toggleFunction(item)"></div>
           </div>
+
+          <div class="total-price">
+            <div class="buy-button">Купить за {{totalPrice}} <span class="rouble">⃏</span></div>
+            <div class="additional-price">С учетом опций на {{additionalPrice}} <span class="rouble">⃏</span></div>
+          </div>
         </div>
       </div>
 
@@ -264,55 +269,17 @@
       </div>
     </div>
 
-    <div class="characters-grid">
+    <div class="characters-grid" ng-if="productsItemData.technical_characteristics">
+
       <div class="grid-col col-left">
         <table>
-          <tr>
-            <td class="caption">Ширина сиденья</td>
-            <td class="value">35,5-55,5 см</td>
-          </tr>
-          <tr>
-            <td class="caption">Глубина сиденья</td>
-            <td class="value">36-54 см</td>
-          </tr>
-          <tr>
-            <td class="caption">Высота сиденья спереди</td>
-            <td class="value">42-52 см</td>
-          </tr>
-          <tr>
-            <td class="caption">Высота сиденья сзади</td>
-            <td class="value">36-52 см</td>
-          </tr>
-          <tr>
-            <td class="caption">Длина подножки</td>
-            <td class="value">34-52 см</td>
-          </tr>
-          <tr>
-            <td class="caption">Высота спинки</td>
-            <td class="value">30-50 см</td>
-          </tr>
-          <tr>
-            <td class="caption">Максимальная нагрузка</td>
-            <td class="value">
-              48 см 125 кг
-              <br/>
-              50,5 см - 140 кг
-            </td>
-          </tr>
-          <tr>
-            <td class="caption">Вес</td>
-            <td class="value">от 100 кг</td>
-          </tr>
-          <tr>
-            <td class="caption">Высота сиденья спереди</td>
-            <td class="value">42-52 см</td>
-          </tr>
-          <tr>
-            <td class="caption">Длина подножки</td>
-            <td class="value">34-52 см</td>
+          <tr ng-repeat="item in productsItemData.technical_characteristics">
+            <td class="caption">{{item.name}}</td>
+            <td class="value">{{item.value}}</td>
           </tr>
         </table>
       </div>
+
       <div class="grid-col col-right col-images">
         <div class="image-item">
           <img src="images/temp/product-character-1.png" alt="" />
@@ -329,8 +296,8 @@
     <div class="card-container">
 
       <div class="card-col">
-        Вы выбрали <span class="options-count">8 опций</span>, и теперь итоговая стоимость вашей коляски составляет
-        <span class="price">456000 <span class="rouble">⃏</span></span>
+        Вы выбрали <span class="options-count">{{functionsSelected.length}} опций</span>, и теперь итоговая стоимость вашей коляски составляет
+        <span class="price">{{totalPrice}} <span class="rouble">⃏</span></span>
       </div>
 
       <div class="card-col card-buy-button">
