@@ -26,6 +26,12 @@ App.config([
   }
 ]);
 
+App.filter("declOfNum", function() {
+  return function(number, textVariants) {
+    var cases = [2, 0, 1, 1, 1, 2];
+    return textVariants[(number % 100 > 4 && number % 100 < 20 ? 2 : cases[(number % 10 < 5 ? number % 10 : 5)])];
+  };
+});
 
 App.controller('ApplicationCtrl', function($scope, $location, $document){
 
@@ -151,7 +157,7 @@ App.controller('CatalogCtrl', function($scope, $http, $location){
 
 });
 
-App.controller('ProductCtrl', function($scope, $http, $location){
+App.controller('ProductCtrl', function($scope, $http, $filter){
 
   $scope.productsItemData = {};
 
@@ -165,6 +171,25 @@ App.controller('ProductCtrl', function($scope, $http, $location){
 
   $scope.additionalPrice = 0;
   $scope.totalPrice = 0;
+
+  $scope.optionsCountLabel = '';
+
+  $scope.recalcTotalPrice = function(){
+
+    $scope.totalPrice = $scope.productsItemData.price;
+
+    $scope.additionalPrice = 0;
+
+    if($scope.functionsSelected.length > 0){
+      for(item in $scope.functionsSelected){
+        $scope.additionalPrice = $scope.additionalPrice + $scope.functionsSelected[item].price;
+        $scope.totalPrice = $scope.totalPrice + $scope.functionsSelected[item].price;
+      }
+    }
+
+    $scope.optionsCountLabel = $filter('declOfNum')($scope.functionsSelected.length, ['опция', 'опции', 'опций']);
+
+  };
 
   $http.get('javascripts/factories/carriage/item.json')
     .success(function(data){
@@ -188,6 +213,8 @@ App.controller('ProductCtrl', function($scope, $http, $location){
 
       $scope.showOptionsByType($scope.functionTypeSelected);
 
+      $scope.recalcTotalPrice();
+
     }).error(function(){
       console.error('Произошла ошибка');
     });
@@ -195,20 +222,6 @@ App.controller('ProductCtrl', function($scope, $http, $location){
   $scope.showOptionsByType = function(index){
     $scope.functionsList = $scope.carriageFunctions[index];
     $scope.functionTypeSelected = index;
-  };
-
-  $scope.recalcTotalPrice = function(){
-
-    $scope.totalPrice = $scope.productsItemData.price;
-
-    $scope.additionalPrice = 0;
-
-    if($scope.functionsSelected.length > 0){
-      for(item in $scope.functionsSelected){
-        $scope.additionalPrice = $scope.additionalPrice + $scope.functionsSelected[item].price;
-        $scope.totalPrice = $scope.totalPrice + $scope.functionsSelected[item].price;
-      }
-    }
   };
 
   $scope.toggleFunction = function(functionItem){
