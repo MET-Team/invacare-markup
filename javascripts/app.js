@@ -15,6 +15,10 @@ App.config([
       templateUrl: "javascripts/templates/product.html",
       reloadOnSearch: false
     })
+    .when("/buy", {
+      templateUrl: "javascripts/templates/buy.html",
+      reloadOnSearch: false
+    })
     .otherwise({
       templateUrl: 'javascripts/templates/404.html',
       reloadOnSearch: false
@@ -228,5 +232,9 @@ App.controller('ProductCtrl', function($scope, $http, $location){
   $scope.toggleSelectedFunctionsList = function(){
     $scope.functionTotalOpened = $scope.functionTotalOpened ? false : true;
   };
+
+});
+
+App.controller('BuyCtrl', function($scope, $http){
 
 });

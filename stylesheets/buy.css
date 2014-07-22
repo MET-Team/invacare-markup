@@ -1,0 +1,229 @@
+.page-block-buy{
+  padding: 60px;
+  display: table;
+  width: 100%;
+  font-size: 16px;
+}
+.page-block-buy .column{
+  display: table-cell;
+}
+.page-block-buy .column.products{
+  width: 44%;
+}
+
+.page-block-buy .column .title{
+  font-size: 24px;
+}
+
+
+.page-block-buy .column.products .products-list{
+  margin-top: 40px;
+}
+
+.page-block-buy .column.products .products-list .products-list-item{
+  margin-bottom: 40px;
+}
+.page-block-buy .column.products .products-list .products-list-item:last-child{
+  margin-bottom: 0;
+}
+
+.page-block-buy .column.products .products-list  .products-list-item .product-card{
+  background: none #f2f2f2;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-card .head{
+  padding: 10px 20px;
+  background: #e6e6e6;
+  position: relative;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-card .head .ico-remove{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background: url('../images/ico-function-remove.png') no-repeat center center #f2f2f2;
+  width: 36px;
+  cursor: pointer;
+}
+
+.page-block-buy .column.products .products-list  .products-list-item .product-card .detail{
+  padding: 30px 20px 30px 139px;
+  position: relative;
+  min-height: 182px;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-card .detail .image{
+  position: absolute;
+  left: 20px;
+  top: 35px;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-card .detail .name{
+  font-size: 18px;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-card .detail .price{
+  font-size: 24px;
+  color: #5098de;
+  margin-top: 20px;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-card .detail .functions-price{
+  color: #808080;
+  margin-top: 15px;
+}
+
+.page-block-buy .column.products .products-list  .products-list-item .product-functions{
+  margin-top: 20px;
+  background: none #f2f2f2;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-functions .head{
+  padding: 10px 20px;
+  background: #e6e6e6;
+  position: relative;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-functions .head .ico-list-action{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 36px;
+  cursor: pointer;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-functions .head .ico-list-action.ico-list-open{
+  background: url('../images/ico-list-open.png') no-repeat center center #f2f2f2;
+}
+
+.page-block-buy .column.products .products-list  .products-list-item .product-functions .functions-list{
+  padding: 30px 20px;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-functions .functions-list .function-item{
+  padding: 20px;
+  background: none #fff;
+  margin-bottom: 10px;
+  position: relative;
+  padding: 20px 46px 20px 20px;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-functions .functions-list .function-item:last-child{
+  margin-bottom: 0;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-functions .functions-list .function-item .price{
+  color: #808080;
+  margin-top: 15px;
+  font-size: 18px;
+}
+.page-block-buy .column.products .products-list  .products-list-item .product-functions .functions-list .function-item .ico-remove{
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url('../images/ico-function-remove.png') no-repeat 0 0 transparent;
+  right: 20px;
+  top: 50%;
+  margin-top: -8px;
+  cursor: pointer;
+}
+
+/**********************/
+.page-block-buy .column.checkout{
+  width: 52%;
+  padding-left: 40px;
+}
+.page-block-buy .column.checkout .tabs{
+  margin-top: 40px;
+  background: none #f2f2f2;
+  padding: 10px 20px 0 20px;
+}
+.page-block-buy .column.checkout .tab-item{
+  float: left;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  width: 33%;
+  text-align: center;
+}
+.page-block-buy .column.checkout .tab-item:last-child{
+  padding-right: 0;
+}
+.page-block-buy .column.checkout .tabs:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.page-block-buy .column.checkout .tab-item .inner{
+  position: relative;
+  padding: 10px;
+}
+.page-block-buy .column.checkout .tab-item.tab-completed .inner:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  border: solid 2px #5098de;
+}
+.page-block-buy .column.checkout .tab-item.tab-completed .ico-completed{
+  display: inline-block;
+  width: 8px;
+  height: 6px;
+  background: url('../images/ico-checkout-type-completed.png') no-repeat 0 0 transparent;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.page-block-buy .column.checkout .tab-item.tab-active{
+  background: none #fff;
+  color: #5098de;
+  cursor: default;
+}
+
+.page-block-buy .column.checkout .tab-content{
+  margin-top: 20px;
+  background: none #f2f2f2;
+  padding: 20px;
+}
+.page-block-buy .column.checkout .tab-content .title{
+  font-size: 18px;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list{
+  margin-top: 30px;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.page-block-buy .column.checkout .tab-content .delivery-list .delivery-item{
+  display: inline-block;
+  min-height: 194px;
+  height: auto;
+  padding: 20px 20px 80px 20px;
+  margin: 0 5px 10px 0;
+  background: none #fff;
+  position: relative;
+  width: 48%;
+  vertical-align: top;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list .delivery-item .price{
+  color: #808080;
+  margin-top: 10px;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list .delivery-item .price .summ{
+  white-space: nowrap;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list .delivery-item .choose-button{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 10px;
+  border: solid 2px #5098de;
+  cursor: pointer;
+  text-align: center;
+  color: #5098de;
+}
+
+.page-block-buy .column.checkout .continue-button{
+  background: none #ccc;
+  color: #fff;
+  padding: 20px;
+  margin-top: 15px;
+  text-align: center;
+}
