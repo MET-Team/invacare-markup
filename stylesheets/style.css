@@ -36,7 +36,6 @@ body{
 
 .wrapper{
   width: 100%;
-  min-height: 700px;
 }
 
 .sidebar{
@@ -182,15 +181,18 @@ body{
 }
 
 .container{
-  padding-left: 60px;
-  width: 100%;
+  left: 60px;
+  top: 0;
+  bottom: 0;
+  right: 0;
   min-width: 1024px;
   position: relative;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  position: absolute;
 }
 .sidebar-open .container{
-  padding-left: 345px;
+  left: 345px;
 }
 
 
@@ -300,9 +302,6 @@ body{
 
 .rouble {
   font-family: 'PTSansLocal', serif;
-}
-.clear{
-  clear: both;
 }
 
 @-webkit-keyframes scaleDownUp {

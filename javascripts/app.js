@@ -19,6 +19,10 @@ App.config([
       templateUrl: "javascripts/templates/buy.html",
       reloadOnSearch: false
     })
+    .when("/about", {
+      templateUrl: "javascripts/templates/about.html",
+      reloadOnSearch: false
+    })
     .otherwise({
       templateUrl: 'javascripts/templates/404.html',
       reloadOnSearch: false
@@ -40,6 +44,11 @@ App.controller('ApplicationCtrl', function($scope, $location, $document){
   $scope.HeaderOrderCallFormIsOpen = false;
 
   $scope.orderCallData = {};
+
+  var Today = new Date();
+  $scope.currentDate = Today.getTime();
+
+
 
   $scope.toggleSidebarMenu = function(){
     $scope.sidebarMenuIsOpen = $scope.sidebarMenuIsOpen ? false : true;

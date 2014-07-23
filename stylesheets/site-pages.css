@@ -1,0 +1,51 @@
+.page-block-about{
+  background: url('../images/bg-about.png') no-repeat 0 0 transparent;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: #fff;
+
+  padding-top: 75px;
+}
+
+.page-block-about .page-inner{
+  width: 730px;
+  margin: 0 auto -170px;
+  min-height: 100%;
+  height: auto;
+}
+.page-block-about .page-inner:after{
+  content: "";
+  height: 170px;
+  display: block;
+}
+
+.page-block-about .page-title{
+  font-size: 36px;
+  font-family: 'MuseoSansCyrl-700';
+}
+.page-block-about .page-content{
+  font-size: 18px;
+  line-height: 25px;
+  margin-top: 60px;
+}
+
+.page-block-about .copyright{
+  height: 170px;
+  font-size: 18px;
+  overflow: hidden;
+  clear: both;
+  position: relative;
+  padding-top: 30px;
+}
+.page-block-about .copyright .copyright-inner{
+  width: 730px;
+  margin: 0 auto;
+}
+.page-block-about .copyright .copyright-inner .logo{
+  vertical-align: middle;
+  margin-right: 30px;
+}
