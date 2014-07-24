@@ -27,6 +27,10 @@ App.config([
       templateUrl: "javascripts/templates/contacts.html",
       reloadOnSearch: false
     })
+    .when("/delivery-payment", {
+      templateUrl: "javascripts/templates/delivery-payment.html",
+      reloadOnSearch: false
+    })
     .otherwise({
       templateUrl: 'javascripts/templates/404.html',
       reloadOnSearch: false
