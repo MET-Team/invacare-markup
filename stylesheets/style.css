@@ -186,13 +186,13 @@ body{
   bottom: 0;
   right: 0;
   min-width: 1024px;
-  position: relative;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   position: absolute;
 }
 .sidebar-open .container{
   left: 345px;
+  min-width: 679px;
 }
 
 

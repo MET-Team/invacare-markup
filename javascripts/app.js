@@ -1,4 +1,4 @@
-var App = angular.module('App', ['ngRoute', 'ngAnimate', 'ngSanitize']);
+var App = angular.module('App', ['ngRoute', 'ngAnimate', 'ngSanitize', 'googlemap-ng']);
 
 App.config([
   "$routeProvider", function($routeProvider) {
@@ -21,6 +21,10 @@ App.config([
     })
     .when("/about", {
       templateUrl: "javascripts/templates/about.html",
+      reloadOnSearch: false
+    })
+    .when("/contacts", {
+      templateUrl: "javascripts/templates/contacts.html",
       reloadOnSearch: false
     })
     .otherwise({
@@ -259,4 +263,17 @@ App.controller('ProductCtrl', function($scope, $http, $filter){
 
 App.controller('BuyCtrl', function($scope, $http){
 
+});
+
+App.controller('ContactsCtrl', function($scope, $http){
+  $scope.mapMarkers = [
+    {
+      "name": "Invacare",
+      "address": "г. Москва, Ленинский проспект, 500м от МКАД, Бизнес-парк «Румянцево», корпус «Г», 11 подъезд, офис 521г",
+      "location": {
+        "latitude": "55.634317",
+        "longitude": "37.439019"
+      }
+    }
+  ]
 });

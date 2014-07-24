@@ -1,3 +1,4 @@
+/* page-block-about */
 .page-block-about{
   background: url('../images/bg-about.png') no-repeat 0 0 transparent;
   background-size: cover;
@@ -8,7 +9,7 @@
   left: 0;
   color: #fff;
 
-  padding-top: 75px;
+  padding: 75px 20px 0;
 }
 
 .page-block-about .page-inner{
@@ -48,4 +49,76 @@
 .page-block-about .copyright .copyright-inner .logo{
   vertical-align: middle;
   margin-right: 30px;
+}
+
+/* page-block-contacts */
+.page-block-contacts{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: table;
+  font-size: 18px;
+}
+.page-block-contacts .page-col{
+  display: table-cell;
+  width: 50%;
+}
+.page-block-contacts .page-col.page-bg{
+  background: url('../images/bg-contacts.png') no-repeat 0 0 transparent;
+  background-size: cover;
+}
+.page-block-contacts .page-col.page-content{
+  padding: 60px;
+}
+
+.page-block-contacts .communication-type .title{
+  font-size: 24px;
+}
+.page-block-contacts .communication-type .text{
+  margin-top: 20px;
+  line-height: 25px;
+}
+.page-block-contacts .communication-type .call-order{
+  margin-top: 10px;
+  position: relative;
+}
+.page-block-contacts .communication-type .call-order .button{
+  background: none #5098de;
+  border: medium none;
+  font-family: 'MuseoSansCyrl-700';
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 0;
+  outline: medium none;
+}
+.page-block-contacts .communication-type .map-box{
+  margin-top: 20px;
+  width: 100%;
+  height: 300px !important;
+}
+
+.page-block-contacts .communication-types{
+  margin-bottom: 50px;
+  display: table;
+  width: 100%;
+}
+.page-block-contacts .communication-types .communication-type{
+  display: table-cell;
+  padding-right: 50px;
+}
+
+.map-infowindow{
+  max-width: 350px;
+}
+.map-infowindow .name{
+  font-weight: bold;
+}
+.map-infowindow .address{
+  margin-top: 10px;
 }
