@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="stylesheets/info.css" />
+
+<div class="page-block page-block-info" ng-controller="InfoCtrl">
+
+  <div class="info-sidebar" ng-class="{opened: menuItemIsOpen}">
+    <img class="ico" ng-src="{{sidebarIco.img}}" ng-class="sidebarIco.class">
+    <div class="title">{{sidebarTitle}}</div>
+  </div>
+
+  <div class="info-container">
+    <div class="main-menu">
+      <ul>
+        <li class="menu-item" ng-repeat="item in mainMenu" ng-click="openMenuItem($index)">
+          <div class="title">{{item.title}}</div>
+          <div class="summary">{{item.summary}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="menu-item-content" ng-class="{open: menuItemIsOpen && menuItem}">
+      <div class="ico-close" ng-click="closeMenuItem()"></div>
+      <div class="title">{{menuItem.title}}</div>
+      <div class="content" ng-bind-html="menuItem.content"></div>
+    </div>
+
+  </div>
+
+</div>
