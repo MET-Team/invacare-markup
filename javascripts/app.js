@@ -1,12 +1,14 @@
 var App = angular.module('App', ['ngRoute', 'ngAnimate', 'ngSanitize', 'googlemap-ng']);
 
-App.config([
-  "$routeProvider", function($routeProvider) {
-    return $routeProvider
-    .when("/", {
-      templateUrl: "javascripts/templates/home.html",
-      reloadOnSearch: false
-    })
+
+App.config(['$routeProvider', '$locationProvider', function($routes, $location) {
+
+  $location.hashPrefix('!');
+
+  $routes.when("/", {
+    templateUrl: "javascripts/templates/home.html",
+    reloadOnSearch: false
+  })
     .when("/catalog", {
       templateUrl: "javascripts/templates/catalog.html",
       reloadOnSearch: false
@@ -41,8 +43,8 @@ App.config([
       templateUrl: 'javascripts/templates/404.html',
       reloadOnSearch: false
     });
-  }
-]);
+
+}]);
 
 App.filter("declOfNum", function() {
   return function(number, textVariants) {
