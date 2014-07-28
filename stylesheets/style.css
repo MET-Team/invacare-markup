@@ -233,7 +233,7 @@ body{
 }
 .sidebar-open .container{
   left: 345px;
-  min-width: 679px;
+  min-width: 990px;
 }
 
 .scaleDownUp {
@@ -251,6 +251,10 @@ body{
 
 .rouble {
   font-family: 'PTSansLocal', serif;
+}
+
+.clear{
+  clear: both;
 }
 
 @-webkit-keyframes scaleDownUp {
