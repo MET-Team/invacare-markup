@@ -1,42 +1,47 @@
 /*.page-block-index*/
 .page-block-index .header{
-    height: 550px;
-    background: url('../images/bg-index-header.png') no-repeat center bottom transparent;
-    background-size: cover;
-    padding: 80px 0
+  height: 550px;
+  background: url('../images/bg-index-header.png') no-repeat center bottom transparent;
+  background-size: cover;
+  padding: 85px 0
 }
 .page-block-index .header .inner{
-    width: 830px;
-    margin: 0 auto;
+  width: 830px;
+  margin: 0 auto;
 }
 .page-block-index .header .title{
-    font-family: 'MuseoSansCyrl-700';
-    font-size: 40px;
-    text-align: center;
+  font-family: 'MuseoSansCyrl-700';
+  font-size: 40px;
+  text-align: center;
 }
 .page-block-index .header .summary{
-    font-size: 18px;
-    text-align: center;
-    margin-top: 20px;
-    line-height: 30px;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 15px;
+  line-height: 30px;
 }
 .page-block-index .header .actions{
-    margin-top: 30px;
-    text-align: center;
+  margin-top: 30px;
+  text-align: center;
 }
 .page-block-index .header .actions .action-item{
-    display: inline-block;
-    margin-right: 12px;
-    cursor: pointer;
-    font-family: 'MuseoSansCyrl-700';
-    font-size: 16px;
-    border: solid 2px #272e32;
-    padding: 10px 35px;
-    color: #000000;
-    text-decoration: none;
+  display: inline-block;
+  margin-right: 8px;
+  cursor: pointer;
+  font-family: 'MuseoSansCyrl-700';
+  font-size: 16px;
+  border: solid 2px #272e32;
+  padding: 12px 35px;
+  color: #000000;
+  text-decoration: none;
 }
 .page-block-index .header .actions .action-item:last-child{
-    margin-right: 0;
+  margin-right: 0;
+}
+
+.page-block-index .header .actions .action-item:hover{
+  background: none #272e32;
+  color: #fff;
 }
 
 .page-block-index .header .actions .action-buttons{
@@ -76,121 +81,122 @@
 }
 
 .page-block-index .brief{
-    display: table;
-    width: 100%;
+  display: table;
+  width: 100%;
 }
 .page-block-index .brief .brief-item{
-    display: table-cell;
-    border-right: solid 1px #e6e6e6;
-    padding: 25px 45px 35px;
+  display: table-cell;
+  border-right: solid 1px #e6e6e6;
+  padding: 25px 30px 30px;
 }
 .page-block-index .brief .brief-item:last-child{
-    border: medium none;
+  border: medium none;
 }
 .page-block-index .brief .brief-item .ico{
-    margin: 0 auto;
-    display: block;
+  margin: 0 auto;
+  display: block;
 }
 .page-block-index .brief .brief-item .title{
-    margin-top: 45px;
-    font-family: 'MuseoSansCyrl-700';
-    font-size: 18px;
+  margin-top: 50px;
+  font-family: 'MuseoSansCyrl-700';
+  font-size: 18px;
 }
 .page-block-index .brief .brief-item .text{
-    margin-top: 20px;
-    font-size: 16px;
-    line-height: 28px;
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 27px;
 }
 .page-block-index .info{
-    height: 400px;
-    background: url('../images/bg-info.png') no-repeat center bottom transparent;
-    background-size: cover;
-    color: #fff;
-    padding: 160px 0 0 50px;
+  height: 400px;
+  background: url('../images/bg-info.png') no-repeat center bottom transparent;
+  background-size: cover;
+  color: #fff;
+  padding: 158px 0 0 50px;
 }
 .page-block-index .info .title{
-    font-family: 'MuseoSansCyrl-700';
-    font-size: 36px;
+  font-family: 'MuseoSansCyrl-700';
+  font-size: 36px;
 }
 .page-block-index .info .text{
-    font-size: 18px;
-    margin-top: 20px;
+  font-size: 18px;
+  margin-top: 20px;
 }
 
 .page-block-index .reviews{
-    padding: 110px 75px;
-    position: relative;
+  padding: 101px 75px;
+  position: relative;
 }
 .page-block-index .reviews .review-item{
-    width: 775px;
-    margin: 0 auto;
-    text-align: center;
+  width: 775px;
+  margin: 0 auto;
+  text-align: center;
 }
 .page-block-index .reviews .review-item .text{
-    font-size: 24px;
-    line-height: 44px;
+  font-size: 24px;
+  line-height: 40px;
 }
 .page-block-index .reviews .review-item .author{
-    margin-top: 35px;
-    font-family: 'MuseoSansCyrl-500';
-    font-size: 18px;
+  margin-top: 30px;
+  font-family: 'MuseoSansCyrl-500';
+  font-size: 18px;
 }
 .page-block-index .reviews .review-arrow{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 75px;
-    cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 75px;
+  cursor: pointer;
 }
 .page-block-index .reviews .review-arrow.review-prev{
-    left: 0;
-    background: url('../images/ico-review-prev.png') no-repeat center center transparent;
+  left: 0;
+  background: url('../images/ico-review-prev.png') no-repeat center center transparent;
 }
 .page-block-index .reviews .review-arrow.review-next{
-    right: 0;
-    background: url('../images/ico-review-next.png') no-repeat center center transparent;
+  right: 0;
+  background: url('../images/ico-review-next.png') no-repeat center center transparent;
 }
 
 .page-block-index .carriage-transitions{
-    height: 450px;
+  height: 450px;
 }
 .page-block-index .carriage-transitions .transition-item{
-    float: left;
-    width: 50%;
-    height: 450px;
-    text-align: center;
-    text-decoration: none;
-    position: relative;
-    padding-top: 55px;
+  float: left;
+  width: 50%;
+  height: 450px;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  padding-top: 55px;
 }
-.page-block-index .carriage-transitions .transition-item .ico{
-    vertical-align: middle;
-    height: 340px;
+.page-block-index .carriage-transitions .transition-item.transition-item-mechanic{
+  background: url('../images/carriage-mechanic.png') no-repeat center center #3073b5;
+}
+.page-block-index .carriage-transitions .transition-item.transition-item-electric{
+  background: url('../images/carriage-electric.png') no-repeat center center #3073b5;
+}
+
+.page-block-index .carriage-transitions .transition-item.transition-item-mechanic:hover{
+  background: url('../images/carriage-mechanic-hovered.png') no-repeat center center #5098de;
+}
+.page-block-index .carriage-transitions .transition-item.transition-item-electric:hover{
+  background: url('../images/carriage-electric-hovered.png') no-repeat center center #5098de;
 }
 .page-block-index .carriage-transitions .transition-item .caption{
-    opacity: 0;
-    position: absolute;
-    top: 215px;
-    left: 0;
-    width: 100%;
-    color: #fff;
+  opacity: 0;
+  position: absolute;
+  top: 215px;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 18px;
 }
 .page-block-index .carriage-transitions .transition-item .caption .arrow{
-    position: relative;
-    top: 2px;
-    left: 2px;
+  position: relative;
+  top: 2px;
+  left: 2px;
+  font-weight: bold;
+  font-size: 22px;
 }
 .page-block-index .carriage-transitions .transition-item:hover .caption{
-    opacity: 1;
-}
-.page-block-index .carriage-transitions .transition-item .overlay{
-    position: absolute;
-    left: 0;
-    top:0;
-    right: 0;
-    bottom: 0;
-    background: none rgba(48, 115, 181, 0.8);
-}
-.page-block-index .carriage-transitions .transition-item:hover .overlay{
-    background: none rgba(80, 152, 222, 0.8);
+  opacity: 1;
 }

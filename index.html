@@ -5,6 +5,20 @@
     <title>Test</title>
     <link rel="stylesheet" href="stylesheets/reset.css" />
     <link rel="stylesheet" href="stylesheets/style.css" />
+
+    <script src="javascripts/angular/angular.min.js"></script>
+    <script src="javascripts/angular/angular-route.min.js"></script>
+    <script src="javascripts/angular/angular-animate.min.js"></script>
+    <script src="javascripts/angular/angular-sanitize.min.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="javascripts/gmaps.js"></script>
+
+    <script src="javascripts/angular/localStorage.js"></script>
+    <script src="javascripts/gmaps-ng.js"></script>
+
+    <script src="javascripts/app.js"></script>
+
   </head>
   <body>
     <div class="wrapper" ng-controller="ApplicationCtrl" ng-class="{'sidebar-open': sidebarMenuIsOpen}">
@@ -20,7 +34,7 @@
         </div>
         <div class="menu">
           <ul>
-            <li class="selected">
+            <li>
               <a href="#!/catalog?type=mechanic">Механические коляски</a>
             </li>
             <li>
@@ -69,18 +83,5 @@
       </div>
 
     </div>
-
-    <script src="javascripts/angular/angular.min.js"></script>
-    <script src="javascripts/angular/angular-route.min.js"></script>
-    <script src="javascripts/angular/angular-animate.min.js"></script>
-    <script src="javascripts/angular/angular-sanitize.min.js"></script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script src="javascripts/gmaps.js"></script>
-
-    <script src="javascripts/angular/localStorage.js"></script>
-    <script src="javascripts/gmaps-ng.js"></script>
-
-    <script src="javascripts/app.js"></script>
   </body>
 </html>

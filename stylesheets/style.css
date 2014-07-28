@@ -107,7 +107,7 @@ body{
   background: none #272e32;
   z-index: 100;
 
-  padding: 30px 40px 30px 0;
+  padding: 30px 30px 30px 0;
 
   font-family: 'MuseoSansCyrl-500';
   font-size: 16px;
@@ -121,40 +121,63 @@ body{
   left: 60px;
 }
 .sidebar-menu .header{
-  padding-left: 30px;
+  padding-left: 40px;
 }
 
 .sidebar-menu .menu{
-  margin-top: 20px;
+  margin-top: 26px;
 }
 .sidebar-menu .menu li{
-  padding: 10px 0 10px 30px;
+  padding: 10px 0 10px 40px;
+  margin-bottom: 5px;
 }
+.sidebar-menu .menu li:last-child{
+  margin-bottom: 0;
+}
+
+.sidebar-menu .menu li:hover, .sidebar-menu .menu li.selected{
+  border-left: solid 10px #5098de;
+}
+
 .sidebar-menu .menu a{
   color: #fff;
   text-decoration: none;
 }
 
 .sidebar-menu .part-menu{
-  margin-top: 35px;
+  margin-top: 25px;
 }
 .sidebar-menu .part-menu li{
-  padding: 10px 0 10px 30px;
+  padding: 10px 0 10px 35px;
+  margin-bottom: 5px;
+  border-left: solid 5px #5098de;
 }
+.sidebar-menu .part-menu li:last-child{
+  margin-bottom: 0;
+}
+.sidebar-menu .part-menu li:hover{
+  border-left: solid 10px #5098de;
+  /*padding-left: 30px;*/
+}
+
 .sidebar-menu .part-menu a{
   color: #686d70;
   text-decoration: none;
 }
+.sidebar-menu .part-menu li:hover a{
+  color: #fff;
+}
 
 .sidebar-menu .contacts{
-  margin-top: 180px;
-  padding-left: 30px;
+  margin-top: 176px;
+  padding-left: 40px;
+  padding-right: 10px;
 }
 .sidebar-menu .contacts .phone{
   color: #fff;
 }
 .sidebar-menu .contacts .call-order{
-  margin-top: 30px;
+  margin-top: 25px;
   position: relative;
 }
 
