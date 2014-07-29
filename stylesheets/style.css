@@ -130,6 +130,8 @@ body{
 .sidebar-menu .menu li{
   padding: 10px 0 10px 40px;
   margin-bottom: 5px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 .sidebar-menu .menu li:last-child{
   margin-bottom: 0;
@@ -148,15 +150,16 @@ body{
   margin-top: 25px;
 }
 .sidebar-menu .part-menu li{
-  padding: 10px 0 10px 35px;
+  padding: 10px 0 10px 40px;
   margin-bottom: 5px;
-  border-left: solid 5px #5098de;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 .sidebar-menu .part-menu li:last-child{
   margin-bottom: 0;
 }
 .sidebar-menu .part-menu li:hover{
-  border-left: solid 10px #5098de;
+  border-left: solid 5px #5098de;
   /*padding-left: 30px;*/
 }
 

@@ -9,12 +9,12 @@
         Ещё одна причина — высокая мотивация сотрудников. Все хотят сделать хорошо — к большому сожалению, в русских студиях я такого не замечал. Здесь, когда нужно сделать
       </div>
       <div class="actions">
-        <div class="action-buttons" ng-hide="HeaderOrderCallFormIsOpen">
+        <div class="action-buttons" ng-class="{show: !HeaderOrderCallFormIsOpen}">
           <div class="action-item" ng-click="toggleHeaderOrderCallForm()">Получить консультацию</div>
           <a class="action-item" href="#!/catalog">Перейти в каталог</a>
         </div>
 
-        <div class="order-form" ng-show="HeaderOrderCallFormIsOpen">
+        <div class="order-form" ng-class="{show: HeaderOrderCallFormIsOpen}">
           <form ng-submit="orderCall()">
             <input type="text" class="order-phone" ng-model="orderCallData.phone" placeholder="Введите телефон" />
               <input type="submit" value="Ок" class="button" />
@@ -71,10 +71,10 @@
   </div>
 
   <div class="carriage-transitions">
-    <a href="#/catalog?type=mechanic" class="transition-item transition-item-mechanic">
+    <a href="#!/catalog?type=mechanic" class="transition-item transition-item-mechanic">
       <div class="caption">Перейти к механическим коляскам <span class="arrow">&rarr;</span></div>
     </a>
-    <a href="#/catalog?type=electric" class="transition-item transition-item-electric">
+    <a href="#!/catalog?type=electric" class="transition-item transition-item-electric">
       <div class="caption">Перейти к электрическим коляскам <span class="arrow">&rarr;</span></div>
     </a>
   </div>

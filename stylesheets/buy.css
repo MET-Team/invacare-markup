@@ -8,7 +8,7 @@
   display: table-cell;
 }
 .page-block-buy .column.products{
-  width: 44%;
+  width: 41%;
 }
 
 .page-block-buy .column .title{
@@ -17,7 +17,7 @@
 
 
 .page-block-buy .column.products .products-list{
-  margin-top: 40px;
+  margin-top: 33px;
 }
 
 .page-block-buy .column.products .products-list .products-list-item{
@@ -46,17 +46,18 @@
 }
 
 .page-block-buy .column.products .products-list  .products-list-item .product-card .detail{
-  padding: 30px 20px 30px 139px;
+  padding: 29px 20px 29px 159px;
   position: relative;
   min-height: 182px;
 }
 .page-block-buy .column.products .products-list  .products-list-item .product-card .detail .image{
   position: absolute;
-  left: 20px;
+  left: 44px;
   top: 35px;
 }
 .page-block-buy .column.products .products-list  .products-list-item .product-card .detail .name{
   font-size: 18px;
+  line-height: 24px;
 }
 .page-block-buy .column.products .products-list  .products-list-item .product-card .detail .price{
   font-size: 24px;
@@ -97,14 +98,14 @@
   background: none #fff;
   margin-bottom: 10px;
   position: relative;
-  padding: 20px 46px 20px 20px;
+  padding: 19px 46px 19px 20px;
 }
 .page-block-buy .column.products .products-list  .products-list-item .product-functions .functions-list .function-item:last-child{
   margin-bottom: 0;
 }
 .page-block-buy .column.products .products-list  .products-list-item .product-functions .functions-list .function-item .price{
   color: #808080;
-  margin-top: 15px;
+  margin-top: 20px;
   font-size: 18px;
 }
 .page-block-buy .column.products .products-list  .products-list-item .product-functions .functions-list .function-item .ico-remove{
@@ -124,9 +125,9 @@
   padding-left: 40px;
 }
 .page-block-buy .column.checkout .tabs{
-  margin-top: 40px;
+  margin-top: 34px;
   background: none #f2f2f2;
-  padding: 10px 20px 0 20px;
+  padding: 10px 20px 0;
 }
 .page-block-buy .column.checkout .tab-item{
   float: left;
@@ -147,7 +148,7 @@
 
 .page-block-buy .column.checkout .tab-item .inner{
   position: relative;
-  padding: 10px;
+  padding: 12px;
 }
 .page-block-buy .column.checkout .tab-item.tab-completed .inner:before{
   content: '';
@@ -174,9 +175,9 @@
 }
 
 .page-block-buy .column.checkout .tab-content{
-  margin-top: 20px;
+  margin-top: 17px;
   background: none #f2f2f2;
-  padding: 20px;
+  padding: 26px 20px 16px;
 }
 .page-block-buy .column.checkout .tab-content .title{
   font-size: 18px;
@@ -195,7 +196,7 @@
   min-height: 194px;
   height: auto;
   padding: 20px 20px 80px 20px;
-  margin: 0 5px 10px 0;
+  margin: 0 5px 9px 0;
   background: none #fff;
   position: relative;
   width: 48%;
@@ -221,9 +222,12 @@
 }
 
 .page-block-buy .column.checkout .continue-button{
-  background: none #ccc;
+  background: none #f2f2f2;
   color: #fff;
-  padding: 20px;
-  margin-top: 15px;
+  padding: 0 20px 20px;
   text-align: center;
+}
+.page-block-buy .column.checkout .continue-button .inner{
+  background: none #ccc;
+  padding: 15px;
 }

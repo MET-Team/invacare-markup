@@ -47,16 +47,40 @@
 .page-block-index .header .actions .action-buttons{
   -webkit-transition: all linear 0.5s;
   transition: all linear 0.5s;
+
+  opacity: 0;
+
+  position: absolute;
+  left: 50%;
+  margin-left: -250px;
+  z-index: 100;
 }
+.page-block-index .header .actions .action-buttons.show{
+  opacity: 1;
+  z-index: 101;
+}
+
 .page-block-index .header .actions .order-form{
   display: inline-block;
 
+  opacity: 0;
+
   -webkit-transition: all linear 0.5s;
   transition: all linear 0.5s;
+
+  position: absolute;
+  left: 50%;
+  margin-left: -187px;
+  z-index: 100;
 }
+.page-block-index .header .actions .order-form.show{
+  opacity: 1;
+  z-index: 101;
+}
+
 .page-block-index .header .actions .order-form .order-phone{
   width: 240px;
-  padding: 9px;
+  padding: 7px;
   font-size: 16px;
 }
 .page-block-index .header .actions .order-form .button{
@@ -108,7 +132,7 @@
 }
 .page-block-index .info{
   height: 400px;
-  background: url('../images/bg-info.png') no-repeat center bottom transparent;
+  background: url('../images/bg-info.png') no-repeat 50% 50% fixed;
   background-size: cover;
   color: #fff;
   padding: 158px 0 0 50px;

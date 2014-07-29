@@ -9,7 +9,7 @@
   left: 0;
   color: #fff;
 
-  padding: 75px 20px 0;
+  padding: 72px 20px 0;
 }
 
 .page-block-about .page-inner{
@@ -30,8 +30,8 @@
 }
 .page-block-about .page-content{
   font-size: 18px;
-  line-height: 25px;
-  margin-top: 60px;
+  line-height: 29px;
+  margin-top: 48px;
 }
 
 .page-block-about .copyright{
@@ -125,7 +125,7 @@
 
 /* page-block-delivery-payments */
 .page-block-delivery-payments .delivery{
-  padding: 60px;
+  padding: 72px 60px;
   background: url('../images/bg-delivery.png') no-repeat 0 0 transparent;
   background-size: cover;
   min-height: 573px;
@@ -133,7 +133,7 @@
 }
 
 .page-block-delivery-payments .payment{
-  padding: 60px;
+  padding: 72px 60px;
   background: none #f2f2f2;
 }
 
@@ -144,7 +144,7 @@
 .page-block-delivery-payments .delivery .text, .page-block-delivery-payments .payment .text{
   margin-top: 30px;
   width: 50%;
-  line-height: 25px;
+  line-height: 29px;
   font-size: 18px;
 }
 
@@ -162,14 +162,14 @@
   font-family: 'MuseoSansCyrl-500';
 }
 .page-block-delivery-payments .delivery .delivery-types .delivery-type-item .delivery-list{
-  margin-top: 35px;
+  margin-top: 33px;
 }
 .page-block-delivery-payments .delivery .delivery-types .delivery-type-item .delivery-list table{
   width: 100%;
 }
 .page-block-delivery-payments .delivery .delivery-types .delivery-type-item .delivery-list table td{
   background: none #fff;
-  padding: 10px;
+  padding: 14px 20px;
   color: #000;
 }
 .page-block-delivery-payments .delivery .delivery-types .delivery-type-item .delivery-list table tr.gray td{
@@ -188,7 +188,7 @@
 }
 
 .page-block-delivery-payments .payment .payments-list .payment-item{
-  padding: 25px;
+  padding: 30px;
   background: none #fff;
   margin-bottom: 40px;
 }

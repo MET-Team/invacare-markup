@@ -27,6 +27,7 @@
   top: 530px;
   max-width: 235px;
   font-family: 'MuseoSansCyrl-700';
+  line-height: 40px;
 }
 
 .info-sidebar.opened .ico{
@@ -47,7 +48,7 @@
   width: 100%;
   border-bottom: solid 1px #cccccc;
   text-align: center;
-  padding: 45px;
+  padding: 43px 45px;
   cursor: pointer;
 
   -webkit-transition: all .2s ease;
@@ -80,7 +81,7 @@
   bottom: 0;
   right: 0;
   background: none #fff;
-  padding: 100px 110px;
+  padding: 70px 110px;
 
   font-family: 'MuseoSansCyrl-300';
 
@@ -103,7 +104,8 @@
 }
 .menu-item-content .content{
   font-size: 18px;
-  margin-top: 40px;
+  margin-top: 49px;
+  line-height: 29px;
 }
 .menu-item-content .content p{
   margin-bottom: 35px;
