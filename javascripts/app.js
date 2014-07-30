@@ -148,6 +148,25 @@ App.controller('CatalogCtrl', function($scope, $http, $location){
     $http.get('javascripts/factories/carriage/'+ carriageType +'.json')
       .success(function(data){
         $scope.productsList = data;
+
+        for(item in $scope.productsList){
+          var productItem = $scope.productsList[item];
+
+          productItem.visible = true;
+
+          if(productItem.options.length > 0 && $scope.activeOptionsFilter.length > 0){
+            productItem.visible = false;
+
+            for(option in productItem.options){
+              if($scope.activeOptionsFilter.indexOf(productItem.options[option]) > -1){
+                productItem.visible = true;
+              }
+            }
+
+          }
+
+        }
+
       }).error(function(){
         console.error('Произошла ошибка');
       });
@@ -178,6 +197,15 @@ App.controller('CatalogCtrl', function($scope, $http, $location){
     }else {
       $scope.activeOptionsFilter.push(filter_item);
     }
+
+    $scope.getProducts();
+
+  };
+
+  $scope.priceOrderProperty = 'price';
+
+  $scope.togglePriceOrderProperty = function(){
+    $scope.priceOrderProperty = $scope.priceOrderProperty == 'price' ? '-price' : 'price';
   };
 
 });

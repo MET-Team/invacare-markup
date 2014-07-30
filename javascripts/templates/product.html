@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="stylesheets/product.css" />
-
 <div class="page-block page-block-product" ng-controller="ProductCtrl">
   <div class="main-card">
 
@@ -13,11 +11,9 @@
         <img src="images/temp/product-main-image.png" alt="" />
       </div>
       <div class="card-col card-details">
-        <div class="artikul">{{productsItemData.artikul}}</div>
-        <div class="name">{{productsItemData.name}}</div>
-        <div class="text">
-          {{productsItemData.text}}
-        </div>
+        <div class="artikul" ng-bind="productsItemData.artikul"></div>
+        <div class="name" ng-bind="productsItemData.name"></div>
+        <div class="text" ng-bind="productsItemData.text"></div>
 
         <div class="other">
           <div class="other-item delivery">
@@ -32,7 +28,7 @@
         </div>
 
         <div class="buy-button">
-          <a class="button" href="#!/buy">Купить за <span class="price">{{productsItemData.price}} <span class="rouble">⃏</span></span></a>
+          <a class="button" href="#!/buy">Купить за <span class="price"><span ng-bind="productsItemData.price"></span> <span class="rouble">⃏</span></span></a>
         </div>
       </div>
     </div>
@@ -189,25 +185,26 @@
     <div class="functions-tabs">
 
       <div class="function-total" ng-if="functionsSelected.length" ng-class="{opened: functionTotalOpened}">
-        <div class="label" ng-click="toggleSelectedFunctionsList()">Выбрано функций ({{functionsSelected.length}})</div>
+        <div class="label" ng-click="toggleSelectedFunctionsList()">Выбрано функций (<span ng-bind="functionsSelected.length"></span>)</div>
 
         <div class="functions-list">
           <div class="list-item" ng-repeat="item in functionsSelected">
-            {{item.title}}
-            <div class="price">{{item.price}} <span class="rouble">⃏</span></div>
+            <span ng-bind=""></span>
+            <div ng-bind="item.title"></div>
+            <div class="price"><span ng-bind="item.price"></span> <span class="rouble">⃏</span></div>
             <div class="ico-remove" ng-click="toggleFunction(item)"></div>
           </div>
 
           <div class="total-price">
-            <a class="buy-button" href="#!/buy">Купить за {{totalPrice}} <span class="rouble">⃏</span></a>
-            <div class="additional-price">С учетом опций на {{additionalPrice}} <span class="rouble">⃏</span></div>
+            <a class="buy-button" href="#!/buy">Купить за <span ng-bind="totalPrice"></span> <span class="rouble">⃏</span></a>
+            <div class="additional-price">С учетом опций на <span ng-bind="additionalPrice"></span> <span class="rouble">⃏</span></div>
           </div>
         </div>
       </div>
 
       <div class="function-types" ng-if="functionTypes.length">
         <div class="type-item" ng-repeat="item in functionTypes" ng-click="showOptionsByType(item.value)" ng-class="{selected: item.value == functionTypeSelected}">
-          {{item.name}}
+          <div ng-bind="item.name"></div>
         </div>
       </div>
     </div>
@@ -215,12 +212,12 @@
     <div class="functions-list" ng-if="functionsList">
       <div class="list-group" ng-if="functionsList.group" ng-repeat="group in functionsList.group">
         <div class="group-title">
-          {{group.title}}
+          <div ng-bind="group.title"></div>
         </div>
 
         <div class="function-item" ng-if="group.list" ng-repeat="function_item in group.list" ng-click="toggleFunction(function_item)" ng-class="{selected: functionsSelected.indexOf(function_item) > -1}">
-          {{function_item.title}}
-          <div class="price">{{function_item.price}} <span class="rouble">⃏</span></div>
+          <div ng-bind="function_item.title"></div>
+          <div class="price"><span ng-bind="function_item.price"></span> <span class="rouble">⃏</span></div>
         </div>
       </div>
     </div>
@@ -274,8 +271,8 @@
       <div class="grid-col col-left">
         <table>
           <tr ng-repeat="item in productsItemData.technical_characteristics">
-            <td class="caption">{{item.name}}</td>
-            <td class="value">{{item.value}}</td>
+            <td class="caption" ng-bind="item.name"></td>
+            <td class="value" ng-bind="item.value"></td>
           </tr>
         </table>
       </div>
@@ -296,8 +293,8 @@
     <div class="card-container">
 
       <div class="card-col">
-        Вы выбрали <span class="options-count">{{functionsSelected.length}} {{optionsCountLabel}}</span>, и теперь итоговая стоимость вашей коляски составляет
-        <span class="price">{{totalPrice}} <span class="rouble">⃏</span></span>
+        Вы выбрали <span class="options-count"><span ng-bind="functionsSelected.length"></span> <span ng-bind="optionsCountLabel"></span></span>, и теперь итоговая стоимость вашей коляски составляет
+        <span class="price"><span ng-bind="totalPrice"></span> <span class="rouble">⃏</span></span>
       </div>
 
       <div class="card-col card-buy-button">

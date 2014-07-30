@@ -1,33 +1,29 @@
-<link rel="stylesheet" href="stylesheets/catalog.css" />
-
 <div class="page-block page-block-catalog" ng-controller="CatalogCtrl">
   <div class="filters">
     <div class="filter-type filter-carriage-type">
-      <div class="filter-item" ng-repeat="item in carriageTypes" ng-click="changeType(item.type)" ng-class="{selected: item.type == carriageTypeSelected}">
-        {{item.title}}
-      </div>
+      <div class="filter-item" ng-repeat="item in carriageTypes" ng-click="changeType(item.type)" ng-class="{selected: item.type == carriageTypeSelected}" ng-bind="item.title"></div>
     </div>
 
     <div class="filter-type filter-carriage-options" ng-if="carriageOptionsByType">
       <div class="filter-item" ng-repeat="item in carriageOptionsByType" ng-click="filterOptions($index)" ng-class="{checked: activeOptionsFilter.indexOf($index) > -1}">
-        {{item}}
+        <span ng-bind="item"></span>
         <div class="ico"></div>
       </div>
     </div>
 
-    <div class="filter-type filter-carriage-order">
+    <div class="filter-type filter-carriage-order" ng-class="{ordered:priceOrderProperty == '-price'}" ng-click="togglePriceOrderProperty()">
       Сортировать по ценам
       <div class="ico"></div>
     </div>
   </div>
 
   <div class="product-list">
-    <a href="#!/catalog/1" class="product-item" ng-repeat="item in productsList">
-      <div class="price">{{item.price}} руб.</div>
+    <a href="#!/catalog/1" class="product-item" ng-repeat="item in productsList | orderBy:priceOrderProperty" ng-show="item.visible">
+      <div class="price"><span ng-bind="item.price"></span> руб.</div>
       <div class="image">
         <img src="images/temp/product-image.png" alt="" />
       </div>
-      <div class="name">{{item.name}}</div>
+      <div class="name" ng-bind="item.name"></div>
     </a>
   </div>
 </div>

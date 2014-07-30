@@ -23,6 +23,10 @@
 .page-block-product .main-card .image-view .view-item:last-child{
   margin-bottom: 0;
 }
+.page-block-product .main-card .image-view .view-item:hover{
+  background: none #5098de;
+  color: #fff;
+}
 .page-block-product .main-card .image-view .view-item.selected{
   background: none #5098de;
   color: #fff;
@@ -109,6 +113,9 @@
   font-size: 24px;
   padding: 20px 41px;
   text-decoration: none;
+}
+.page-block-product .main-card .card-container .card-col.card-details .buy-button .button:hover{
+  background: none #59a8f7;
 }
 
 .page-block-product .main-card.speciality{
@@ -359,6 +366,11 @@
   width: 350px;
   z-index: 101;
 }
+.page-block-product .configurator .functions-tabs .function-total:hover{
+  background: none #657680;
+  color: #fff;
+}
+
 .page-block-product .configurator .functions-tabs .function-total .label{
   cursor: pointer;
   padding: 10px 90px;
@@ -415,6 +427,10 @@
   text-decoration: none;
   display: block;
 }
+.page-block-product .configurator .functions-tabs .function-total .functions-list .total-price .buy-button:hover{
+  background: none #59a8f7;
+}
+
 .page-block-product .configurator .functions-tabs .function-total .functions-list .total-price .additional-price{
   color: #999;
   margin-top: 20px;
@@ -583,4 +599,8 @@
   font-size: 18px;
   cursor: pointer;
   text-decoration: none;
+}
+.page-block-product .total-cost .button:hover{
+  background: none #fff;
+  color: #5098de;
 }

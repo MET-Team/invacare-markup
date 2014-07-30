@@ -195,6 +195,10 @@ body{
   padding: 10px 0;
   outline: medium none;
 }
+.sidebar-menu .contacts .call-order .button:hover{
+  background: none #637580;
+}
+
 .sidebar-menu .contacts .call-order.call-order-open:before{
   content: "";
   border-color: #505e66 transparent transparent transparent;
@@ -237,6 +241,10 @@ body{
   padding: 10px;
   vertical-align: middle;
 }
+.sidebar-menu .contacts .call-order .order-form .form-send .button:hover{
+  background: none #59a8f7;
+}
+
 .sidebar-menu .contacts .call-order .order-form .form-send .form-close{
   display: inline-block;
   width: 15px;

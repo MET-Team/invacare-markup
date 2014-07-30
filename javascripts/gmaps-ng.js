@@ -25,8 +25,6 @@ angular.module("googlemap-ng", []).directive("googlemap", function() {
 
       prepareMarkers = function(markers) {
 
-        console.log(markers)
-
         map.removeMarkers();
 
         if (markers) {
@@ -34,8 +32,6 @@ angular.module("googlemap-ng", []).directive("googlemap", function() {
           for (item in markers) {
             if(markers.hasOwnProperty(item)){
               var item = markers[item];
-
-              console.log(item)
 
               if(item.location.latitude && item.location.longitude){
                 var coordinates = new google.maps.LatLng(item.location.latitude, item.location.longitude);

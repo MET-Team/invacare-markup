@@ -97,6 +97,10 @@
   padding: 10px 0;
   outline: medium none;
 }
+.page-block-contacts .communication-type .call-order .button:hover{
+  background: none #59a8f7;
+}
+
 .page-block-contacts .communication-type .map-box{
   margin-top: 20px;
   width: 100%;
