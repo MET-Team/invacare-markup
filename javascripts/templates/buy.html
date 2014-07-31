@@ -65,22 +65,16 @@
       <div class="tab-content-item tab-content-item-delivery">
         <div class="title">Доставка</div>
         <div class="delivery-list">
-          <div class="delivery-item">
-            Самовывоз по Москве
-            <div class="price">Бесплатно</div>
-            <div class="choose-button">Выбрать</div>
-          </div>
-          <div class="delivery-item">
-            Курьероaм по Москве и области
-            <div class="price">Стоимость от 0 до <span class="summ">900 <span class="rouble">⃏</span></span></div>
-            <div class="choose-button">Выбрать</div>
-          </div>
-          <div class="delivery-item">
-            Доставка по России,
-            Казахстану, Белоруссии
-            транспортной компанией
-            <div class="price">Стоимость от <span class="summ">500 <span class="rouble">⃏</span></span></div>
-            <div class="choose-button">Выбрать</div>
+          <div class="delivery-item" ng-repeat="item in deliveryItems" ng-class="{selected: selectedDelivery == item}">
+            <div ng-bind="item.title"></div>
+
+            <div ng-if="item.priceRange">
+              <div class="price">Стоимость от <span ng-bind="item.priceRange.from"></span> до <span class="summ"><span ng-bind="item.priceRange.to"></span> <span class="rouble">⃏</span></span></div>
+            </div>
+
+            <div ng-if="item.price" class="price" ng-bind="item.price"></div>
+
+            <div class="choose-button" ng-click="toggleDeliveryItem(item)">Выбрать</div>
           </div>
         </div>
       </div>

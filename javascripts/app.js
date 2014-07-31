@@ -364,6 +364,38 @@ App.controller('BuyCtrl', function($scope, $http, localStorageService){
     $scope.functionsListOpened = $scope.functionsListOpened ? false : true;
   };
 
+  $scope.deliveryItems = [
+    {
+      title: 'Самовывоз по Москве',
+      price: 'Бесплатно'
+    },
+    {
+      title: 'Курьероaм по Москве и области',
+      priceRange: {
+        from: 0,
+        to: 900
+      }
+    },
+    {
+      title: 'Доставка по России, Казахстану, Белоруссии транспортной компанией',
+      priceRange: {
+        from: 0,
+        to: 500
+      }
+    }
+  ];
+
+  $scope.selectedDelivery = null;
+
+  $scope.toggleDeliveryItem = function(item){
+    if($scope.selectedDelivery != item){
+      $scope.selectedDelivery = item;
+    }else{
+      $scope.selectedDelivery = null;
+    }
+
+  };
+
 });
 
 App.controller('ContactsCtrl', function($scope, $http){

@@ -206,10 +206,19 @@
   width: 48%;
   vertical-align: top;
 }
+.page-block-buy .column.checkout .tab-content .delivery-list .delivery-item.selected{
+  background: none #5098de;
+  color: #fff;
+}
+
 .page-block-buy .column.checkout .tab-content .delivery-list .delivery-item .price{
   color: #808080;
   margin-top: 10px;
 }
+.page-block-buy .column.checkout .tab-content .delivery-list .delivery-item.selected .price{
+  color: #fff;
+}
+
 .page-block-buy .column.checkout .tab-content .delivery-list .delivery-item .price .summ{
   white-space: nowrap;
 }
@@ -223,6 +232,11 @@
   cursor: pointer;
   text-align: center;
   color: #5098de;
+}
+
+.page-block-buy .column.checkout .tab-content .delivery-list .delivery-item.selected .choose-button{
+  border: solid 2px #fff;
+  color: #fff;
 }
 
 .page-block-buy .column.checkout .continue-button{
