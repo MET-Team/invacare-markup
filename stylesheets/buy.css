@@ -16,7 +16,7 @@
 }
 
 
-.page-block-buy .column.products .products-list{
+.page-block-buy .column.products .products-list, .page-block-buy .column.products .buy-empty{
   margin-top: 33px;
 }
 
@@ -85,6 +85,7 @@
   bottom: 0px;
   width: 36px;
   cursor: pointer;
+  background: url('../images/ico-list-close.png') no-repeat center center #f2f2f2;
 }
 .page-block-buy .column.products .products-list  .products-list-item .product-functions .head .ico-list-action.ico-list-open{
   background: url('../images/ico-list-open.png') no-repeat center center #f2f2f2;
@@ -92,6 +93,9 @@
 
 .page-block-buy .column.products .products-list  .products-list-item .product-functions .functions-list{
   padding: 30px 20px;
+  max-height: 400px;
+  overflow: auto;
+  overflow-x: hidden;
 }
 .page-block-buy .column.products .products-list  .products-list-item .product-functions .functions-list .function-item{
   padding: 20px;

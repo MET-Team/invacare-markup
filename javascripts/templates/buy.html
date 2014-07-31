@@ -2,51 +2,47 @@
   <div class="column products">
     <div class="title">Покупки</div>
 
-    <div class="products-list">
+    <div class="products-list" ng-if="productItem">
       <div class="products-list-item">
         <div class="product-card">
           <div class="head">
-            Артикул:  925
-            <div class="ico-remove"></div>
+            Артикул:  <span ng-bind="productItem.artikul"></span>
+            <div class="ico-remove" ng-click="removeItem()"></div>
           </div>
           <div class="detail">
             <div class="image">
               <img src="images/temp/product-buy.png" alt="" />
             </div>
 
-            <div class="name">Кресло-коляска с электроприводом и вертикализатором Dragon</div>
-            <div class="price">540000 <span class="rouble">⃏</span></div>
-            <div class="functions-price">Фунцкии: 70000 <span class="rouble">⃏</span></div>
+            <div class="name" ng-bind="productItem.name"></div>
+            <div class="price"><span ng-bind="productItem.price"></span> <span class="rouble">⃏</span></div>
+            <div class="functions-price" ng-if="additionalPrice">
+              Фунцкии: <span ng-bind="additionalPrice"></span> <span class="rouble">⃏</span>
+            </div>
           </div>
         </div>
-        <div class="product-functions">
+        <div class="product-functions" ng-if="functionsSelected.length > 0">
           <div class="head">
             Выбранные функции
-            <div class="ico-list-action ico-list-open"></div>
+            <div class="ico-list-action" ng-click="toggleFunctionList()" ng-class="{'ico-list-open': functionsListOpened}"></div>
           </div>
-          <div class="functions-list">
-            <div class="function-item">
-              Алюмениевые фиксированные грязезащитные боковины
-              <div class="price">5500 <span class="rouble">⃏</span></div>
-              <div class="ico-remove"></div>
-            </div>
-            <div class="function-item">
-              Алюмениевые фиксированные грязезащитные боковины
-              <div class="price">5500 <span class="rouble">⃏</span></div>
-              <div class="ico-remove"></div>
-            </div>
-            <div class="function-item">
-              Алюмениевые фиксированные грязезащитные боковины
-              <div class="price">5500 <span class="rouble">⃏</span></div>
-              <div class="ico-remove"></div>
+          <div class="functions-list" ng-show="functionsListOpened">
+            <div class="function-item" ng-repeat="item in functionsSelected">
+              <div ng-bind="item.title"></div>
+              <div class="price"><span ng-bind="item.price"></span> <span class="rouble">⃏</span></div>
+              <div class="ico-remove" ng-click="removeFunction(item)"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="buy-empty" ng-if="!productItem">
+      Ничего не выбрано
+    </div>
+
   </div>
-  <div class="column checkout">
+  <div class="column checkout" ng-if="productItem">
     <div class="title">Оформление заказа</div>
 
     <div class="tabs">

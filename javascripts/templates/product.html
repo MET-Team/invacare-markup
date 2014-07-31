@@ -28,7 +28,7 @@
         </div>
 
         <div class="buy-button">
-          <a class="button" href="#!/buy">Купить за <span class="price"><span ng-bind="productsItemData.price"></span> <span class="rouble">⃏</span></span></a>
+          <a class="button" ng-click="buyProduct()" href="javascript:void(0)">Купить за <span class="price"><span ng-bind="productsItemData.price"></span> <span class="rouble">⃏</span></span></a>
         </div>
       </div>
     </div>
@@ -196,7 +196,7 @@
           </div>
 
           <div class="total-price">
-            <a class="buy-button" href="#!/buy">Купить за <span ng-bind="totalPrice"></span> <span class="rouble">⃏</span></a>
+            <a class="buy-button" ng-click="buyProduct()" href="javascript:void(0)">Купить за <span ng-bind="totalPrice"></span> <span class="rouble">⃏</span></a>
             <div class="additional-price">С учетом опций на <span ng-bind="additionalPrice"></span> <span class="rouble">⃏</span></div>
           </div>
         </div>
@@ -298,7 +298,7 @@
       </div>
 
       <div class="card-col card-buy-button">
-        <a href="#!/buy" class="button">Оформить покупку</a>
+        <a ng-click="buyProduct()" href="javascript:void(0)" class="button">Оформить покупку</a>
       </div>
 
     </div>

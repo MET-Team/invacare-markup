@@ -29,12 +29,14 @@
 
     <script src="javascripts/app.js"></script>
 
+    <script src="//tdcdn.blob.core.windows.net/toolbar/assets/prod/td.js" data-trackduck-id="53da4686c525d59522e5aa4b" async=""></script>
+
   </head>
   <body>
     <div class="wrapper" ng-controller="ApplicationCtrl" ng-class="{'sidebar-open': sidebarMenuIsOpen}">
 
-      <div class="sidebar">
-        <div class="sidebar-ico-open" ng-click="toggleSidebarMenu()"></div>
+      <div class="sidebar" ng-click="toggleSidebarMenu()">
+        <div class="sidebar-ico-open"></div>
       </div>
       <div class="sidebar-menu">
         <div class="header">

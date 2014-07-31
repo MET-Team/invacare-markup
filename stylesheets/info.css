@@ -33,6 +33,7 @@
 .info-sidebar.opened .ico{
   top: 90px;
   left: 34px;
+  cursor: pointer;
 }
 
 .info-sidebar.opened{
