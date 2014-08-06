@@ -1,4 +1,4 @@
-var App = angular.module('App', ['ngRoute', 'ngAnimate', 'ngSanitize', 'googlemap-ng', 'LocalStorageModule']);
+var App = angular.module('App', ['ngRoute', 'ngAnimate', 'ngSanitize', 'googlemap-ng', 'LocalStorageModule', 'stickyfloat-ng', 'iso.directives']);
 
 App.config(['$routeProvider', '$locationProvider', function($routes, $location) {
 
@@ -93,6 +93,10 @@ App.controller('ApplicationCtrl', function($scope, $location, $document){
 
 App.controller('CatalogCtrl', function($scope, $http, $location){
 
+  $scope.isoOptions = {
+    layoutMode: 'fitRows'
+  };
+
   $scope.carriageTypes = {
     0 : {
       'type': 'electric',
@@ -136,14 +140,15 @@ App.controller('CatalogCtrl', function($scope, $http, $location){
 
   $scope.activeOptionsFilter = [];
 
-  $scope.productsList = [];
-
   $scope.getCarriageOptions = function(){
     $scope.carriageOptionsByType = $scope.carriageOptions[$scope.carriageTypeSelected];
   };
 
   $scope.getProducts = function(){
     var carriageType = $scope.carriageTypeSelected;
+
+    $scope.productsList = [];
+
     $http.get('javascripts/factories/carriage/'+ carriageType +'.json')
       .success(function(data){
         $scope.productsList = data;
@@ -161,11 +166,8 @@ App.controller('CatalogCtrl', function($scope, $http, $location){
                 productItem.visible = true;
               }
             }
-
           }
-
         }
-
       }).error(function(){
         console.error('Произошла ошибка');
       });
@@ -190,6 +192,7 @@ App.controller('CatalogCtrl', function($scope, $http, $location){
   };
 
   $scope.filterOptions = function (filter_item) {
+
     var index = $scope.activeOptionsFilter.indexOf(filter_item);
     if (index > -1) {
       $scope.activeOptionsFilter.splice(index, 1);
@@ -205,6 +208,7 @@ App.controller('CatalogCtrl', function($scope, $http, $location){
 
   $scope.togglePriceOrderProperty = function(){
     $scope.priceOrderProperty = $scope.priceOrderProperty == 'price' ? '-price' : 'price';
+    $scope.getProducts();
   };
 
 });

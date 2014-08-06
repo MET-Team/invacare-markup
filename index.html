@@ -16,16 +16,23 @@
 
     <link rel="stylesheet" href="stylesheets/info.css" />
 
+    <script src="javascripts/isotope/vendor/jquery-2.1.0.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
     <script src="javascripts/angular/angular.min.js"></script>
+
     <script src="javascripts/angular/angular-route.min.js"></script>
     <script src="javascripts/angular/angular-animate.min.js"></script>
     <script src="javascripts/angular/angular-sanitize.min.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src='javascripts/stickyfloat-ng.js'></script>
     <script src="javascripts/gmaps.js"></script>
 
     <script src="javascripts/angular/localStorage.js"></script>
     <script src="javascripts/gmaps-ng.js"></script>
+
+    <script src="javascripts/isotope/vendor/jquery.isotope.js"></script>
+    <script src="javascripts/isotope/angular-isotope.js"></script>
 
     <script src="javascripts/app.js"></script>
 
@@ -38,7 +45,10 @@
       <div class="sidebar" ng-click="toggleSidebarMenu()">
         <div class="sidebar-ico-open"></div>
       </div>
-      <div class="sidebar-menu">
+      <div class="sidebar-menu"></div>
+
+      <div class="sidebar-menu-inner" sticky-float="">
+
         <div class="header">
           <a href="#!/">
             <img class="logo" src="images/logo.png" alt="" width="101" height="18" />
