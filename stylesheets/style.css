@@ -103,6 +103,10 @@ body{
   height: 20px;
 }
 
+.sidebar .sidebar-ico-open:hover{
+  opacity: 0.8;
+}
+
 .sidebar-menu{
   position: fixed;
   left: -100%;
@@ -199,8 +203,7 @@ body{
   margin-bottom: 0;
 }
 .sidebar-menu-inner .part-menu li:hover{
-  border-left: solid 5px #5098de;
-  /*padding-left: 30px;*/
+  border-left: solid 10px #5098de;
 }
 
 .sidebar-menu-inner .part-menu a{
@@ -302,6 +305,9 @@ body{
   cursor: pointer;
   vertical-align: middle;
   margin-left: 10px;
+}
+.sidebar-menu-inner .contacts .call-order .order-form .form-send .form-close:hover{
+  opacity: 0.8;
 }
 
 .container{

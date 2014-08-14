@@ -393,6 +393,7 @@
   font-size: 16px;
   margin-bottom: 10px;
   position: relative;
+  color: #272e32;
 }
 .page-block-product .configurator .functions-tabs .function-total .functions-list .list-item .price{
   font-family: 'MuseoSansCyrl-300';
@@ -409,6 +410,9 @@
   top: 50%;
   margin-top: -8px;
   cursor: pointer;
+}
+.page-block-product .configurator .functions-tabs .function-total .functions-list .list-item .ico-remove:hover{
+  opacity: 0.8;
 }
 
 .page-block-product .configurator .functions-tabs .function-total .functions-list .list-item:last-child{
