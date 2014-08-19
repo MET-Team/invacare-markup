@@ -112,6 +112,9 @@
   vertical-align: middle;
   margin-left: 10px;
 }
+.page-block-index .header .actions .order-form .form-close:hover{
+  opacity: 0.8;
+}
 
 .page-block-index .brief{
   display: table;
