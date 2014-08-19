@@ -159,6 +159,7 @@
 .page-block-product .main-card.speciality .card-container .card-col.card-image img{
   position: relative;
   right: 18px;
+  max-width: 100%;
 }
 
 .page-block-product .main-card.speciality.speciality-control{
@@ -599,6 +600,7 @@
   font-size: 18px;
   cursor: pointer;
   text-decoration: none;
+  display: inline-block;
 }
 .page-block-product .total-cost .button:hover{
   background: none #fff;
