@@ -186,6 +186,7 @@
 
 .page-block-product .main-card.schema{
   padding: 118px 60px;
+  overflow: hidden;
 }
 .page-block-product .main-card.schema .card-container{
   padding: 0;
