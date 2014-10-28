@@ -18,10 +18,11 @@
   </div>
 
   <div class="product-list" id="isotopeContainer" isotope-container="isotope-container" iso-options="isoOptions">
-    <a href="#!/catalog/1" class="product-item" ng-if="item.visible" ng-repeat="item in productsList | orderBy:priceOrderProperty" isotope-item>
+    <a ng-href="#!/catalog/{{item.id}}" class="product-item" ng-repeat="item in productsList | orderBy:priceOrderProperty" isotope-item>
       <div class="price"><span ng-bind="item.price"></span> руб.</div>
+      <div class="artikul" ng-bind="item.art"></div>
       <div class="image">
-        <img src="images/temp/product-image.png" alt="" />
+        <img ng-src="{{domain + item.photo.thumb}}" alt="" width="272" height="272" />
       </div>
       <div class="name" ng-bind="item.name"></div>
     </a>

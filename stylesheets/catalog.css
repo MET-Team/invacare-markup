@@ -153,6 +153,14 @@
   color: #fff;
   background: none #5098de;
 }
+.page-block-catalog .product-list .product-item .artikul{
+  position: absolute;
+  right: 0;
+  top: 40px;
+  padding: 12px 11px;
+  background: none rgba(255, 255, 255, 0.5);
+}
+
 .page-block-catalog .product-list .product-item .name{
   margin-top: 26px;
   font-size: 18px;

@@ -11,9 +11,9 @@
         <img src="images/temp/product-main-image.png" alt="" />
       </div>
       <div class="card-col card-details">
-        <div class="artikul" ng-bind="productsItemData.artikul"></div>
-        <div class="name" ng-bind="productsItemData.name"></div>
-        <div class="text" ng-bind="productsItemData.text"></div>
+        <div class="artikul" ng-bind="product.art"></div>
+        <div class="name" ng-bind="product.name"></div>
+        <div class="text" ng-bind-html="product.description"></div>
 
         <div class="other">
           <div class="other-item delivery">
@@ -28,13 +28,13 @@
         </div>
 
         <div class="buy-button">
-          <a class="button" ng-click="buyProduct()" href="javascript:void(0)">Купить за <span class="price"><span ng-bind="productsItemData.price"></span> <span class="rouble">⃏</span></span></a>
+          <a class="button" ng-click="buyProduct()" href="javascript:void(0)">Купить за <span class="price"><span ng-bind="product.price"></span> <span class="rouble">⃏</span></span></a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="main-card speciality">
+  <div class="main-card speciality" ng-repeat="transformItem in transformations">
     <div class="card-container">
 
       <div class="card-col card-details">
@@ -60,107 +60,39 @@
     </div>
   </div>
 
-  <div class="main-card speciality speciality-white speciality-control">
+  <div class="main-card speciality speciality-white speciality-control" ng-repeat="adItem in ad_blocks">
     <div class="card-container">
 
       <div class="card-col card-image">
-        <img src="images/temp/product-speciality-2.png" alt="" />
+        <img ng-src="{{domain + adItem.photo.original}}" alt="" />
       </div>
 
       <div class="card-col card-details">
-        <div class="title">Удобное управление</div>
-        <div class="text">
-          Мобильность в вертикальном положении
-          значительно расширяет ваши возможности
-          в повседневной жизни. Управление коляской
-          возможно даже в вертикальном положении
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="main-card schema">
-    <div class="card-container">
-
-      <div class="card-col card-image">
-        <img src="images/temp/product-main-image-schema.png" alt="" />
-      </div>
-
-      <div class="schema-list">
-
-        <div class="schema-item schema-item-1">
-          <div class="title">Крутое управление</div>
-          <div class="text">Составление брифа и оценка объема работ</div>
-        </div>
-
-        <div class="schema-item schema-item-2">
-          <div class="title">Удобное сиденье</div>
-          <div class="text">Составление брифа и оценка объема работ</div>
-        </div>
-
-        <div class="schema-item schema-item-3">
-          <div class="title">Поднимающиеся опоры</div>
-          <div class="text">Составление брифа и оценка объема работ</div>
-        </div>
-
-        <div class="schema-item schema-item-4">
-          <div class="title">Супер спинка</div>
-          <div class="text">Составление брифа и оценка объема работ</div>
-        </div>
-
-        <div class="schema-item schema-item-5">
-          <div class="title">Тазобедренный фиксатор</div>
-          <div class="text">Составление брифа и оценка объема работ</div>
-        </div>
-
-        <div class="schema-item schema-item-6">
-          <div class="title">Цельнолитые шины</div>
-          <div class="text">Составление брифа и оценка объема работ</div>
-        </div>
-
+        <div class="title" ng-bind="adItem.title"></div>
+        <div class="text" ng-bind-html="adItem.description"></div>
       </div>
 
     </div>
   </div>
 
   <div class="gallery">
-    <div class="gallery-item" style="background: url('images/temp/product-gallery-1.png') no-repeat 50% 50% transparent; background-size: cover;">
+    <div class="gallery-item" ng-repeat="item in photo_elements" style="background: url('{{domain + item.photo.original}}') no-repeat 50% 50% transparent; background-size: cover;">
       <div class="overlay"></div>
-      <div class="caption">Латеральный тазобедренный фиксатор</div>
-    </div>
-    <div class="gallery-item" style="background: url('images/temp/product-gallery-2.png') no-repeat 50% 50% transparent; background-size: cover;">
-      <div class="overlay"></div>
-      <div class="caption">Латеральный тазобедренный фиксатор</div>
-    </div>
-    <div class="gallery-item" style="background: url('images/temp/product-gallery-3.png') no-repeat 50% 50% transparent; background-size: cover;">
-      <div class="overlay"></div>
-      <div class="caption">Латеральный тазобедренный фиксатор</div>
-    </div>
-    <div class="gallery-item" style="background: url('images/temp/product-gallery-4.png') no-repeat 50% 50% transparent; background-size: cover;">
-      <div class="overlay"></div>
-      <div class="caption">Латеральный тазобедренный фиксатор</div>
-    </div>
-    <div class="gallery-item" style="background: url('images/temp/product-gallery-5.png') no-repeat 50% 50% transparent; background-size: cover;">
-      <div class="overlay"></div>
-      <div class="caption">Латеральный тазобедренный фиксатор</div>
-    </div>
-    <div class="gallery-item" style="background: url('images/temp/product-gallery-6.png') no-repeat 50% 50% transparent; background-size: cover;">
-      <div class="overlay"></div>
-      <div class="caption">Латеральный тазобедренный фиксатор</div>
-    </div>
-    <div class="gallery-item" style="background: url('images/temp/product-gallery-7.png') no-repeat 50% 50% transparent; background-size: cover;">
-      <div class="overlay"></div>
-      <div class="caption">Латеральный тазобедренный фиксатор</div>
-    </div>
-    <div class="gallery-item" style="background: url('images/temp/product-gallery-8.png') no-repeat 50% 50% transparent; background-size: cover;">
-      <div class="overlay"></div>
-      <div class="caption">Латеральный тазобедренный фиксатор</div>
+      <div class="caption" ng-bind-html="item.description"></div>
     </div>
     <div class="clear"></div>
   </div>
 
-  <div class="configurator">
+  <div class="main-card schema" ng-if="product.scheme_image">
+    <div class="card-container">
+
+      <div class="card-col card-image">
+        <img ng-src="{{domain + product.scheme_image.original}}" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div class="configurator" ng-if="configureOptions">
     <div class="title">Конфигуратор</div>
     <div class="description">Выбери необходимую функцию, ты весишь только унцию, получи инструкцию</div>
 
@@ -206,53 +138,23 @@
 
   </div>
 
-  <div class="technical-characteristics">
+  <div class="technical-characteristics" ng-if="components || characters">
     <div class="title">Технические характеристики</div>
     <div class="description">Выбери необходимую функцию, ты весишь только унцию, получи инструкцию</div>
 
-    <div class="options">
-      <div class="option-item">
-        <img src="images/temp/product-tech-option-1.png" alt="" />
+    <div class="options" ng-if="components">
+      <div class="option-item" ng-repeat="item in components">
+        <img ng-src="{{domain + item.photo.thumb}}" alt="" width="70" height="70" />
         <br/>
-        Вертикализатор
-      </div>
-
-      <div class="option-item">
-        <img src="images/temp/product-tech-option-2.png" alt="" />
-        <br/>
-        Пульт
-      </div>
-
-      <div class="option-item">
-        <img src="images/temp/product-tech-option-3.png" alt="" />
-        <br/>
-        Антиопрокидователи
-      </div>
-
-      <div class="option-item">
-        <img src="images/temp/product-tech-option-4.png" alt="" />
-        <br/>
-        Фары
-      </div>
-
-      <div class="option-item">
-        <img src="images/temp/product-tech-option-5.png" alt="" />
-        <br/>
-        Зашита аккумулятора
-      </div>
-
-      <div class="option-item">
-        <img src="images/temp/product-tech-option-6.png" alt="" />
-        <br/>
-        Супер герои
+        <span ng-bind="item.name"></span>
       </div>
     </div>
 
-    <div class="characters-grid" ng-if="productsItemData.technical_characteristics">
+    <div class="characters-grid" ng-if="characters">
 
       <div class="grid-col col-left">
         <table>
-          <tr ng-repeat="item in productsItemData.technical_characteristics">
+          <tr ng-repeat="item in characters">
             <td class="caption" ng-bind="item.name"></td>
             <td class="value" ng-bind="item.value"></td>
           </tr>

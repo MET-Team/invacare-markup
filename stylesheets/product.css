@@ -160,6 +160,8 @@
   position: relative;
   right: 18px;
   max-width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 .page-block-product .main-card.speciality.speciality-control{

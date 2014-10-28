@@ -1,6 +1,8 @@
-angular.module('productCtrl', []).controller('ProductCtrl', function($scope, $http, $filter, localStorageService, $location){
+angular.module('productCtrl', []).controller('ProductCtrl', function($scope, $http, $filter, localStorageService, $location, $routeParams, $rootScope){
 
-  $scope.productsItemData = {};
+  $scope.productId = $routeParams.productId;
+
+  $scope.product = {};
 
   $scope.functionTypes = [];
   $scope.functionsList = [];
@@ -17,7 +19,7 @@ angular.module('productCtrl', []).controller('ProductCtrl', function($scope, $ht
 
   $scope.recalcTotalPrice = function(){
 
-    $scope.totalPrice = $scope.productsItemData.price;
+    $scope.totalPrice = $scope.product.price;
 
     $scope.additionalPrice = 0;
 
@@ -32,30 +34,46 @@ angular.module('productCtrl', []).controller('ProductCtrl', function($scope, $ht
 
   };
 
-  $http.get('javascripts/factories/carriage/item.json')
+  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId)
     .success(function(data){
-
-      $scope.productsItemData = data;
-
-      $scope.totalPrice = $scope.productsItemData.price;
-
-      $scope.carriageFunctions = $scope.productsItemData.functions;
-
-      for(item in $scope.carriageFunctions){
-        if($scope.carriageFunctions.hasOwnProperty(item)){
-
-          $scope.functionTypes.push({
-            "name" : $scope.carriageFunctions[item].title,
-            "value" : item
-          });
-
-        }
-      }
-
-      $scope.showOptionsByType($scope.functionTypeSelected);
-
+      $scope.product = data;
+      $scope.totalPrice = $scope.product.price;
       $scope.recalcTotalPrice();
+    }).error(function(){
+      console.error('Произошла ошибка');
+    });
 
+  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/tech_specs')
+    .success(function(data){
+      $scope.characters = data;
+    }).error(function(){
+      console.error('Произошла ошибка');
+    });
+
+  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/components')
+    .success(function(data){
+      $scope.components = data;
+    }).error(function(){
+      console.error('Произошла ошибка');
+    });
+
+  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/photo_elements')
+    .success(function(data){
+      $scope.photo_elements = data;
+    }).error(function(){
+      console.error('Произошла ошибка');
+    });
+
+  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/transformations')
+    .success(function(data){
+      $scope.transformations = data;
+    }).error(function(){
+      console.error('Произошла ошибка');
+    });
+
+  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/ad_blocks')
+    .success(function(data){
+      $scope.ad_blocks = data;
     }).error(function(){
       console.error('Произошла ошибка');
     });
@@ -64,6 +82,8 @@ angular.module('productCtrl', []).controller('ProductCtrl', function($scope, $ht
     $scope.functionsList = $scope.carriageFunctions[index];
     $scope.functionTypeSelected = index;
   };
+
+  $scope.configureOptions = null;
 
   $scope.toggleFunction = function(functionItem){
 
@@ -90,9 +110,9 @@ angular.module('productCtrl', []).controller('ProductCtrl', function($scope, $ht
   $scope.buyProduct = function(){
 
     var productToBuy = {
-      name: $scope.productsItemData.name,
-      artikul: $scope.productsItemData.artikul,
-      price: $scope.productsItemData.price,
+      name: $scope.product.name,
+      artikul: $scope.product.artikul,
+      price: $scope.product.price,
       priceAdditional: $scope.additionalPrice,
       functions: $scope.functionsSelected
     };

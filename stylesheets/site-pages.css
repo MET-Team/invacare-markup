@@ -130,15 +130,11 @@
 /* page-block-delivery-payments */
 .page-block-delivery-payments .delivery{
   padding: 72px 60px;
-  background: url('../images/bg-delivery.png') no-repeat 0 0 transparent;
-  background-size: cover;
   min-height: 573px;
-  color: #fff;
 }
 
 .page-block-delivery-payments .payment{
   padding: 72px 60px;
-  background: none #f2f2f2;
 }
 
 .page-block-delivery-payments .delivery .title, .page-block-delivery-payments .payment .title{
@@ -179,6 +175,9 @@
 .page-block-delivery-payments .delivery .delivery-types .delivery-type-item .delivery-list table tr.gray td{
   background: none #f2f2f2;
 }
+.page-block-delivery-payments .delivery .delivery-types .delivery-type-item .delivery-list table tr td:last-child{
+  font-family: 'MuseoSansCyrl-500';
+}
 
 .page-block-delivery-payments .payment .payments-list{
   margin-top: 50px;
@@ -193,7 +192,7 @@
 
 .page-block-delivery-payments .payment .payments-list .payment-item{
   padding: 30px;
-  background: none #fff;
+  background: none #f2f2f2;
   margin-bottom: 40px;
 }
 .page-block-delivery-payments .payment .payments-list .payments-list-col .payment-item:last-child{

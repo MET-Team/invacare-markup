@@ -2,10 +2,17 @@ appControllers = angular.module("appControllers", [
   'catalogCtrl',
   'productCtrl',
   'buyCtrl',
-  'infoCtrl'
+  'infoCtrl',
+
+  'googlemap-ng',
+  'LocalStorageModule',
+  'stickyfloat-ng',
+  'iso.directives'
 ]);
 
-appControllers.controller('ApplicationCtrl', function($scope, $location, $document){
+appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $location, $document){
+
+  $rootScope.domain = "http://white-m.ru";
 
   $scope.sidebarMenuIsOpen = false;
   $scope.OrderCallFormIsOpen = false;

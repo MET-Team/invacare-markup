@@ -3,12 +3,7 @@ var App = angular.module('App', [
   'ngAnimate',
   'ngSanitize',
 
-  'appControllers',
-
-  'googlemap-ng',
-  'LocalStorageModule',
-  'stickyfloat-ng',
-  'iso.directives'
+  'appControllers'
 ]);
 
 App.config(['$routeProvider', '$locationProvider', function($routes, $location) {
@@ -32,10 +27,15 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
       reloadOnSearch: false
     })
 
-    .when("/delivery-payment", {
-      templateUrl: "javascripts/templates/delivery-payment.html",
+    .when("/delivery", {
+      templateUrl: "javascripts/templates/delivery.html",
       reloadOnSearch: false
     })
+    .when("/payment", {
+      templateUrl: "javascripts/templates/payment.html",
+      reloadOnSearch: false
+    })
+
     .when("/about", {
       templateUrl: "javascripts/templates/about.html",
       reloadOnSearch: false

@@ -1,19 +1,23 @@
-angular.module('catalogCtrl', []).controller('CatalogCtrl', function($scope, $http, $location){
+angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope, $scope, $http, $location){
 
   $scope.isoOptions = {
     layoutMode: 'fitRows'
   };
 
-  $scope.carriageTypes = {
-    0 : {
+  $scope.carriageTypes = [
+    {
       'type': 'electric',
       'title': 'Электрические'
     },
-    1 : {
+    {
       'type': 'mechanic',
       'title': 'Механические'
+    },
+    {
+      'type': 'active',
+      'title': 'Активные'
     }
-  };
+  ];
 
   $scope.carriageOptions = {
     'electric' : {
@@ -54,27 +58,25 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($scope, $ht
   $scope.getProducts = function(){
     var carriageType = $scope.carriageTypeSelected;
 
-    $scope.productsList = [];
-
-    $http.get('javascripts/factories/carriage/'+ carriageType +'.json')
+    $http.get($rootScope.domain +'/api/v1/products')
       .success(function(data){
         $scope.productsList = data;
 
-        for(item in $scope.productsList){
-          var productItem = $scope.productsList[item];
-
-          productItem.visible = true;
-
-          if(productItem.options.length > 0 && $scope.activeOptionsFilter.length > 0){
-            productItem.visible = false;
-
-            for(option in productItem.options){
-              if($scope.activeOptionsFilter.indexOf(productItem.options[option]) > -1){
-                productItem.visible = true;
-              }
-            }
-          }
-        }
+//        for(item in $scope.productsList){
+//          var productItem = $scope.productsList[item];
+//
+//          productItem.visible = true;
+//
+//          if(productItem.options.length > 0 && $scope.activeOptionsFilter.length > 0){
+//            productItem.visible = false;
+//
+//            for(option in productItem.options){
+//              if($scope.activeOptionsFilter.indexOf(productItem.options[option]) > -1){
+//                productItem.visible = true;
+//              }
+//            }
+//          }
+//        }
       }).error(function(){
         console.error('Произошла ошибка');
       });

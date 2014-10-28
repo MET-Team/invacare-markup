@@ -2,7 +2,7 @@
 <html ng-app="App">
   <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>Invacare</title>
     <link rel="stylesheet" href="stylesheets/reset.css" />
     <link rel="stylesheet" href="stylesheets/style.css" />
 
@@ -68,13 +68,19 @@
             <li>
               <a href="#!/catalog?type=electric">Электрические коляски</a>
             </li>
+            <li>
+              <a href="#!/catalog?type=active">Активные коляски</a>
+            </li>
           </ul>
         </div>
 
         <div class="part-menu">
           <ul>
             <li>
-              <a href="#!/delivery-payment">Доставка и оплата</a>
+              <a href="#!/delivery">Доставка</a>
+            </li>
+            <li>
+              <a href="#!/payment">Оплата</a>
             </li>
             <li>
               <a href="#!/about">О компании</a>
@@ -85,13 +91,19 @@
             <li>
               <a href="#!/info">Полезная информация</a>
             </li>
+            <li>
+              <a href="#!/faq">Вопросы и ответы</a>
+            </li>
+            <li>
+              <a href="#!/return_guarantee">Возврат товара и гарантия</a>
+            </li>
           </ul>
         </div>
 
         <div class="contacts">
           <div class="phone">+7 495 765-56-56</div>
           <div class="call-order" ng-class="{'call-order-open': OrderCallFormIsOpen}">
-            <input type="button" value="Заказать звонок" class="button button-arrow" ng-click="toggleOrderCallForm()" />
+            <input type="button" value="Перезвоните мне" class="button button-arrow" ng-click="toggleOrderCallForm()" />
             <div class="order-form">
               <form ng-submit="orderCall()">
                 <input type="text" class="order-phone" ng-model="orderCallData.phone" placeholder="Телефон" />
