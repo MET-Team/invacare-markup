@@ -4,14 +4,14 @@
       <div class="filter-item" ng-repeat="item in carriageTypes" ng-click="changeType(item.type)" ng-class="{selected: item.type == carriageTypeSelected}" ng-bind="item.title"></div>
     </div>
 
-    <div class="filter-type filter-carriage-options" ng-if="carriageOptionsByType">
-      <div class="filter-item" ng-repeat="item in carriageOptionsByType" ng-click="filterOptions($index)" ng-class="{checked: activeOptionsFilter.indexOf($index) > -1}">
-        <span ng-bind="item"></span>
-        <div class="ico"></div>
-      </div>
-    </div>
+    <!--<div class="filter-type filter-carriage-options" ng-if="carriageOptionsByType">-->
+      <!--<div class="filter-item" ng-repeat="item in carriageOptionsByType" ng-click="filterOptions($index)" ng-class="{checked: activeOptionsFilter.indexOf($index) > -1}">-->
+        <!--<span ng-bind="item"></span>-->
+        <!--<div class="ico"></div>-->
+      <!--</div>-->
+    <!--</div>-->
 
-    <div class="filter-type filter-carriage-order" ng-class="{ordered:priceOrderProperty == '-price'}" ng-click="togglePriceOrderProperty()">
+    <div class="filter-type filter-carriage-order" ng-class="{ordered:priceOrderProperty == 'price'}" ng-click="togglePriceOrderProperty()">
       Сортировать по ценам
       <div class="ico"></div>
     </div>
@@ -22,7 +22,7 @@
       <div class="price"><span ng-bind="item.price"></span> руб.</div>
       <div class="artikul" ng-bind="item.art"></div>
       <div class="image">
-        <img ng-src="{{domain + item.photo.thumb}}" alt="" width="272" height="272" />
+        <img ng-src="{{domain + item.photo.image.thumb.url}}" alt="" width="272" height="272" />
       </div>
       <div class="name" ng-bind="item.name"></div>
     </a>

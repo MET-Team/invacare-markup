@@ -6,16 +6,19 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope,
 
   $scope.carriageTypes = [
     {
-      'type': 'electric',
-      'title': 'Электрические'
+      type: 'electric',
+      title: 'Электрические',
+      id: 2
     },
     {
-      'type': 'mechanic',
-      'title': 'Механические'
+      type: 'mechanic',
+      title: 'Механические',
+      id: 1
     },
     {
-      'type': 'active',
-      'title': 'Активные'
+      type: 'active',
+      title: 'Активные',
+      id: 6
     }
   ];
 
@@ -56,10 +59,20 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope,
   };
 
   $scope.getProducts = function(){
-    var carriageType = $scope.carriageTypeSelected;
+    var searchParams = {};
 
-    $http.get($rootScope.domain +'/api/v1/products')
-      .success(function(data){
+    var carriageType = $scope.carriageTypeSelected;
+    for(carriageItem in $scope.carriageTypes){
+      if($scope.carriageTypes.hasOwnProperty(carriageItem)){
+        if($scope.carriageTypes[carriageItem].type == carriageType){
+          searchParams.kind_id_eq = $scope.carriageTypes[carriageItem].id;
+        }
+      }
+    }
+
+    $http.get($rootScope.domain +'/api/v1/sites/4/products', {
+      params: searchParams
+    }).success(function(data){
         $scope.productsList = data;
 
 //        for(item in $scope.productsList){
