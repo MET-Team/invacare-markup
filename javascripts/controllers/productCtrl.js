@@ -1,4 +1,7 @@
-angular.module('productCtrl', []).controller('ProductCtrl', function($scope, $http, $filter, localStorageService, $location, $routeParams, $rootScope){
+angular.module('productCtrl', [
+  'spritespin-ng'
+])
+.controller('ProductCtrl', function($scope, $http, $filter, localStorageService, $location, $routeParams, $rootScope){
 
   $scope.productId = $routeParams.productId;
 
@@ -108,7 +111,6 @@ angular.module('productCtrl', []).controller('ProductCtrl', function($scope, $ht
   };
 
   $scope.buyProduct = function(){
-
     var productToBuy = {
       name: $scope.product.name,
       artikul: $scope.product.artikul,
@@ -118,9 +120,24 @@ angular.module('productCtrl', []).controller('ProductCtrl', function($scope, $ht
     };
 
     localStorageService.set('productToBuy', productToBuy);
-
     $location.path('/buy').replace();
+  };
 
+  $scope.viewItems = ['360&deg;', '3D'];
+  $scope.viewItemSelected = 0;
+  $scope.hintEnabled = false;
+
+  $scope.changeView = function(index){
+    $scope.viewItemSelected = index;
+    $scope.hintEnabled = $scope.viewItemSelected == 1 ? true : false;
+  };
+
+  $scope.continueView = function(){
+    $scope.hintEnabled = false;
+  };
+
+  $scope.transformationsSpinConfig = {
+    disableAnimation: true
   };
 
 });

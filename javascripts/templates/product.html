@@ -2,13 +2,40 @@
   <div class="main-card">
 
     <div class="image-view">
-      <div class="view-item selected">360&deg;</div>
-      <div class="view-item">3D</div>
+      <div class="view-item" ng-repeat="item in viewItems" ng-class="{selected: $index == viewItemSelected}" ng-bind-html="item" ng-click="changeView($index)"></div>
     </div>
 
     <div class="card-container">
-      <div class="card-col card-image">
-        <img src="images/temp/product-main-image.png" alt="" />
+      <div class="card-col card-image card-image-main">
+        <div class="image-container">
+          <div class="animation-container" ng-if="viewItemSelected == 0 && product.rotation_images.length > 0" sprite-spin="" spin-images="product.rotation_images">
+            <img ng-src="{{domain + product.photo.original}}" alt="" />
+          </div>
+
+          <div class="zoom-controls" ng-if="viewItemSelected == 1">
+            <div class="control-item plus">+</div>
+            <div class="control-item minus">-</div>
+          </div>
+
+          <div class="threed-object" ng-if="viewItemSelected == 1"></div>
+
+          <div class="threed-hint" ng-if="hintEnabled">
+            <div class="center">
+              <img src="images/ico-3d-hint-2.png" alt="" width="58" height="60" />
+              <div class="hint-text">
+                Двигайте изображение
+                в любом направлении
+              </div>
+              <img src="images/ico-3d-hint-1.png" alt="" width="66" height="66" />
+              <div class="hint-text">
+                Используйте кнопки
+                для масштабирования
+              </div>
+              <button class="continue btn btn-default" ng-click="continueView()">Продолжить</button>
+            </div>
+          </div>
+
+        </div>
       </div>
       <div class="card-col card-details">
         <div class="artikul" ng-bind="product.art"></div>
@@ -16,7 +43,7 @@
         <div class="text" ng-bind-html="product.description"></div>
 
         <div class="other">
-          <div class="other-item delivery">
+          <div class="other-item delivery" ng-if="product.free_shipping">
             <div class="ico"></div>
             Бесплатная доставка в пределах МКАД
           </div>
@@ -34,17 +61,12 @@
     </div>
   </div>
 
-  <div class="main-card speciality" ng-repeat="transformItem in transformations">
+  <div class="main-card speciality transformations" ng-repeat="transformItem in transformations">
     <div class="card-container">
 
       <div class="card-col card-details">
-        <div class="title">Вертикализатор</div>
-        <div class="text">
-          Мобильность в вертикальном положении
-          значительно расширяет ваши возможности
-          в повседневной жизни. Управление коляской
-          возможно даже в вертикальном положении
-        </div>
+        <div class="title" ng-bind="transformItem.title"></div>
+        <div class="text" ng-bind-html="transformItem.description"></div>
         <div class="actions">
           <div class="action-item">
             <div class="ico"></div>
@@ -53,21 +75,30 @@
         </div>
       </div>
 
-      <div class="card-col card-image">
-        <img src="images/temp/product-speciality-1.png" alt="" />
+      <div class="card-col card-image animation-container" id="animation-{{$index}}" sprite-spin="" spin-images="transformItem.images" spin-config-additional="transformationsSpinConfig">
+        <img ng-src="{{domain + product.photo.original}}" alt="" />
       </div>
 
     </div>
   </div>
 
-  <div class="main-card speciality speciality-white speciality-control" ng-repeat="adItem in ad_blocks">
+  <div class="main-card speciality speciality-white speciality-control promo-block" ng-repeat="adItem in ad_blocks">
     <div class="card-container">
 
-      <div class="card-col card-image">
+      <div class="card-col card-details" ng-if="adItem.right">
+        <div class="title" ng-bind="adItem.title"></div>
+        <div class="text" ng-bind-html="adItem.description"></div>
+      </div>
+
+      <div class="card-col card-image" ng-if="adItem.right" ng-class="{right: adItem.right}">
         <img ng-src="{{domain + adItem.photo.original}}" alt="" />
       </div>
 
-      <div class="card-col card-details">
+      <div class="card-col card-image" ng-if="!adItem.right">
+        <img ng-src="{{domain + adItem.photo.original}}" alt="" />
+      </div>
+
+      <div class="card-col card-details" ng-if="!adItem.right">
         <div class="title" ng-bind="adItem.title"></div>
         <div class="text" ng-bind-html="adItem.description"></div>
       </div>
@@ -80,7 +111,6 @@
       <div class="overlay"></div>
       <div class="caption" ng-bind-html="item.description"></div>
     </div>
-    <div class="clear"></div>
   </div>
 
   <div class="main-card schema" ng-if="product.scheme_image">

@@ -73,32 +73,16 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope,
     $http.get($rootScope.domain +'/api/v1/sites/4/products', {
       params: searchParams
     }).success(function(data){
-        $scope.productsList = data;
-
-//        for(item in $scope.productsList){
-//          var productItem = $scope.productsList[item];
-//
-//          productItem.visible = true;
-//
-//          if(productItem.options.length > 0 && $scope.activeOptionsFilter.length > 0){
-//            productItem.visible = false;
-//
-//            for(option in productItem.options){
-//              if($scope.activeOptionsFilter.indexOf(productItem.options[option]) > -1){
-//                productItem.visible = true;
-//              }
-//            }
-//          }
-//        }
-      }).error(function(){
-        console.error('Произошла ошибка');
-      });
+      $scope.productsList = data;
+    }).error(function(){
+      console.error('Произошла ошибка');
+    });
   };
 
   $scope.getProducts();
 
   $scope.$on('$routeUpdate', function() {
-    if($location.search().type) {
+    if($location.search().type){
       $scope.carriageTypeSelected = $location.search().type;
       $scope.getProducts();
     }
@@ -107,10 +91,10 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope,
   $scope.getCarriageOptions();
 
   $scope.changeType = function(type){
+    $location.search('type', type);
     $scope.carriageTypeSelected = type;
     $scope.getCarriageOptions();
     $scope.activeOptionsFilter = [];
-    $scope.getProducts();
   };
 
   $scope.filterOptions = function (filter_item) {

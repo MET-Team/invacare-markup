@@ -11,7 +11,7 @@
       <!--</div>-->
     <!--</div>-->
 
-    <div class="filter-type filter-carriage-order" ng-class="{ordered:priceOrderProperty == 'price'}" ng-click="togglePriceOrderProperty()">
+    <div class="filter-type filter-carriage-order" ng-class="{ordered:priceOrderProperty == 'price'}" ng-click="togglePriceOrderProperty()" ng-if="productsList.length">
       Сортировать по ценам
       <div class="ico"></div>
     </div>

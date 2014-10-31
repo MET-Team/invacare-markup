@@ -19,6 +19,7 @@
   text-align: center;
   padding: 17px 8px;
   margin-bottom: 9px;
+  background: none #fff;
 }
 .page-block-product .main-card .image-view .view-item:last-child{
   margin-bottom: 0;
@@ -42,13 +43,81 @@
   width: 50%;
 }
 .page-block-product .main-card .card-container .card-col.card-image{
-  text-align: center;
   vertical-align: middle;
+  padding-left: 80px;
 }
 .page-block-product .main-card .card-container .card-col.card-image .img{
   left: 28px;
   position: relative;
   top: 13px;
+}
+.page-block-product .main-card .card-container .card-col.card-image.card-image-main img{
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.page-block-product .main-card .card-container .card-col.card-image .image-container{
+  width: 506px;
+  height: 506px;
+  position: relative;
+}
+.page-block-product .main-card .card-container .card-col.card-image .image-container .animation-container{
+  width: 506px;
+  height: 506px;
+}
+
+.page-block-product .main-card .card-container .card-col.card-image .image-container .zoom-controls{
+  width: 30px;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  z-index: 101;
+}
+.page-block-product .main-card .card-container .card-col.card-image .image-container .zoom-controls .control-item{
+  width: 30px;
+  height: 30px;
+  background: url('../images/ico-view-controls.png') no-repeat 0 0 transparent;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.page-block-product .main-card .card-container .card-col.card-image .image-container .zoom-controls .control-item.minus{
+  background-position: 0 -30px;
+}
+.page-block-product .main-card .card-container .card-col.card-image .image-container .zoom-controls .control-item.disabled{
+  opacity: 0.5;
+  cursor: default;
+}
+
+.page-block-product .main-card .card-container .card-col.card-image .image-container .threed-hint{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: none rgba(80, 152, 222, 0.9);
+  z-index: 101;
+  padding-top: 54px;
+}
+.page-block-product .main-card .card-container .card-col.card-image .image-container .threed-hint .center{
+  width: 220px;
+  margin: 0 auto;
+  text-align: center;
+}
+.page-block-product .main-card .card-container .card-col.card-image .image-container .threed-hint .hint-text{
+  font-size: 18px;
+  color: #fff;
+  margin: 30px 0;
+}
+.page-block-product .main-card .card-container .card-col.card-image .image-container .threed-hint .continue{
+  background: none #fff;
+  font-size: 16px;
+  color: #5098de;
+  width: 178px;
+  font-family: 'MuseoSansCyrl-700';
+  border: medium none;
+  outline: medium none;
+  padding: 14px;
+  cursor: pointer;
 }
 
 .page-block-product .main-card .card-container .card-col.card-details{
@@ -186,6 +255,32 @@
   height: 340px
 }
 
+.page-block-product .main-card.speciality.transformations .animation-container,
+.page-block-product .main-card.speciality.transformations .animation-container .spritespin-canvas{
+  width: 454px!important;
+  height: 446px!important;
+}
+
+.page-block-product .main-card.speciality.promo-block,
+.page-block-product .main-card.speciality.promo-block .card-container{
+  height: 500px;
+  max-height: 500px;
+  padding: 0;
+}
+.page-block-product .main-card.speciality.promo-block .card-col.card-image{
+  padding: 0;
+}
+.page-block-product .main-card.speciality.promo-block .card-col.card-details{
+  max-width: 585px;
+}
+.page-block-product .main-card.speciality.promo-block .card-container .card-col.card-image img{
+  margin: 0;
+  right: auto;
+}
+.page-block-product .main-card.speciality.promo-block .card-col.card-image.right img{
+  float: right;
+}
+
 .page-block-product .main-card.schema{
   padding: 118px 60px;
   overflow: hidden;
@@ -288,6 +383,14 @@
   left: -4px;
 }
 
+.page-block-product .gallery{
+  text-align: center;
+}
+.page-block-product .gallery:after{
+  display: block;
+  clear: both;
+  content: '';
+}
 .page-block-product .gallery .gallery-item{
   float: left;
   width: 25%;
@@ -608,6 +711,7 @@
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
+  white-space: nowrap;
 }
 .page-block-product .total-cost .button:hover{
   background: none #fff;
