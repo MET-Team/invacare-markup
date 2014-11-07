@@ -2,24 +2,33 @@
   <div class="main-card">
 
     <div class="image-view">
-      <div class="view-item" ng-repeat="item in viewItems" ng-class="{selected: $index == viewItemSelected}" ng-bind-html="item" ng-click="changeView($index)"></div>
+      <div class="view-item" ng-class="{selected: viewItemSelected == 0}" ng-click="changeView(0)" ng-if="product.rotation_images.length > 0">360&deg;</div>
+      <div class="view-item" ng-class="{selected: viewItemSelected == 1}" ng-click="changeView(1)" ng-if="product.images.length > 0">3D</div>
     </div>
 
     <div class="card-container">
       <div class="card-col card-image card-image-main">
         <div class="image-container">
-          <div class="animation-container" ng-if="viewItemSelected == 0 && product.rotation_images.length > 0" sprite-spin="" spin-images="product.rotation_images">
-            <img ng-src="{{domain + product.photo.original}}" alt="" />
+          <div class="animation-container" ng-show="viewItemSelected == 0" ng-class="{'enable-rotation': product.rotation_images.length > 0}" sprite-spin="spinObj" spin-images="product.rotation_images" spin-ready="spinReady">
+            <img class="img" ng-src="{{domain + product.photo.original}}" alt="" />
+          </div>
+          <div class="spin-ico" ng-show="spinObj.spinReady"></div>
+
+          <div class="threed-object-container">
+            <div class="zoom-slider" ng-show="viewItemSelected == 1" ng-if="product.images.length > 0">
+              <div class="zoom-control zoom-plus">
+                <div class="zoom-control-inner"></div>
+              </div>
+              <div id="slider-vertical"></div>
+              <div class="zoom-control zoom-minus disabled">
+                <div class="zoom-control-inner"></div>
+              </div>
+            </div>
+
+            <div class="threed-object" ng-if="viewItemSelected == 1 && product.images.length > 0" threed-rotation="" threed-config="threedConfig"></div>
           </div>
 
-          <div class="zoom-controls" ng-if="viewItemSelected == 1">
-            <div class="control-item plus">+</div>
-            <div class="control-item minus">-</div>
-          </div>
-
-          <div class="threed-object" ng-if="viewItemSelected == 1"></div>
-
-          <div class="threed-hint" ng-if="hintEnabled">
+          <div class="threed-hint overlay" ng-if="hintEnabled && product.images.length > 0">
             <div class="center">
               <img src="images/ico-3d-hint-2.png" alt="" width="58" height="60" />
               <div class="hint-text">
@@ -75,8 +84,10 @@
         </div>
       </div>
 
-      <div class="card-col card-image animation-container" id="animation-{{$index}}" sprite-spin="" spin-images="transformItem.images" spin-config-additional="transformationsSpinConfig">
-        <img ng-src="{{domain + product.photo.original}}" alt="" />
+      <div class="card-col card-image" id="animation-{{$index}}">
+        <div class="animation-container" sprite-spin="" spin-images="transformItem.images" spin-config-additional="transformationsSpinConfig">
+          <img ng-src="{{domain + product.photo.original}}" alt="" />
+        </div>
       </div>
 
     </div>

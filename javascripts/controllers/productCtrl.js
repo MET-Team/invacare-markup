@@ -1,5 +1,6 @@
 angular.module('productCtrl', [
-  'spritespin-ng'
+  'spritespin-ng',
+  'angular-object2vr'
 ])
 .controller('ProductCtrl', function($scope, $http, $filter, localStorageService, $location, $routeParams, $rootScope){
 
@@ -42,6 +43,59 @@ angular.module('productCtrl', [
       $scope.product = data;
       $scope.totalPrice = $scope.product.price;
       $scope.recalcTotalPrice();
+
+      $scope.threedConfig = {
+        input: {
+          width: 506,
+          height: 506,
+          columns: 16,
+          rows: 6,
+          states: 1,
+          fileextension: 'jpg',
+          images: $scope.product.images
+//          imagepath: "http://fast.met.ru/3dnew/images/1254"
+        },
+        control: {
+          wrapx: "1",
+          wrapy: "0",
+          revx: "0",
+          revy: "0",
+          swapxy: "0",
+          controller: "1",
+          sensitivity: "10",
+          lockedmouse: "0",
+          lockedkeyboard: "1",
+          lockedwheel: "1",
+          invertwheel: "0",
+          speedwheel: "0.05",
+          dblclickfullscreen: "1",
+          automovemode: "1"
+        },
+        view: {
+          start: {
+            column: 14,
+            row: 4,
+            state: 0
+          },
+          zoom: {
+            min: "1",
+            default: "1",
+            max: "2",
+            centerx: "0",
+            centery: "0"
+          },
+          viewer: {
+            background: 1,
+            backgroundcolor: "0xffffff",
+            imagescaling: 1
+          }
+        },
+        autorotate: {
+          speed: 0.05,
+          start: 0,
+          delay: 5
+        }
+      };
     }).error(function(){
       console.error('Произошла ошибка');
     });
@@ -138,6 +192,10 @@ angular.module('productCtrl', [
 
   $scope.transformationsSpinConfig = {
     disableAnimation: true
+  };
+
+  $scope.spinObj = {
+    spinReady: false
   };
 
 });

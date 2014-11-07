@@ -109,7 +109,7 @@ body{
 
 .sidebar-menu{
   position: fixed;
-  left: -100%;
+  left: -285px;
   top: 0;
   bottom: 0;
   width: 285px;
@@ -121,8 +121,8 @@ body{
   font-family: 'MuseoSansCyrl-500';
   font-size: 16px;
 
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
+  -webkit-transition: left 0.4s;
+  transition: left 0.4s;
 }
 
 ::-webkit-scrollbar {
@@ -146,13 +146,13 @@ body{
 
 
 .sidebar-menu-inner{
-  left: -100%;
+  left: -240px;
   position: fixed;
   top: 30px;
   z-index: 101;
-
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
+  width: 240px;
+  -webkit-transition: left 0.4s;
+  transition: left 0.4s;
 }
 
 .sidebar-open .sidebar-menu-inner{
@@ -316,13 +316,16 @@ body{
   bottom: 0;
   right: 0;
   min-width: 1024px;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: left 0.4s;
+  transition: left 0.4s;
   position: absolute;
 }
 .sidebar-open .container{
   left: 345px;
   min-width: 990px;
+}
+.container.full-screen{
+  z-index: 102;
 }
 
 .scaleDownUp {
