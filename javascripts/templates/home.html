@@ -2,64 +2,97 @@
 
   <div class="header">
     <div class="inner">
-      <div class="title">Средства реабилитации Invacare</div>
+      <div class="title">Магазин средств реабилитации Invacare</div>
       <div class="summary">
-        Ещё одна причина — высокая мотивация сотрудников. Все хотят сделать хорошо — к большому сожалению, в русских студиях я такого не замечал. Здесь, когда нужно сделать
+        Ещё одна причина — высокая мотивация сотрудников. Все хотят сделать хорошо — к большому
+        сожалению, в русских студиях я такого не замечал. Здесь, когда нужно сделать
       </div>
       <div class="actions">
         <div class="action-buttons" ng-class="{show: !HeaderOrderCallFormIsOpen}">
-          <div class="action-item" ng-click="toggleHeaderOrderCallForm()">Получить консультацию</div>
           <a class="action-item" href="#!/catalog">Перейти в каталог</a>
         </div>
-
-        <div class="order-form" ng-class="{show: HeaderOrderCallFormIsOpen}">
-          <form ng-submit="orderCall()">
-            <input type="text" class="order-phone" ng-model="orderCallData.phone" placeholder="Введите телефон" />
-              <input type="submit" value="Ок" class="button" />
-              <div class="form-close" ng-click="toggleHeaderOrderCallForm()"></div>
-          </form>
-        </div>
-
       </div>
     </div>
   </div>
 
   <div class="brief">
     <div class="brief-item">
-      <img class="ico" src="images/brief/ico-usa.png" alt="" />
-      <div class="title">Сделано в США</div>
-      <div class="text">
-        Составление брифа и оценка объема работ.
-        Постановка пушки для определения
-        характера еды
+      <img class="ico" src="images/brief/ico-1.png" alt="" />
+      <div class="title">
+        Официальный<br/>
+        дилер Invacare
       </div>
     </div>
     <div class="brief-item">
-      <img class="ico" src="images/brief/ico-microscope.png" alt="" />
-      <div class="title">Супер технологии</div>
-      <div class="text">
-        Составление брифа и оценка объема работ.
-        Постановка пушки для определения
-        характера еды
+      <img class="ico" src="images/brief/ico-2.png" alt="" />
+      <div class="title">
+        Гарантия на каждый<br/>
+        товар 2 года
       </div>
     </div>
     <div class="brief-item">
-      <img class="ico" src="images/brief/ico-docs.png" alt="" />
-      <div class="title">Возврат денег</div>
-      <div class="text">
-        Составление брифа и оценка объема работ.
-        Постановка пушки для определения
-        характера еды
+      <img class="ico" src="images/brief/ico-3.png" alt="" />
+      <div class="title">
+        Доставка по РФ,<br/>
+        Казахстану и Беларуси
+      </div>
+    </div>
+    <div class="brief-item">
+      <img class="ico" src="images/brief/ico-4.png" alt="" />
+      <div class="title">
+        Все товары<br/>
+        сертифицированы
       </div>
     </div>
   </div>
 
   <div class="info">
-    <div class="title">Полезная информация</div>
-    <div class="text">Если честно, это было сложно, но я смог</div>
+    <div class="info-title">Причины выбрать Invacare</div>
+    <div class="info-text">
+      Ещё одна причина — высокая мотивация сотрудников. Все хотят сделать хорошо — к большому<br/>
+      сожалению, в русских студиях я такого не замечал. Здесь, когда нужно сделать
+    </div>
+    <div class="info-grid">
+      <div class="col col-details">
+        <div class="detail-item">
+          <div class="detail-title">
+            <div class="number">1</div>
+            Сделано в США
+          </div>
+          <div class="detail-text">
+            Мы тщательно измеряем каждую вашу складочку, чтобы собрать<br/>
+            самую лучшую коляску
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-title">
+            <div class="number">2</div>
+            Безупречные технологии
+          </div>
+          <div class="detail-text">
+            Мы тщательно измеряем каждую вашу складочку, чтобы собрать<br/>
+            самую лучшую коляску
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-title">
+            <div class="number">3</div>
+            Невероятный комфорт
+          </div>
+          <div class="detail-text">
+            Мы тщательно измеряем каждую вашу складочку, чтобы собрать<br/>
+            самую лучшую коляску
+          </div>
+        </div>
+      </div>
+      <div class="col col-image">
+        <img src="images/image-info.jpg" alt="" >
+      </div>
+    </div>
   </div>
 
   <div class="reviews">
+    <div class="review-title">Отзывы покупателей</div>
     <div class="review-prev review-arrow"></div>
     <div class="review-next review-arrow"></div>
     <div class="review-item">
@@ -74,6 +107,9 @@
     </a>
     <a href="#!/catalog?type=electric" class="transition-item transition-item-electric">
       <div class="caption">Перейти к электрическим коляскам <span class="arrow">&rarr;</span></div>
+    </a>
+    <a href="#!/catalog?type=active" class="transition-item transition-item-active">
+      <div class="caption">Перейти к активным коляскам <span class="arrow">&rarr;</span></div>
     </a>
   </div>
 

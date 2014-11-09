@@ -47,6 +47,22 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
     }
   });
 
+  $scope.searchFormActive = false;
+  $scope.searchString = '';
+
+  $scope.toggleSearchForm = function(){
+    if($scope.searchString != ''){
+      if(event.type != 'blur'){
+        console.log($scope.searchString);
+      }
+    }else{
+      $scope.searchFormActive = $scope.searchFormActive ? false : true;
+      if(!$scope.searchFormActive) {
+        $scope.searchString = '';
+      }
+    }
+  };
+
 });
 
 appControllers.controller('ContactsCtrl', function($scope, $http){

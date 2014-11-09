@@ -77,52 +77,8 @@ body{
 
 .wrapper{
   width: 100%;
-}
-
-.sidebar{
-  position: fixed;
-  width: 60px;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background: none #1e2326;
-  z-index: 102;
-  cursor: pointer;
-}
-.sidebar .sidebar-ico-open{
-  width: 20px;
-  height: 17px;
-  background: url('../images/sidebar-ico-open.png') no-repeat 0 0 transparent;  
-  position: absolute;
-  top: 30px;
-  left: 20px;
-}
-.sidebar-open .sidebar .sidebar-ico-open{
-  background: url('../images/sidebar-ico-close.png') center center no-repeat;
-  background-size: 100%;
-  height: 20px;
-}
-
-.sidebar .sidebar-ico-open:hover{
-  opacity: 0.8;
-}
-
-.sidebar-menu{
-  position: fixed;
-  left: -285px;
-  top: 0;
-  bottom: 0;
-  width: 285px;
-  background: none #272e32;
-  z-index: 100;
-
-  padding: 30px 30px 30px 0;
-
-  font-family: 'MuseoSansCyrl-500';
-  font-size: 16px;
-
-  -webkit-transition: left 0.4s;
-  transition: left 0.4s;
+  min-width: 1200px;
+  margin: 0 auto;
 }
 
 ::-webkit-scrollbar {
@@ -140,192 +96,155 @@ body{
   background-color: #F5F5F5;
 }
 
-.sidebar-open .sidebar-menu{
-  left: 60px;
+.header-layout{
+  background: none #1e2326;
+  color: #fff;
+  padding: 20px 60px;
+  text-align: right;
+  line-height: 10px;
+  height: 50px;
 }
-
-
-.sidebar-menu-inner{
-  left: -240px;
-  position: fixed;
-  top: 30px;
-  z-index: 101;
-  width: 240px;
-  -webkit-transition: left 0.4s;
-  transition: left 0.4s;
-}
-
-.sidebar-open .sidebar-menu-inner{
-  left: 60px;
-}
-
-.sidebar-menu-inner.stick{
-  /*position: absolute;*/
-  padding-bottom: 230px;
-}
-
-.sidebar-menu-inner .header{
-  padding-left: 40px;
-}
-
-.sidebar-menu-inner .menu{
-  margin-top: 26px;
-}
-.sidebar-menu-inner .menu li{
-  padding: 10px 0 10px 40px;
-  margin-bottom: 5px;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-}
-.sidebar-menu-inner .menu li:last-child{
-  margin-bottom: 0;
-}
-
-.sidebar-menu-inner .menu li:hover, .sidebar-menu-inner .menu li.selected{
-  border-left: solid 10px #5098de;
-}
-
-.sidebar-menu-inner .menu a{
+.header-layout a{
   color: #fff;
   text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  -webkit-transition: opacity 0.3s;
 }
-
-.sidebar-menu-inner .part-menu{
-  margin-top: 25px;
-}
-.sidebar-menu-inner .part-menu li{
-  padding: 10px 0 10px 40px;
-  margin-bottom: 5px;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-}
-.sidebar-menu-inner .part-menu li:last-child{
-  margin-bottom: 0;
-}
-.sidebar-menu-inner .part-menu li:hover{
-  border-left: solid 10px #5098de;
-}
-
-.sidebar-menu-inner .part-menu a{
-  color: #686d70;
-  text-decoration: none;
-}
-.sidebar-menu-inner .part-menu li:hover a{
-  color: #fff;
-}
-
-.sidebar-menu-inner .contacts{
-  margin-top: 176px;
-  padding-left: 40px;
-  padding-right: 10px;
-}
-.sidebar-menu-inner.stick .contacts{
-  position: absolute;
-  bottom: 0;
-  left: 40px;
-  right: -20px;
-  margin: 0;
-  padding: 0;
-}
-
-.sidebar-menu-inner .contacts .phone{
-  color: #fff;
-}
-.sidebar-menu-inner .contacts .call-order{
-  margin-top: 25px;
-  position: relative;
-}
-
-.sidebar-menu-inner .contacts .call-order .button{
-  background: none #505e66;
-  border: medium none;
-  font-family: 'MuseoSansCyrl-700';
-  font-size: 16px;
-  color: #a8afb3;
-  cursor: pointer;
-  width: 100%;
-  padding: 10px 0;
-  outline: medium none;
-}
-.sidebar-menu-inner .contacts .call-order .button:hover{
-  background: none #637580;
-}
-
-.sidebar-menu-inner .contacts .call-order.call-order-open:before{
-  content: "";
-  border-color: #505e66 transparent transparent transparent;
-  border-style: solid;
-  border-width: 7px 8px;
-  width: 0;
-  height: 0;
-  position: absolute;
-  right: 50%;
-  top: 40px;
-  z-index: 111;
-  margin-right: -8px;
-
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.sidebar-menu-inner .contacts .call-order .order-form{
-  margin-top: 10px;
-  opacity: 0;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.sidebar-menu-inner .contacts .call-order.call-order-open .order-form{
+.header-layout a:hover{
   opacity: 1;
 }
 
-.sidebar-menu-inner .contacts .call-order .order-form .order-phone{
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-}
-.sidebar-menu-inner .contacts .call-order .order-form .form-send{
-  margin-top: 5px;
-}
-.sidebar-menu-inner .contacts .call-order .order-form .form-send .button{
-  color: #fff;
-  background: none #5098de;
-  width: 100px;
-  padding: 10px;
-  vertical-align: middle;
-}
-.sidebar-menu-inner .contacts .call-order .order-form .form-send .button:hover{
-  background: none #59a8f7;
+.header-layout .email{
+  font-size: 14px;
+  float: left;
+  position: relative;
+  top: 2px;
 }
 
-.sidebar-menu-inner .contacts .call-order .order-form .form-send .form-close{
+.header-layout .navigation{
   display: inline-block;
-  width: 15px;
-  height: 15px;
-  background: url('../images/ico-form-close.png') no-repeat 0 0 transparent;
-  cursor: pointer;
-  vertical-align: middle;
-  margin-left: 10px;
+  vertical-align: top;
 }
-.sidebar-menu-inner .contacts .call-order .order-form .form-send .form-close:hover{
-  opacity: 0.8;
+.header-layout .navigation ul li{
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 30px;
+}
+.header-layout .navigation ul li:last-child{
+  margin-right: 0;
+}
+
+.header-layout .search{
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 10px;
+  font-size: 14px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  -webkit-transition: opacity 0.3s;
+  margin-left: 30px;
+}
+.header-layout .search .form-control{
+  font-size: 14px;
+  width: 0;
+  margin-right: 0;
+  transition: width 0.3s ease, margin-right 0.3s ease;
+  -webkit-transition: width 0.3s ease, margin-right 0.3s ease;
+  padding: 0;
+  border: medium none;
+}
+.header-layout .search .caption{
+  display: inline-block;
+  vertical-align: middle;
+  background: none transparent;
+  border: medium none;
+  padding: 0;
+  cursor: pointer;
+  color: #fff;
+  font-family: 'MuseoSansCyrl-300';
+  font-size: 14px;
+  line-height: 10px;
+  outline: medium none;
+}
+.header-layout .search .caption:before{
+  display: inline-block;
+  content: '';
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  background: url('../images/ico-search.png') no-repeat 0 0 transparent;
+  margin-right: 10px;
+}
+.header-layout .search:hover{
+  opacity: 1;
+}
+
+.header-layout .search.search-active{
+  opacity: 1;
+}
+.header-layout .search.search-active .form-control{
+  width: 150px;
+  margin-right: 10px;
+  padding: 2px;
+}
+.header-layout .search.search-active .caption{
+  position: relative;
+  top: -2px;
+}
+.header-layout .search.search-active .form-control{
+  position: relative;
+  top: -4px;
+}
+
+.nav-menu-layout{
+  position: absolute;
+  left: 0;
+  top: 50px;
+  right: 0;
+  z-index: 10;
+  padding: 20px 60px;
+  border-bottom: solid 1px #969a9f;
+  text-align: center;
+}
+.nav-menu-layout .catalog-links{
+  display: inline-block;
+  white-space: nowrap;
+}
+.nav-menu-layout .catalog-links li{
+  display: inline-block;
+  font-size: 18px;
+  margin-right: 40px;
+  font-family: 'MuseoSansCyrl-700';
+}
+.nav-menu-layout .catalog-links li:last-child{
+  margin-right: 0;
+}
+.nav-menu-layout .catalog-links li a{
+  text-decoration: none;
+  color: #fff;
+}
+.nav-menu-layout .logo{
+  float: left;
+}
+.nav-menu-layout .phone{
+  float: right;
+  font-size: 18px;
+  font-family: 'MuseoSansCyrl-700';
+  color: #fff;
+}
+.nav-menu-layout .phone:before{
+  display: inline-block;
+  content: '';
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  background: url('../images/ico-phone.png') no-repeat 0 0 transparent;
+  margin-right: 10px;
 }
 
 .container{
-  left: 60px;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  min-width: 1024px;
-  -webkit-transition: left 0.4s;
-  transition: left 0.4s;
-  position: absolute;
-}
-.sidebar-open .container{
-  left: 345px;
-  min-width: 990px;
-}
-.container.full-screen{
-  z-index: 102;
+  position: relative;
 }
 
 .scaleDownUp {
@@ -401,17 +320,6 @@ body{
 }
 
 @media (max-width: 980px){
-  .sidebar{
-    display: none;
-  }
-  .sidebar-menu, .sidebar-menu-inner{
-    display: none;
-  }
-  .container, .sidebar-open .container{
-    left: 0!important;
-    min-width: 100%;
-  }
-
   .page-block-index .reviews .review-item, .page-block-index .header .inner{
     width: auto !important;
   }

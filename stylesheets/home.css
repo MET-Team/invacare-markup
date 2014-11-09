@@ -1,9 +1,9 @@
 /*.page-block-index*/
 .page-block-index .header{
-  height: 550px;
-  background: url('../images/bg-index-header.png') no-repeat center bottom transparent;
+  background: url('../images/bg-index-header.jpg') no-repeat center bottom transparent;
   background-size: cover;
-  padding: 85px 0
+  padding: 140px 0 80px;
+  color: #fff;
 }
 .page-block-index .header .inner{
   width: 830px;
@@ -30,9 +30,9 @@
   cursor: pointer;
   font-family: 'MuseoSansCyrl-700';
   font-size: 16px;
-  border: solid 2px #272e32;
+  border: solid 2px #fff;
   padding: 12px 35px;
-  color: #000000;
+  color: #fff;
   text-decoration: none;
 }
 .page-block-index .header .actions .action-item:last-child{
@@ -45,122 +45,105 @@
 }
 
 .page-block-index .header .actions .action-buttons{
-  -webkit-transition: all linear 0.5s;
-  transition: all linear 0.5s;
-
-  opacity: 0;
-
-  position: absolute;
-  left: 50%;
-  margin-left: -250px;
-  z-index: 100;
-}
-.page-block-index .header .actions .action-buttons.show{
-  opacity: 1;
-  z-index: 101;
-}
-
-.page-block-index .header .actions .order-form{
-  display: inline-block;
-
-  opacity: 0;
-
-  -webkit-transition: all linear 0.5s;
-  transition: all linear 0.5s;
-
-  position: absolute;
-  left: 50%;
-  margin-left: -187px;
-  z-index: 100;
-}
-.page-block-index .header .actions .order-form.show{
-  opacity: 1;
-  z-index: 101;
-}
-
-.page-block-index .header .actions .order-form .order-phone{
-  width: 240px;
-  padding: 7px;
-  font-size: 16px;
-  height: 45px;
-  border: solid 1px #cccccc;
-  vertical-align: middle;
-}
-.page-block-index .header .actions .order-form .button{
-  background: none #5098de;
-  border: medium none;
-  font-family: 'MuseoSansCyrl-700';
-  font-size: 16px;
-  color: #fff;
-  cursor: pointer;
-  width: 102px;
-  padding: 10px 0;
-  outline: medium none;
-  height: 45px;
-  vertical-align: middle;
-}
-.page-block-index .header .actions .order-form .button:hover{
-  background: none #59a8f7;
-}
-
-.page-block-index .header .actions .order-form .form-close{
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  background: url('../images/ico-form-close-dark.png') no-repeat 0 0 transparent;
-  cursor: pointer;
-  vertical-align: middle;
-  margin-left: 10px;
-}
-.page-block-index .header .actions .order-form .form-close:hover{
-  opacity: 0.8;
+  text-align: center;
 }
 
 .page-block-index .brief{
   display: table;
   width: 100%;
+  border-bottom: solid 1px #ccc;
 }
 .page-block-index .brief .brief-item{
   display: table-cell;
-  border-right: solid 1px #e6e6e6;
-  padding: 25px 30px 30px;
-}
-.page-block-index .brief .brief-item:last-child{
-  border: medium none;
+  padding: 30px 60px;
+  white-space: nowrap;
 }
 .page-block-index .brief .brief-item .ico{
-  margin: 0 auto;
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
 }
 .page-block-index .brief .brief-item .title{
-  margin-top: 50px;
-  font-family: 'MuseoSansCyrl-700';
-  font-size: 18px;
-}
-.page-block-index .brief .brief-item .text{
-  margin-top: 20px;
   font-size: 16px;
-  line-height: 27px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 26px;
+  margin-left: 20px;
 }
+
 .page-block-index .info{
-  height: 400px;
-  background: url('../images/bg-info.png') no-repeat 50% 50% fixed;
-  background-size: cover;
-  color: #fff;
-  padding: 158px 0 0 50px;
+  padding: 60px ;
 }
-.page-block-index .info .title{
+.page-block-index .info .info-title{
   font-family: 'MuseoSansCyrl-700';
   font-size: 36px;
+  text-align: center;
 }
-.page-block-index .info .text{
+.page-block-index .info .info-text{
   font-size: 18px;
-  margin-top: 20px;
+  margin-top: 30px;
+  text-align: center;
+  line-height: 30px;
+}
+.page-block-index .info .info-grid{
+  display: table;
+  width: 100%;
+}
+.page-block-index .info .info-grid .col{
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
+}
+.page-block-index .info .info-grid .col.col-image{
+  padding: 60px 60px 0;
+}
+.page-block-index .info .info-grid .col.col-details{
+  padding: 60px;
+}
+
+.page-block-index .info .info-grid .col.col-details .detail-item{
+  margin-bottom: 65px;
+}
+.page-block-index .info .info-grid .col.col-details .detail-item:last-child{
+  margin-bottom: 0;
+}
+.page-block-index .info .info-grid .col.col-details .detail-item .detail-title{
+  font-size: 24px;
+  font-family: 'MuseoSansCyrl-500';
+}
+.page-block-index .info .info-grid .col.col-details .detail-item .detail-title .number{
+  font-size: 20px;
+  font-family: 'MuseoSansCyrl-700';
+  display: inline-block;
+  vertical-align: middle;
+  color: #5098de;
+  width: 40px;
+  height: 40px;
+  padding-top: 9px;
+  text-align: center;
+  border: solid 2px #5098de;
+  border-radius: 50%;
+  position: relative;
+  top: -2px;
+  margin-right: 20px;
+}
+
+.page-block-index .info .info-grid .col.col-details .detail-item .detail-text{
+  font-size: 16px;
+  line-height: 30px;
+  margin-top: 30px;
 }
 
 .page-block-index .reviews{
-  padding: 101px 75px;
+  padding: 60px 75px;
   position: relative;
+  background: none #f2f2f2;
+}
+.review-title{
+  text-align: center;
+  color: #1e2326;
+  font-size: 36px;
+  font-family: 'MuseoSansCyrl-700';
+  margin-bottom: 55px;
 }
 .page-block-index .reviews .review-item{
   width: 775px;
@@ -197,7 +180,7 @@
 }
 .page-block-index .carriage-transitions .transition-item{
   float: left;
-  width: 50%;
+  width: 33.3%;
   height: 450px;
   text-align: center;
   text-decoration: none;
@@ -205,10 +188,13 @@
   padding-top: 55px;
 }
 .page-block-index .carriage-transitions .transition-item.transition-item-mechanic{
-  background: url('../images/carriage-mechanic.png') no-repeat center center #5098de;
+  background: url('../images/carriage-mechanic.png') no-repeat center center #3f93e8;
 }
 .page-block-index .carriage-transitions .transition-item.transition-item-electric{
-  background: url('../images/carriage-electric.png') no-repeat center center #3073b5;
+  background: url('../images/carriage-electric.png') no-repeat center center #3883cf;
+}
+.page-block-index .carriage-transitions .transition-item.transition-item-active{
+  background: url('../images/carriage-active.png') no-repeat center center #3073b5;
 }
 
 .page-block-index .carriage-transitions .transition-item.transition-item-mechanic:hover{
