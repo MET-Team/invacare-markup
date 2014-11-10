@@ -1,6 +1,6 @@
 /*.page-block-index*/
 .page-block-index .header{
-  background: url('../images/bg-index-header.jpg') no-repeat center bottom transparent;
+  background: url('../images/bg-index-header.jpg') no-repeat center 0 transparent;
   background-size: cover;
   padding: 140px 0 80px;
   color: #fff;
