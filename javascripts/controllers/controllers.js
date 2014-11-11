@@ -14,10 +14,7 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
 
   $rootScope.domain = "http://white-m.ru";
 
-  $scope.sidebarMenuIsOpen = false;
-  $scope.OrderCallFormIsOpen = false;
-  $scope.HeaderOrderCallFormIsOpen = false;
-
+  $scope.pageIsMain = false;
   $scope.orderCallData = {};
 
   var Today = new Date();
@@ -27,23 +24,15 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
     $scope.sidebarMenuIsOpen = $scope.sidebarMenuIsOpen ? false : true;
   };
 
-  $scope.toggleOrderCallForm = function(){
-    $scope.OrderCallFormIsOpen = $scope.OrderCallFormIsOpen ? false : true;
-  };
-
-  $scope.toggleHeaderOrderCallForm = function(){
-    $scope.HeaderOrderCallFormIsOpen = $scope.HeaderOrderCallFormIsOpen ? false : true;
-  };
-
   $scope.orderCall = function(){
     console.log($scope.orderCallData)
   };
 
   $scope.$on('$routeChangeStart', function() {
     if($location.path() == "/"){
-      $scope.sidebarMenuIsOpen = true;
+      $scope.pageIsMain = true;
     }else{
-      $scope.sidebarMenuIsOpen = false;
+      $scope.pageIsMain = false;
     }
   });
 

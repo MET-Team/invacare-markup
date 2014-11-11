@@ -154,15 +154,14 @@
   background: none #5098de;
 }
 .page-block-catalog .product-list .product-item .artikul{
-  position: absolute;
-  right: 0;
-  top: 40px;
-  padding: 12px 11px;
-  background: none rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  color: #4c4c4c;
+  margin-top: 15px;
 }
-
 .page-block-catalog .product-list .product-item .name{
-  margin-top: 26px;
+  margin-top: 10px;
   font-size: 18px;
   line-height: 29px;
+  font-family: 'MuseoSansCyrl-500';
+  padding-right: 85px;
 }

@@ -70,6 +70,12 @@
               <a href="#!/payment">Оплата</a>
             </li>
             <li>
+              <a href="#!/return_guarantee">Возврат товара и гарантия</a>
+            </li>
+            <li>
+              <a href="#!/faq">Вопросы и ответы</a>
+            </li>
+            <li>
               <a href="#!/about">О компании</a>
             </li>
             <li>
@@ -77,12 +83,6 @@
             </li>
             <li>
               <a href="#!/info">Полезная информация</a>
-            </li>
-            <li>
-              <a href="#!/faq">Вопросы и ответы</a>
-            </li>
-            <li>
-              <a href="#!/return_guarantee">Возврат товара и гарантия</a>
             </li>
           </ul>
         </div>
@@ -92,7 +92,7 @@
         </form>
       </div>
 
-      <div class="nav-menu-layout">
+      <div class="nav-menu-layout" ng-class="{'nav-menu-layout-black': !pageIsMain}">
         <a href="#!/" class="logo">
           <img src="images/logo.png" alt="" width="101" height="18" />
         </a>
@@ -114,7 +114,7 @@
         </div>
       </div>
 
-      <div class="container">
+      <div class="container" ng-class="{'container-inner': !pageIsMain}">
         <div ng-view=""></div>
       </div>
 

@@ -1,6 +1,12 @@
 <div class="page-block page-block-product" ng-controller="ProductCtrl">
   <div class="main-card">
 
+    <div class="breadcrumbs">
+      <a ng-href="#!/catalog?type={{carriageTypeIdToCaption[product.kind_id]}}"><span ng-bind="product.kind.name"></span> коляски</a>
+      <span class="arrow"></span>
+      <span ng-bind="product.name"></span>
+    </div>
+
     <div class="image-view">
       <div class="view-item" ng-class="{selected: viewItemSelected == 0}" ng-click="changeView(0)" ng-if="product.rotation_images.length > 0">360&deg;</div>
       <div class="view-item" ng-class="{selected: viewItemSelected == 1}" ng-click="changeView(1)" ng-if="product.images.length > 0">3D</div>
@@ -64,7 +70,8 @@
         </div>
 
         <div class="buy-button">
-          <a class="button" ng-click="buyProduct()" href="javascript:void(0)">Купить за <span class="price"><span ng-bind="product.price"></span> <span class="rouble">⃏</span></span></a>
+          <div class="button" ng-click="buyProduct()">Купить за <span class="price"><span ng-bind="product.price"></span> <span class="rouble">⃏</span></span></div>
+          <div class="button button-compare" ng-click="compareProduct()">Сравнить</div>
         </div>
       </div>
     </div>

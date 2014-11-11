@@ -116,23 +116,23 @@
 
 /* page-block-delivery-payments */
 .page-block-delivery-payments .delivery{
-  padding: 72px 60px;
+  padding: 40px 60px 72px;
   min-height: 573px;
 }
 
 .page-block-delivery-payments .payment{
-  padding: 72px 60px;
+  padding: 40px 60px 72px;
 }
 
 .page-block-delivery-payments .delivery .title, .page-block-delivery-payments .payment .title{
-  font-size: 30px;
-  font-family: 'MuseoSansCyrl-700';
+  font-size: 24px;
+  font-family: 'MuseoSansCyrl-500';
 }
 .page-block-delivery-payments .delivery .text, .page-block-delivery-payments .payment .text{
   margin-top: 30px;
   width: 50%;
-  line-height: 29px;
-  font-size: 18px;
+  line-height: 28px;
+  font-size: 16px;
 }
 
 .page-block-delivery-payments .delivery .delivery-types{
@@ -145,7 +145,7 @@
   padding-right: 60px;
 }
 .page-block-delivery-payments .delivery .delivery-types .delivery-type-item .title{
-  font-size: 24px;
+  font-size: 18px;
   font-family: 'MuseoSansCyrl-500';
 }
 .page-block-delivery-payments .delivery .delivery-types .delivery-type-item .delivery-list{
@@ -207,4 +207,51 @@
   color: #5098de;
   border-bottom: dotted 1px #5098de;
   cursor: pointer;
+}
+
+/* page-block-faq */
+.page-block-faq{
+  padding: 40px 0 70px;
+  width: 1000px;
+  margin: 0 auto;
+}
+.page-block-faq .title{
+  font-size: 24px;
+  font-family: 'MuseoSansCyrl-500';
+}
+.page-block-faq .faq-list{
+  margin-top: 35px;
+}
+.page-block-faq .faq-list .faq-item{
+  margin-bottom: 25px;
+}
+.page-block-faq .faq-list .faq-item:last-child{
+  margin-bottom: 0;
+}
+
+.page-block-faq .faq-list .faq-item .faq-item-answer{
+  margin-top: 10px;
+}
+.page-block-faq .faq-list .faq-item .faq-item-question .caption,
+.page-block-faq .faq-list .faq-item .faq-item-answer .caption{
+  font-family: 'MuseoSansCyrl-500';
+}
+
+/* page-block-return-guarantee */
+.page-block-return-guarantee{
+  padding: 40px 0 70px;
+  width: 1000px;
+  margin: 0 auto;
+}
+.page-block-return-guarantee .title{
+  font-size: 24px;
+  font-family: 'MuseoSansCyrl-500';
+}
+.page-block-return-guarantee .text, .page-block-return-guarantee .text{
+  margin-top: 30px;
+  line-height: 28px;
+  font-size: 16px;
+}
+.page-block-return-guarantee .guarantee{
+  margin-top: 50px;
 }

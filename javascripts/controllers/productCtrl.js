@@ -21,6 +21,12 @@ angular.module('productCtrl', [
 
   $scope.optionsCountLabel = '';
 
+  $scope.carriageTypeIdToCaption = {
+    6: 'active',
+    1: 'mechanic',
+    2: 'electric'
+  };
+
   $scope.recalcTotalPrice = function(){
 
     $scope.totalPrice = $scope.product.price;

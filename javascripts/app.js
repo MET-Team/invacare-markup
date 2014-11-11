@@ -49,6 +49,15 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
       reloadOnSearch: false
     })
 
+    .when("/faq", {
+      templateUrl: "javascripts/templates/faq.html",
+      reloadOnSearch: false
+    })
+    .when("/return_guarantee", {
+      templateUrl: "javascripts/templates/return_guarantee.html",
+      reloadOnSearch: false
+    })
+
     .otherwise({
       templateUrl: 'javascripts/templates/404.html',
       reloadOnSearch: false

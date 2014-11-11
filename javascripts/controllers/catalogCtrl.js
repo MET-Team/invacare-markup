@@ -6,14 +6,14 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope,
 
   $scope.carriageTypes = [
     {
-      type: 'electric',
-      title: 'Электрические',
-      id: 2
-    },
-    {
       type: 'mechanic',
       title: 'Механические',
       id: 1
+    },
+    {
+      type: 'electric',
+      title: 'Электрические',
+      id: 2
     },
     {
       type: 'active',

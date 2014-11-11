@@ -1,14 +1,33 @@
 .page-block-product .main-card{
-  padding: 80px 60px;
+  padding: 100px 60px;
   box-shadow: 0 1px 10px #dedcdd;
   position: relative;
   z-index: 11;
 }
 
+.page-block-product .main-card .breadcrumbs{
+  position: absolute;
+  left: 60px;
+  top: 40px;
+  color: #808080;
+}
+.page-block-product .main-card .breadcrumbs a{
+  color: #808080;
+  text-decoration: none;
+}
+.page-block-product .main-card .breadcrumbs .arrow{
+  width: 5px;
+  height: 9px;
+  background: url('../images/ico-breadcrumb.png') no-repeat 0 0 transparent;
+  margin: 0 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .page-block-product .main-card .image-view{
   position: absolute;
   left: 60px;
-  top: 80px;
+  top: 100px;
   font-size: 18px;
   z-index: 100;
 }
@@ -324,6 +343,10 @@
 }
 .page-block-product .main-card .card-container .card-col.card-details .buy-button .button:hover{
   background: none #59a8f7;
+}
+.page-block-product .main-card .card-container .card-col.card-details .buy-button .button.button-compare {
+  background-color: #657680;
+  margin-left: 5px;
 }
 
 .page-block-product .main-card.speciality{

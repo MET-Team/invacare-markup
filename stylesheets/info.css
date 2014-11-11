@@ -1,8 +1,8 @@
 .info-sidebar{
   position: fixed;
   width: 350px;
-  left: 60px;
-  top: 0;
+  left: 0;
+  top: 110px;
   bottom: 0;
   background: url('../images/sidebar_default.png') no-repeat center 0 #808080;
   background-size: cover;
@@ -10,9 +10,6 @@
 
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-}
-.sidebar-open .info-sidebar{
-  left: 345px;
 }
 
 .info-sidebar .ico{
