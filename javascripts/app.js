@@ -3,6 +3,8 @@ var App = angular.module('App', [
   'ngAnimate',
   'ngSanitize',
 
+  'LocalStorageModule',
+
   'appControllers'
 ]);
 
@@ -55,6 +57,11 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
     })
     .when("/return_guarantee", {
       templateUrl: "javascripts/templates/return_guarantee.html",
+      reloadOnSearch: false
+    })
+
+    .when("/product_compare", {
+      templateUrl: "javascripts/templates/product_compare.html",
       reloadOnSearch: false
     })
 

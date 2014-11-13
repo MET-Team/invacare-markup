@@ -183,6 +183,13 @@ angular.module('productCtrl', [
     $location.path('/buy').replace();
   };
 
+  $scope.compareProduct = function(product){
+    var productIndex = $rootScope.coparedProducts.indexOf(product);
+    if(productIndex == -1){
+      $rootScope.coparedProducts.push(product);
+    }
+  };
+
   $scope.viewItems = ['360&deg;', '3D'];
   $scope.viewItemSelected = 0;
   $scope.hintEnabled = false;

@@ -17,6 +17,8 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
   $scope.pageIsMain = false;
   $scope.orderCallData = {};
 
+  $rootScope.coparedProducts = [];
+
   var Today = new Date();
   $scope.currentDate = Today.getTime();
 
@@ -65,4 +67,11 @@ appControllers.controller('ContactsCtrl', function($scope, $http){
       }
     }
   ]
+});
+
+appControllers.controller('productCompareCtrl', function($scope, $rootScope){
+  $scope.coparedProducts = $rootScope.coparedProducts;
+  if($scope.coparedProducts.length){
+
+  }
 });

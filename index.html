@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="stylesheets/catalog.css" />
     <link rel="stylesheet" href="stylesheets/product.css" />
+    <link rel="stylesheet" href="stylesheets/product-compare.css" />
     <link rel="stylesheet" href="stylesheets/buy.css" />
 
     <link rel="stylesheet" href="stylesheets/site-pages.css" />
@@ -112,6 +113,10 @@
         <div class="phone">
           +7 495 765-56-56
         </div>
+
+        <a ng-href="#!/product_compare" class="compared-products" ng-if="coparedProducts.length > 0">
+          К сравнению ({{coparedProducts.length}})
+        </a>
       </div>
 
       <div class="container" ng-class="{'container-inner': !pageIsMain}">
