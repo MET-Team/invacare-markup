@@ -27,6 +27,23 @@ angular.module('productCtrl', [
     2: 'electric'
   };
 
+  $scope.compareDisabled = false;
+
+  $scope.comparedProductsExists = function(product){
+    if($scope.compareDisabled){
+      return true;
+    }
+
+    for(item in $rootScope.comparedProducts){
+      if($rootScope.comparedProducts.hasOwnProperty(item)) {
+        if ($rootScope.comparedProducts[item].id == product.id) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
   $scope.recalcTotalPrice = function(){
 
     $scope.totalPrice = $scope.product.price;
@@ -49,6 +66,8 @@ angular.module('productCtrl', [
       $scope.product = data;
       $scope.totalPrice = $scope.product.price;
       $scope.recalcTotalPrice();
+
+      $scope.compareDisabled = $scope.comparedProductsExists($scope.product);
 
       $scope.threedConfig = {
         input: {
@@ -108,7 +127,11 @@ angular.module('productCtrl', [
 
   $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/tech_specs')
     .success(function(data){
-      $scope.characters = data;
+      if(data.length) {
+        $scope.characters = data;
+      }else{
+        $scope.compareDisabled = true;
+      }
     }).error(function(){
       console.error('Произошла ошибка');
     });
@@ -184,9 +207,11 @@ angular.module('productCtrl', [
   };
 
   $scope.compareProduct = function(product){
-    var productIndex = $rootScope.coparedProducts.indexOf(product);
-    if(productIndex == -1){
-      $rootScope.coparedProducts.push(product);
+    if(!$scope.compareDisabled){
+      if(!$scope.comparedProductsExists(product)){
+        $rootScope.comparedProducts.push(product);
+      }
+      localStorageService.set('comparedProducts', $rootScope.comparedProducts);
     }
   };
 

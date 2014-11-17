@@ -1,3 +1,59 @@
 .page-block-product-compare{
-  padding: 100px 60px;
+  padding: 40px 60px;
+}
+.page-block-product-compare .title{
+  font-size: 24px;
+  font-family: 'MuseoSansCyrl-700';
+}
+
+.page-block-product-compare .product-list{
+  margin-top: 25px;
+  position: relative;
+}
+
+.page-block-product-compare .product-list .clear-compare{
+  position: absolute;
+  right: 60px;
+  top: -40px;
+  color: #fff;
+  background: none #505e66;
+  padding: 12px 35px;
+  height: 40px;
+  cursor: pointer;
+  font-family: 'MuseoSansCyrl-700';
+  font-size: 16px;
+}
+
+.page-block-product-compare .product-list .product-item{
+  width: 272px;
+  margin-right: 28px;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 50px;
+  position: relative;
+  text-decoration: none;
+  color: #272e32;
+}
+.page-block-product-compare .product-list .product-item:last-child{
+  margin-right: 0;
+}
+.page-block-product-compare .product-list .product-item .price{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 11px;
+  color: #fff;
+  background: none #5098de;
+}
+.page-block-product-compare .product-list .product-item .artikul{
+  font-size: 16px;
+  color: #4c4c4c;
+  margin-top: 15px;
+}
+.page-block-product-compare .product-list .product-item .name{
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 29px;
+  font-family: 'MuseoSansCyrl-500';
+  padding-right: 85px;
 }

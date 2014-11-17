@@ -348,6 +348,10 @@
   background-color: #657680;
   margin-left: 5px;
 }
+.page-block-product .main-card .card-container .card-col.card-details .buy-button .button.button-compare.disabled{
+  cursor: default;
+  opacity: 0.5;
+}
 
 .page-block-product .main-card.speciality{
   background: none #f2f0f1;
@@ -841,7 +845,7 @@
 .page-block-product .technical-characteristics .characters-grid .grid-col.col-left table tr td{
   font-size: 18px;
   padding: 16px 19px;
-  vertical-align: middle;
+  vertical-align: top;
 }
 .page-block-product .technical-characteristics .characters-grid .grid-col.col-left table tr:nth-child(odd) td{
   background: none #f2f2f2;
@@ -858,14 +862,11 @@
   z-index: 10;
 }
 
-.page-block-product .main-card.total-cost .card-container .card-col{
-  width: auto;
+.page-block-product .main-card.total-cost .card-buy-button{
+  text-align: center;
 }
 .page-block-product .total-cost .options-count{
   font-weight: bold;
-}
-.page-block-product .total-cost .price{
-  font-size: 24px;
 }
 .page-block-product .total-cost .button{
   color: #fff;
@@ -873,7 +874,7 @@
   border: solid 2px #fff;
   padding: 10px 30px;
   vertical-align: middle;
-  font-size: 18px;
+  font-size: 24px;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;

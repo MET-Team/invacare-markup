@@ -71,7 +71,7 @@
 
         <div class="buy-button">
           <div class="button" ng-click="buyProduct()">Купить за <span class="price"><span ng-bind="product.price"></span> <span class="rouble">⃏</span></span></div>
-          <div class="button button-compare" ng-click="compareProduct(product)">Сравнить</div>
+          <div class="button button-compare" ng-click="compareProduct(product)" ng-class="{disabled: characters.length == 0 || compareDisabled}">Сравнить</div>
         </div>
       </div>
     </div>
@@ -186,11 +186,11 @@
 
   </div>
 
-  <div class="technical-characteristics" ng-if="components || characters">
+  <div class="technical-characteristics" ng-if="components.length > 0 || characters.length > 0">
     <div class="title">Технические характеристики</div>
     <div class="description">Выбери необходимую функцию, ты весишь только унцию, получи инструкцию</div>
 
-    <div class="options" ng-if="components">
+    <div class="options" ng-if="components.length > 0">
       <div class="option-item" ng-repeat="item in components">
         <img ng-src="{{domain + item.photo.thumb}}" alt="" width="70" height="70" />
         <br/>
@@ -198,13 +198,13 @@
       </div>
     </div>
 
-    <div class="characters-grid" ng-if="characters">
+    <div class="characters-grid" ng-if="characters.length > 0">
 
       <div class="grid-col col-left">
         <table>
           <tr ng-repeat="item in characters">
             <td class="caption" ng-bind="item.name"></td>
-            <td class="value" ng-bind="item.value"></td>
+            <td class="value" ng-bind-html="item.value"></td>
           </tr>
         </table>
       </div>
@@ -223,16 +223,9 @@
 
   <div class="main-card total-cost">
     <div class="card-container">
-
-      <div class="card-col">
-        Вы выбрали <span class="options-count"><span ng-bind="functionsSelected.length"></span> <span ng-bind="optionsCountLabel"></span></span>, и теперь итоговая стоимость вашей коляски составляет
-        <span class="price"><span ng-bind="totalPrice"></span> <span class="rouble">⃏</span></span>
+      <div class="card-buy-button">
+        <a ng-click="buyProduct()" href="javascript:void(0)" class="button">Купить за <span class="price"><span ng-bind="totalPrice"></span> <span class="rouble">⃏</span></span></a>
       </div>
-
-      <div class="card-col card-buy-button">
-        <a ng-click="buyProduct()" href="javascript:void(0)" class="button">Оформить покупку</a>
-      </div>
-
     </div>
   </div>
 

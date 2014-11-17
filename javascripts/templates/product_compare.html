@@ -1,3 +1,23 @@
 <div class="page-block page-block-product-compare" ng-controller="productCompareCtrl">
-  {{coparedProducts}}
+  <div class="title">Сравниваемые товары</div>
+
+  <div class="product-list" ng-if="comparedProducts">
+
+    <div class="clear-compare" ng-click="clearCompare()">Очистить сравнение</div>
+
+    <div class="product-item" ng-repeat="item in comparedProducts">
+      <div class="price"><span ng-bind="item.price"></span> руб.</div>
+      <div class="image">
+        <img ng-src="{{domain + item.photo.thumb}}" alt="" width="272" height="272" />
+      </div>
+      <div class="artikul">Арт: <span ng-bind="item.art"></span></div>
+      <div class="name" ng-bind="item.name"></div>
+    </div>
+  </div>
+
+  <div class="characters">
+    <table>
+      <tr></tr>
+    </table>
+  </div>
 </div>

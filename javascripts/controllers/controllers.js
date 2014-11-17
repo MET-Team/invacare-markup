@@ -10,14 +10,15 @@ appControllers = angular.module("appControllers", [
   'iso.directives'
 ]);
 
-appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $location, $document){
+appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $location, $document, localStorageService){
 
   $rootScope.domain = "http://white-m.ru";
 
   $scope.pageIsMain = false;
+  $scope.enableCompareShortcut = true;
   $scope.orderCallData = {};
 
-  $rootScope.coparedProducts = [];
+  $rootScope.comparedProducts = [];
 
   var Today = new Date();
   $scope.currentDate = Today.getTime();
@@ -31,11 +32,8 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
   };
 
   $scope.$on('$routeChangeStart', function() {
-    if($location.path() == "/"){
-      $scope.pageIsMain = true;
-    }else{
-      $scope.pageIsMain = false;
-    }
+    $scope.pageIsMain = $location.path() == "/";
+    $scope.enableCompareShortcut = $location.path() != "/product_compare";
   });
 
   $scope.searchFormActive = false;
@@ -54,6 +52,8 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
     }
   };
 
+  $rootScope.comparedProducts = localStorageService.get('comparedProducts');
+
 });
 
 appControllers.controller('ContactsCtrl', function($scope, $http){
@@ -69,9 +69,21 @@ appControllers.controller('ContactsCtrl', function($scope, $http){
   ]
 });
 
-appControllers.controller('productCompareCtrl', function($scope, $rootScope){
-  $scope.coparedProducts = $rootScope.coparedProducts;
-  if($scope.coparedProducts.length){
+appControllers.controller('productCompareCtrl', function($scope, $rootScope, $location, localStorageService){
+  $scope.comparedProducts = localStorageService.get('comparedProducts');
 
+  $scope.compareList = {};
+
+  if($scope.comparedProducts.length){
+    for(item in $scope.comparedProducts){
+      console.log($scope.comparedProducts[item])
+    }
   }
+
+  $scope.clearCompare = function(){
+    $rootScope.comparedProducts = [];
+    localStorageService.set('comparedProducts', $rootScope.comparedProducts);
+
+    $location.path("/catalog");
+  };
 });
