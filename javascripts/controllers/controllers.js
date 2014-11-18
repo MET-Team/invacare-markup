@@ -1,6 +1,7 @@
 appControllers = angular.module("appControllers", [
   'catalogCtrl',
   'productCtrl',
+  'productCompareCtrl',
   'buyCtrl',
   'infoCtrl',
 
@@ -12,13 +13,9 @@ appControllers = angular.module("appControllers", [
 
 appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $location, $document, localStorageService){
 
-  $rootScope.domain = "http://white-m.ru";
-
   $scope.pageIsMain = false;
   $scope.enableCompareShortcut = true;
   $scope.orderCallData = {};
-
-  $rootScope.comparedProducts = [];
 
   var Today = new Date();
   $scope.currentDate = Today.getTime();
@@ -67,23 +64,4 @@ appControllers.controller('ContactsCtrl', function($scope, $http){
       }
     }
   ]
-});
-
-appControllers.controller('productCompareCtrl', function($scope, $rootScope, $location, localStorageService){
-  $scope.comparedProducts = localStorageService.get('comparedProducts');
-
-  $scope.compareList = {};
-
-  if($scope.comparedProducts.length){
-    for(item in $scope.comparedProducts){
-      console.log($scope.comparedProducts[item])
-    }
-  }
-
-  $scope.clearCompare = function(){
-    $rootScope.comparedProducts = [];
-    localStorageService.set('comparedProducts', $rootScope.comparedProducts);
-
-    $location.path("/catalog");
-  };
 });

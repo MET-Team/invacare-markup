@@ -121,14 +121,37 @@
 }
 .page-block-product .main-card .card-container .card-col.card-image .image-container .spin-ico{
   position: absolute;
-  background: url('../images/ico-360.png') no-repeat center 0 transparent;
+  background: none transparent;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 43px;
+  bottom: -50px;
+  height: 40px;
   cursor: pointer;
+  border: solid 1px #ccc;
+  color: #ccc;
+  text-align: center;
+  padding-top: 10px;
+}
+.page-block-product .main-card .card-container .card-col.card-image .image-container .spin-ico:after{
+  display: inline-block;
+  vertical-align: middle;
+  width: 13px;
+  height: 16px;
+  background: url('../images/ico-360.png') no-repeat 0 0 transparent;
+  content: '';
+  margin-left: 7px;
 }
 
+.page-block-product .main-card .card-container .card-col.card-image .image-container .spin-legend{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 16px;
+  color: #808080;
+}
+.page-block-product .main-card .card-container .card-col.card-image .image-container:hover .spin-legend{
+  display: none;
+}
 
 .zoom-slider{
   position: absolute!important;
@@ -327,6 +350,7 @@
   color: #5098de;
   border-bottom: dotted 1px #5098de;
   margin-left: 8px;
+  text-decoration: none;
 }
 
 .page-block-product .main-card .card-container .card-col.card-details .buy-button{
@@ -801,14 +825,14 @@
   margin-top: 20px;
 }
 .page-block-product .technical-characteristics .options{
-  display: table;
-  width: 100%;
   margin-top: 46px;
 }
 .page-block-product .technical-characteristics .options .option-item{
-  display: table-cell;
+  display: inline-block;
   text-align: center;
   vertical-align: middle;
+  margin-right: 40px;
+  margin-bottom: 20px;
 }
 .page-block-product .technical-characteristics .options .option-item img{
   margin-bottom: 15px;

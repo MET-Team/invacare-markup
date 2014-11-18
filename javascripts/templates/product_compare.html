@@ -5,19 +5,24 @@
 
     <div class="clear-compare" ng-click="clearCompare()">Очистить сравнение</div>
 
-    <div class="product-item" ng-repeat="item in comparedProducts">
-      <div class="price"><span ng-bind="item.price"></span> руб.</div>
-      <div class="image">
-        <img ng-src="{{domain + item.photo.thumb}}" alt="" width="272" height="272" />
-      </div>
-      <div class="artikul">Арт: <span ng-bind="item.art"></span></div>
-      <div class="name" ng-bind="item.name"></div>
-    </div>
-  </div>
-
-  <div class="characters">
-    <table>
-      <tr></tr>
+    <table class="list-table">
+      <tr>
+        <td></td>
+        <td ng-repeat="item in comparedProducts" class="product-item-container">
+          <div class="product-item">
+            <div class="price"><span ng-bind="item.price"></span> руб.</div>
+            <div class="image">
+              <img ng-src="{{domain + item.photo.thumb}}" alt="" width="272" height="272" />
+            </div>
+            <div class="artikul">Арт: <span ng-bind="item.art"></span></div>
+            <div class="name" ng-bind="item.name"></div>
+          </div>
+        </td>
+      </tr>
+      <tr ng-repeat="compareItem in compareList">
+        <td ng-bind="compareItem.title"></td>
+        <td ng-repeat="listItem in compareItem.list" ng-bind-html="listItem.value"></td>
+      </tr>
     </table>
   </div>
 </div>

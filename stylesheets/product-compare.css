@@ -7,14 +7,14 @@
 }
 
 .page-block-product-compare .product-list{
-  margin-top: 25px;
+  margin-top: 35px;
   position: relative;
 }
 
 .page-block-product-compare .product-list .clear-compare{
   position: absolute;
-  right: 60px;
-  top: -40px;
+  right: 0;
+  top: -65px;
   color: #fff;
   background: none #505e66;
   padding: 12px 35px;
@@ -24,14 +24,33 @@
   font-size: 16px;
 }
 
+.page-block-product-compare .product-list .list-table{
+  border: 0;
+  border-spacing: 0;
+  width: 100%;
+}
+.page-block-product-compare .product-list .list-table tr td{
+  padding: 15px 30px 15px 15px;
+}
+.page-block-product-compare .product-list .list-table tr td:first-child{
+  width: 100%;
+  padding-right: 15px;
+}
+.page-block-product-compare .product-list .list-table tr td:last-child{
+  padding-right: 15px;
+}
+
+.page-block-product-compare .product-list .list-table tr:first-child td{
+  padding-bottom: 55px;
+}
+
+.page-block-product-compare .product-list .list-table tr:nth-child(even) td{
+  background: none #f2f2f2;
+}
+
 .page-block-product-compare .product-list .product-item{
   width: 272px;
-  margin-right: 28px;
-  display: inline-block;
-  vertical-align: top;
-  margin-bottom: 50px;
   position: relative;
-  text-decoration: none;
   color: #272e32;
 }
 .page-block-product-compare .product-list .product-item:last-child{

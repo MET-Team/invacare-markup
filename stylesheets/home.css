@@ -188,21 +188,25 @@
   padding-top: 55px;
 }
 .page-block-index .carriage-transitions .transition-item.transition-item-mechanic{
-  background: url('../images/carriage-mechanic.png') no-repeat center center #3f93e8;
+  background: url('../images/carriage-mechanic.jpg') no-repeat center center #3f93e8;
 }
 .page-block-index .carriage-transitions .transition-item.transition-item-electric{
-  background: url('../images/carriage-electric.png') no-repeat center center #3883cf;
+  background: url('../images/carriage-electric.jpg') no-repeat center center #3883cf;
 }
 .page-block-index .carriage-transitions .transition-item.transition-item-active{
-  background: url('../images/carriage-active.png') no-repeat center center #3073b5;
+  background: url('../images/carriage-active.jpg') no-repeat center center #3073b5;
 }
 
 .page-block-index .carriage-transitions .transition-item.transition-item-mechanic:hover{
-  background: url('../images/carriage-mechanic-hovered.png') no-repeat center center #59a8f7;
+  background: url('../images/carriage-mechanic-hovered.jpg') no-repeat center center #569fe8;
 }
 .page-block-index .carriage-transitions .transition-item.transition-item-electric:hover{
-  background: url('../images/carriage-electric-hovered.png') no-repeat center center #3883cf;
+  background: url('../images/carriage-electric-hovered.jpg') no-repeat center center #4c8dcf;
 }
+.page-block-index .carriage-transitions .transition-item.transition-item-active:hover{
+  background: url('../images/carriage-active-hovered.jpg') no-repeat center center #437cb5;
+}
+
 .page-block-index .carriage-transitions .transition-item .caption{
   position: absolute;
   top: 215px;

@@ -70,7 +70,10 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
       reloadOnSearch: false
     });
 
-}]);
+}]).run(function($rootScope){
+  $rootScope.domain = "http://white-m.ru";
+  $rootScope.comparedProducts = [];
+});
 
 App.filter("declOfNum", function() {
   return function(number, textVariants) {

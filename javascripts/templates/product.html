@@ -18,7 +18,8 @@
           <div class="animation-container" ng-show="viewItemSelected == 0" ng-class="{'enable-rotation': product.rotation_images.length > 0}" sprite-spin="spinObj" spin-images="product.rotation_images" spin-ready="spinReady">
             <img class="img" ng-src="{{domain + product.photo.original}}" alt="" />
           </div>
-          <div class="spin-ico" ng-show="spinObj.spinReady"></div>
+          <div class="spin-ico" ng-show="spinObj.spinReady">Прокрутить 360&deg;</div>
+          <div class="spin-legend" ng-show="spinObj.spinReady">Используйте мышь для прокрутки</div>
 
           <div class="threed-object-container">
             <div class="zoom-slider" ng-show="viewItemSelected == 1" ng-if="product.images.length > 0">
@@ -65,7 +66,7 @@
           <div class="other-item refunds">
             <div class="ico"></div>
             Возврат денег
-            <span class="more">подробнее</span>
+            <a href="#!/info" class="more">подробнее</a>
           </div>
         </div>
 
@@ -210,11 +211,8 @@
       </div>
 
       <div class="grid-col col-right col-images">
-        <div class="image-item">
-          <img src="images/temp/product-character-1.png" alt="" />
-        </div>
-        <div class="image-item">
-          <img src="images/temp/product-character-2.png" alt="" />
+        <div class="image-item" ng-repeat="item in product.fragment_images">
+          <img ng-src="{{domain + item.original}}" alt="" />
         </div>
       </div>
     </div>
