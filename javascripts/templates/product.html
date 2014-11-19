@@ -72,8 +72,9 @@
 
         <div class="buy-button">
           <div class="button" ng-click="buyProduct()">Купить за <span class="price"><span ng-bind="product.price"></span> <span class="rouble">⃏</span></span></div>
-          <div class="button button-compare" ng-click="compareProduct(product)" ng-class="{disabled: characters.length == 0 || compareDisabled}">Сравнить</div>
+          <div class="button button-test-drive">Тест-драйв</div>
         </div>
+        <div class="button button-compare" ng-click="compareProduct(product)" ng-class="{disabled: characters.length == 0 || compareDisabled}">Добавить товар к сравнению</div>
       </div>
     </div>
   </div>
@@ -126,65 +127,22 @@
   </div>
 
   <div class="gallery">
-    <div class="gallery-item" ng-repeat="item in photo_elements" style="background: url('{{domain + item.photo.original}}') no-repeat 50% 50% transparent; background-size: cover;">
+    <div class="gallery-item" ng-repeat="item in photo_elements" style="background: url('{{domain + item.photo.original}}') no-repeat 50% 50% transparent; background-size: cover;" ng-class="{'gallery-item-hidden': $index > 7 && !photoMoreVisible}">
       <div class="overlay"></div>
       <div class="caption" ng-bind-html="item.description"></div>
+    </div>
+    <div class="load-more" ng-class="{'load-more-open': photoMoreVisible}" ng-if="photo_elements.length > 8" ng-click="togglePhotoMoreVisible()">
+      <span ng-if="!photoMoreVisible">Загрузить еще</span>
+      <span ng-if="photoMoreVisible">Скрыть</span>
     </div>
   </div>
 
   <div class="main-card schema" ng-if="product.scheme_image">
     <div class="card-container">
-
       <div class="card-col card-image">
         <img ng-src="{{domain + product.scheme_image.original}}" alt="" />
       </div>
     </div>
-  </div>
-
-  <div class="configurator" ng-if="configureOptions">
-    <div class="title">Конфигуратор</div>
-    <div class="description">Выбери необходимую функцию, ты весишь только унцию, получи инструкцию</div>
-
-    <div class="functions-tabs">
-
-      <div class="function-total" ng-if="functionsSelected.length" ng-class="{opened: functionTotalOpened}">
-        <div class="label" ng-click="toggleSelectedFunctionsList()">Выбрано функций (<span ng-bind="functionsSelected.length"></span>)</div>
-
-        <div class="functions-list">
-          <div class="list-item" ng-repeat="item in functionsSelected">
-            <span ng-bind=""></span>
-            <div ng-bind="item.title"></div>
-            <div class="price"><span ng-bind="item.price"></span> <span class="rouble">⃏</span></div>
-            <div class="ico-remove" ng-click="toggleFunction(item)"></div>
-          </div>
-
-          <div class="total-price">
-            <a class="buy-button" ng-click="buyProduct()" href="javascript:void(0)">Купить за <span ng-bind="totalPrice"></span> <span class="rouble">⃏</span></a>
-            <div class="additional-price">С учетом опций на <span ng-bind="additionalPrice"></span> <span class="rouble">⃏</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="function-types" ng-if="functionTypes.length">
-        <div class="type-item" ng-repeat="item in functionTypes" ng-click="showOptionsByType(item.value)" ng-class="{selected: item.value == functionTypeSelected}">
-          <div ng-bind="item.name"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="functions-list" ng-if="functionsList">
-      <div class="list-group" ng-if="functionsList.group" ng-repeat="group in functionsList.group">
-        <div class="group-title">
-          <div ng-bind="group.title"></div>
-        </div>
-
-        <div class="function-item" ng-if="group.list" ng-repeat="function_item in group.list" ng-click="toggleFunction(function_item)" ng-class="{selected: functionsSelected.indexOf(function_item) > -1}">
-          <div ng-bind="function_item.title"></div>
-          <div class="price"><span ng-bind="function_item.price"></span> <span class="rouble">⃏</span></div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <div class="technical-characteristics" ng-if="components.length > 0 || characters.length > 0">
@@ -203,11 +161,15 @@
 
       <div class="grid-col col-left">
         <table>
-          <tr ng-repeat="item in characters">
+          <tr ng-repeat="item in characters" ng-class="{'character-item-hidden': $index > 9 && !charactersMoreVisible}">
             <td class="caption" ng-bind="item.name"></td>
             <td class="value" ng-bind-html="item.value"></td>
           </tr>
         </table>
+        <div class="load-more" ng-class="{'load-more-open': charactersMoreVisible}" ng-if="characters.length > 8" ng-click="toggleCharactersMoreVisible()">
+          <span ng-if="!charactersMoreVisible">Загрузить еще</span>
+          <span ng-if="charactersMoreVisible">Скрыть</span>
+        </div>
       </div>
 
       <div class="grid-col col-right col-images">

@@ -32,6 +32,9 @@ angular.module('productCtrl', [
   $scope.compareDisabled = false;
   $scope.compareTechSpecs = [];
 
+  $scope.photoMoreVisible = false;
+  $scope.charactersMoreVisible = false;
+
   $scope.comparedProductsExists = function(product){
     if($scope.compareDisabled){
       return true;
@@ -248,6 +251,14 @@ angular.module('productCtrl', [
 
   $scope.spinObj = {
     spinReady: false
+  };
+
+  $scope.togglePhotoMoreVisible = function(){
+    $scope.photoMoreVisible = $scope.photoMoreVisible ? false : true;
+  };
+
+  $scope.toggleCharactersMoreVisible = function(){
+    $scope.charactersMoreVisible = $scope.charactersMoreVisible ? false : true;
   };
 
 });

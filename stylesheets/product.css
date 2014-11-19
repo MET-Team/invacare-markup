@@ -368,11 +368,27 @@
 .page-block-product .main-card .card-container .card-col.card-details .buy-button .button:hover{
   background: none #59a8f7;
 }
-.page-block-product .main-card .card-container .card-col.card-details .buy-button .button.button-compare {
-  background-color: #657680;
+.page-block-product .main-card .card-container .card-col.card-details .buy-button .button.button-test-drive {
+  background-color: #fff;
   margin-left: 5px;
+  color: #5098de;
+  border: solid 1px #5098de;
 }
-.page-block-product .main-card .card-container .card-col.card-details .buy-button .button.button-compare.disabled{
+
+.page-block-product .main-card .card-container .card-col.card-details .button.button-compare{
+  cursor: pointer;
+  color: #5098de;
+  font-size: 16px;
+  font-family: 'MuseoSansCyrl-500';
+  margin-top: 21px;
+}
+.page-block-product .main-card .card-container .card-col.card-details .button.button-compare:before{
+  content: '+';
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+}
+.page-block-product .main-card .card-container .card-col.card-details .button.button-compare.disabled{
   cursor: default;
   opacity: 0.5;
 }
@@ -590,6 +606,10 @@
   height: 322px;
   background-size: cover;
   position: relative;
+}
+.page-block-product .gallery .gallery-item.gallery-item-hidden{
+  visibility: hidden;
+  height: 0;
 }
 
 .page-block-product .gallery .gallery-item .caption{
@@ -878,6 +898,14 @@
   text-align: right;
 }
 
+.page-block-product .technical-characteristics .characters-grid .grid-col.col-left table tr.character-item-hidden{
+  display: none;
+}
+
+.page-block-product .technical-characteristics .characters-grid .load-more{
+  clear: none;
+}
+
 .page-block-product .total-cost{
   background: none #5098de;
   padding: 50px 100px;
@@ -907,4 +935,29 @@
 .page-block-product .total-cost .button:hover{
   background: none #fff;
   color: #5098de;
+}
+
+.page-block-product .load-more{
+  height: 50px;
+  padding-top: 16px;
+  background: none #e6e6e6;
+  color: #5098de;
+  font-size: 16px;
+  font-family: 'MuseoSansCyrl-500';
+  text-align: center;
+  cursor: pointer;
+  clear: both;
+}
+.page-block-product .load-more:after{
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  background: url('../images/ico-load-more.png') no-repeat 0 0 transparent;
+  margin-left: 10px;
+}
+.page-block-product .load-more.load-more-open:after{
+  content: '';
+  display: none;
 }
