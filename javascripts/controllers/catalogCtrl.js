@@ -59,15 +59,26 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope,
   };
 
   $scope.getProducts = function(){
-    var searchParams = {};
+    var searchParams = {},
+        kindId = 0;
 
     var carriageType = $scope.carriageTypeSelected;
     for(carriageItem in $scope.carriageTypes){
       if($scope.carriageTypes.hasOwnProperty(carriageItem)){
         if($scope.carriageTypes[carriageItem].type == carriageType){
+          kindId = $scope.carriageTypes[carriageItem].id;
           searchParams.kind_id_eq = $scope.carriageTypes[carriageItem].id;
         }
       }
+    }
+
+    if(kindId > 0) {
+      $http.get($rootScope.domain + '/api/v1/kinds/' + kindId + '/filters')
+        .success(function (data) {
+          $scope.carriageOptions = data;
+        }).error(function () {
+          console.error('Произошла ошибка');
+        });
     }
 
     $http.get($rootScope.domain +'/api/v1/sites/4/products', {

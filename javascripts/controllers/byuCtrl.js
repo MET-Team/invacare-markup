@@ -42,6 +42,15 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($scope, $http, loca
     localStorageService.set('productToBuy', $scope.productItem);
   };
 
+  $scope.checkoutData = {
+    name: '',
+    email: '',
+    phone: '',
+    delivery: 0,
+    payment: 0,
+    products: []
+  };
+
   $scope.toggleFunctionList = function(){
     $scope.functionsListOpened = $scope.functionsListOpened ? false : true;
   };
@@ -52,7 +61,7 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($scope, $http, loca
       price: 'Бесплатно'
     },
     {
-      title: 'Курьероaм по Москве и области',
+      title: 'Курьером по Москве и области',
       priceRange: {
         from: 0,
         to: 900
@@ -75,7 +84,59 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($scope, $http, loca
     }else{
       $scope.selectedDelivery = null;
     }
+  };
 
+  $scope.paymentItems = [
+    {
+      title: 'Яндекс Деньги'
+    },
+    {
+      title: 'Наличными'
+    },
+    {
+      title: 'Банковской картой'
+    }
+  ];
+
+  $scope.selectedPayment = null;
+
+  $scope.togglePaymentItem = function(item){
+    if($scope.selectedPayment != item){
+      $scope.selectedPayment = item;
+    }else{
+      $scope.selectedPayment = null;
+    }
+  };
+
+  $scope.checkoutSteps = [
+    {
+      title: 'Контакты'
+    },{
+      title: 'Доставка'
+    },{
+      title: 'Оплата'
+    }
+  ];
+
+  $scope.checkoutStepSelected = 0;
+
+  $scope.changeCheckoutStep = function(index){
+    $scope.checkoutStepSelected = index;
+    $scope.checkoutSteps[$scope.checkoutStepSelected].completed = false;
+  };
+
+  $scope.nextStep = function(){
+    if($scope.checkoutStepSelected < $scope.checkoutSteps.length-1){
+      $scope.checkoutSteps[$scope.checkoutStepSelected].completed = true;
+      $scope.checkoutStepSelected++;
+    }else{
+      $scope.checkoutData.delivery = $scope.selectedDelivery;
+      $scope.checkoutData.payment = $scope.selectedPayment;
+      $scope.checkoutData.products = $scope.productItem;
+
+
+      console.log($scope.checkoutData)
+    }
   };
 
 });

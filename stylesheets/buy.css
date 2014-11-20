@@ -172,7 +172,8 @@
   top: 0;
   border: solid 2px #5098de;
 }
-.page-block-buy .column.checkout .tab-item.tab-completed .ico-completed{
+.page-block-buy .column.checkout .tab-item.tab-completed .inner:after{
+  content: '';
   display: inline-block;
   width: 8px;
   height: 6px;
@@ -255,6 +256,52 @@
   text-align: center;
 }
 .page-block-buy .column.checkout .continue-button .inner{
-  background: none #ccc;
+  /*background: none #ccc;*/
+  background: none #5098de;
+  cursor: pointer;
   padding: 15px;
+}
+.page-block-buy .column.checkout .continue-button .inner:hover{
+  background: none #59a8f7;
+}
+
+.page-block-buy .checkout .tab-content .inner {
+  margin-top: 25px;
+}
+
+/*form*/
+.page-block-buy .checkout .tab-content .contacts .form-horizontal .row{
+  margin-right: -5px;
+  margin-left: -5px;
+}
+.page-block-buy .checkout .tab-content .contacts .form-horizontal .row:after{
+  display: table;
+  content: " ";
+  clear: both;
+}
+
+.page-block-buy .checkout .tab-content .contacts .form-horizontal .row .col-sm-6 {
+  padding-right: 5px;
+  padding-left: 5px;
+  float: left;
+  width: 50%;
+}
+.page-block-buy .checkout .tab-content .contacts .form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 10px;
+}
+.page-block-buy .checkout .tab-content .contacts .form-horizontal .form-control{
+  display: block;
+  width: 100%;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: medium none;
+  font-size: 16px;
+  padding: 15px 20px;
+  line-height: 16px;
+  height: auto;
 }

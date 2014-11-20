@@ -207,14 +207,13 @@ angular.module('productCtrl', [
   $scope.buyProduct = function(){
     var productToBuy = {
       name: $scope.product.name,
-      artikul: $scope.product.artikul,
+      art: $scope.product.art,
       price: $scope.product.price,
-      priceAdditional: $scope.additionalPrice,
-      functions: $scope.functionsSelected
+      photo: $scope.product.photo
     };
 
     localStorageService.set('productToBuy', productToBuy);
-    $location.path('/buy').replace();
+    $location.path('/buy');
   };
 
   $scope.compareProduct = function(product){

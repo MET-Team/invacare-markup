@@ -15,9 +15,8 @@
     <div class="card-container">
       <div class="card-col card-image card-image-main">
         <div class="image-container">
-          <div class="animation-container" ng-show="viewItemSelected == 0" ng-class="{'enable-rotation': product.rotation_images.length > 0}" sprite-spin="spinObj" spin-images="product.rotation_images" spin-ready="spinReady">
-            <img class="img" ng-src="{{domain + product.photo.original}}" alt="" />
-          </div>
+          <img class="img" ng-src="{{domain + product.photo.original}}" alt="" ng-show="!spinObj.spinReady" />
+          <div class="animation-container" ng-show="viewItemSelected == 0" ng-class="{'enable-rotation': product.rotation_images.length > 0}" sprite-spin="spinObj" spin-images="product.rotation_images" spin-ready="spinReady"></div>
           <div class="spin-ico" ng-show="spinObj.spinReady">Прокрутить 360&deg;</div>
           <div class="spin-legend" ng-show="spinObj.spinReady">Используйте мышь для прокрутки</div>
 
@@ -54,7 +53,7 @@
         </div>
       </div>
       <div class="card-col card-details">
-        <div class="artikul" ng-bind="product.art"></div>
+        <div class="artikul">Артикул: <span ng-bind="product.art"></span></div>
         <div class="name" ng-bind="product.name"></div>
         <div class="text" ng-bind-html="product.description"></div>
 
@@ -132,7 +131,7 @@
       <div class="caption" ng-bind-html="item.description"></div>
     </div>
     <div class="load-more" ng-class="{'load-more-open': photoMoreVisible}" ng-if="photo_elements.length > 8" ng-click="togglePhotoMoreVisible()">
-      <span ng-if="!photoMoreVisible">Загрузить еще</span>
+      <span ng-if="!photoMoreVisible">Показать еще фото</span>
       <span ng-if="photoMoreVisible">Скрыть</span>
     </div>
   </div>
@@ -151,7 +150,7 @@
 
     <div class="options" ng-if="components.length > 0">
       <div class="option-item" ng-repeat="item in components">
-        <img ng-src="{{domain + item.photo.thumb}}" alt="" width="70" height="70" />
+        <img ng-src="{{domain + item.photo.thumb}}" alt="" />
         <br/>
         <span ng-bind="item.name"></span>
       </div>
@@ -167,13 +166,13 @@
           </tr>
         </table>
         <div class="load-more" ng-class="{'load-more-open': charactersMoreVisible}" ng-if="characters.length > 8" ng-click="toggleCharactersMoreVisible()">
-          <span ng-if="!charactersMoreVisible">Загрузить еще</span>
+          <span ng-if="!charactersMoreVisible">Показать еще характеристики</span>
           <span ng-if="charactersMoreVisible">Скрыть</span>
         </div>
       </div>
 
       <div class="grid-col col-right col-images">
-        <div class="image-item" ng-repeat="item in product.fragment_images">
+        <div class="image-item" ng-repeat="item in product.tech_spec_images">
           <img ng-src="{{domain + item.original}}" alt="" />
         </div>
       </div>

@@ -40,34 +40,13 @@
 }
 
 .page-block-index .header .actions .action-item:hover{
-  background: none #272e32;
+  background: none #5098de;
+  border: solid 2px #5098de;
   color: #fff;
 }
 
 .page-block-index .header .actions .action-buttons{
   text-align: center;
-}
-
-.page-block-index .brief{
-  display: table;
-  width: 100%;
-  border-bottom: solid 1px #ccc;
-}
-.page-block-index .brief .brief-item{
-  display: table-cell;
-  padding: 30px 60px;
-  white-space: nowrap;
-}
-.page-block-index .brief .brief-item .ico{
-  display: inline-block;
-  vertical-align: middle;
-}
-.page-block-index .brief .brief-item .title{
-  font-size: 16px;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 26px;
-  margin-left: 20px;
 }
 
 .page-block-index .info{

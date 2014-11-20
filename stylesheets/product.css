@@ -66,9 +66,10 @@
   padding-left: 80px;
 }
 .page-block-product .main-card .card-container .card-col.card-image .img{
-  left: 28px;
-  position: relative;
-  top: 13px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 11;
 }
 .page-block-product .main-card .card-container .card-col.card-image.card-image-main .img{
   max-height: 100%;
@@ -307,6 +308,10 @@
   font-family: 'MuseoSansCyrl-300';
 }
 
+.page-block-product .main-card .card-container .card-col.card-details .artikul span{
+  position: relative;
+  top: 1px;
+}
 .page-block-product .main-card .card-container .card-col.card-details .name{
   font-size: 24px;
   margin-top: 10px;
@@ -850,12 +855,15 @@
 .page-block-product .technical-characteristics .options .option-item{
   display: inline-block;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: top;
   margin-right: 40px;
   margin-bottom: 20px;
+  width: 200px;
 }
 .page-block-product .technical-characteristics .options .option-item img{
   margin-bottom: 15px;
+  width: 72px;
+  height: 72px;
 }
 
 .page-block-product .technical-characteristics .characters-grid{

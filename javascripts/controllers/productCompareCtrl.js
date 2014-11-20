@@ -58,8 +58,6 @@ angular.module('productCompareCtrl', [])
     }
   }
 
-  console.log($scope.compareList);
-
   $scope.clearCompare = function(){
     $rootScope.comparedProducts = [];
     localStorageService.set('comparedProducts', $rootScope.comparedProducts);

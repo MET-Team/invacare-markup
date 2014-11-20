@@ -202,7 +202,7 @@ body{
   right: 0;
   z-index: 12;
   padding: 20px 60px;
-  border-bottom: solid 1px #969a9f;
+  border-bottom: solid 1px #8a8c8c;
   text-align: center;
   height: 60px;
 }
@@ -250,6 +250,11 @@ body{
   top: -1px;
 }
 
+.nav-menu-layout.nav-menu-layout-black{
+  border-bottom: solid 1px #969a9f;
+  position: relative;
+  top: auto;
+}
 .nav-menu-layout.nav-menu-layout-black .catalog-links li a,
 .nav-menu-layout.nav-menu-layout-black .phone{
   color: #1e2326;
@@ -273,12 +278,46 @@ body{
   text-decoration: none;
 }
 
+.wrapper .brief{
+  display: table;
+  width: 100%;
+  border-bottom: solid 1px #ccc;
+}
+.wrapper .brief .brief-item{
+  display: table-cell;
+  padding: 30px 60px;
+  white-space: nowrap;
+}
+.wrapper .brief .brief-item .ico{
+  display: inline-block;
+  vertical-align: middle;
+}
+.wrapper .brief .brief-item .title{
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 26px;
+  margin-left: 20px;
+}
+
+.wrapper .brief.brief-inner .brief-item{
+  padding: 20px 60px;
+}
+.wrapper .brief.brief-inner .brief-item .ico{
+  width: 42px;
+  height: 42px;
+}
+.wrapper .brief.brief-inner .brief-item .title{
+  font-size: 14px;
+  line-height: 24px;
+}
+
 .container{
   position: relative;
 }
-.container.container-inner{
-  padding-top: 60px;
-}
+/*.container.container-inner{*/
+  /*padding-top: 60px;*/
+/*}*/
 
 .scaleDownUp {
   -webkit-animation: scaleDownUp .5s ease both;

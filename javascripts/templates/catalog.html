@@ -4,12 +4,12 @@
       <div class="filter-item" ng-repeat="item in carriageTypes" ng-click="changeType(item.type)" ng-class="{selected: item.type == carriageTypeSelected}" ng-bind="item.title"></div>
     </div>
 
-    <!--<div class="filter-type filter-carriage-options" ng-if="carriageOptionsByType">-->
-      <!--<div class="filter-item" ng-repeat="item in carriageOptionsByType" ng-click="filterOptions($index)" ng-class="{checked: activeOptionsFilter.indexOf($index) > -1}">-->
-        <!--<span ng-bind="item"></span>-->
-        <!--<div class="ico"></div>-->
-      <!--</div>-->
-    <!--</div>-->
+    <div class="filter-type filter-carriage-options" ng-if="carriageOptions.length > 0">
+      <div class="filter-item" ng-repeat="item in carriageOptions" ng-click="filterOptions(item.id)" ng-class="{checked: activeOptionsFilter.indexOf(item.id) > -1}">
+        <span ng-bind="item.name"></span>
+        <div class="ico"></div>
+      </div>
+    </div>
 
     <div class="filter-type filter-carriage-order" ng-class="{ordered:priceOrderProperty == 'price'}" ng-click="togglePriceOrderProperty()" ng-if="productsList.length">
       Сортировать по ценам

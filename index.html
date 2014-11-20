@@ -120,6 +120,37 @@
         </a>
       </div>
 
+      <div class="brief" ng-if="!pageIsMain" ng-class="{'brief-inner': !pageIsMain}">
+        <div class="brief-item">
+          <img class="ico" src="images/brief/ico-1.png" alt="" />
+          <div class="title">
+            Официальный<br/>
+            дилер Invacare
+          </div>
+        </div>
+        <div class="brief-item">
+          <img class="ico" src="images/brief/ico-2.png" alt="" />
+          <div class="title">
+            Гарантия на каждый<br/>
+            товар 2 года
+          </div>
+        </div>
+        <div class="brief-item">
+          <img class="ico" src="images/brief/ico-3.png" alt="" />
+          <div class="title">
+            Доставка по РФ,<br/>
+            Казахстану и Беларуси
+          </div>
+        </div>
+        <div class="brief-item">
+          <img class="ico" src="images/brief/ico-4.png" alt="" />
+          <div class="title">
+            Все товары<br/>
+            сертифицированы
+          </div>
+        </div>
+      </div>
+
       <div class="container" ng-class="{'container-inner': !pageIsMain}">
         <div ng-view=""></div>
       </div>
