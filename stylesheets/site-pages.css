@@ -255,6 +255,27 @@
 .page-block-return-guarantee .guarantee{
   margin-top: 50px;
 }
+.page-block-return-guarantee .guarantee-grid{
+  margin-top: 35px;
+}
+.page-block-return-guarantee .guarantee-grid td{
+  font-size: 14px;
+  border-bottom: dashed 1px #e6e6e6;
+  padding: 25px;
+  vertical-align: middle;
+}
+.page-block-return-guarantee .guarantee-grid td.caption{
+  font-weight: bold;
+  line-height: 28px;
+}
+
+.page-block-return-guarantee .guarantee-grid td:first-child{
+  padding-left: 0;
+  width: 250px;
+}
+.page-block-return-guarantee .guarantee-grid tr:last-child td{
+  border-bottom: medium none;
+}
 
 /*search*/
 .page-block-search{
