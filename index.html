@@ -89,7 +89,7 @@
           </ul>
         </div>
         <form class="search" ng-class="{'search-active': searchFormActive}">
-          <input type="text" name="search" value="" class="form-control" ng-model="searchString" ng-blur="toggleSearchForm()" />
+          <input type="text" name="search" value="" class="form-control" ng-model="searchString" ng-blur="toggleSearchFormBlur()" />
           <button class="caption" type="submit" ng-click="toggleSearchForm()">Поиск</button>
         </form>
       </div>

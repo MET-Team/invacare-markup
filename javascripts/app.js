@@ -65,6 +65,11 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
       reloadOnSearch: false
     })
 
+    .when("/search", {
+      templateUrl: "javascripts/templates/search.html",
+      reloadOnSearch: false
+    })
+
     .otherwise({
       templateUrl: 'javascripts/templates/404.html',
       reloadOnSearch: false
@@ -73,6 +78,7 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
 }]).run(function($rootScope){
   $rootScope.domain = "http://white-m.ru";
   $rootScope.comparedProducts = [];
+  $rootScope.searchString = null;
 });
 
 App.filter("declOfNum", function() {

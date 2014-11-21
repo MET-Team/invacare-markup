@@ -17,6 +17,32 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
   $scope.enableCompareShortcut = true;
   $scope.orderCallData = {};
 
+  $scope.searchFormActive = false;
+
+  $scope.searchString = $location.search().query || '';
+  if($scope.searchString){
+    $scope.searchFormActive = true;
+  }
+
+  $scope.toggleSearchForm = function(){
+
+    if($scope.searchString != ''){
+      $rootScope.searchString = $scope.searchString;
+      $location.search('query', $scope.searchString).path("/search").replace();
+    }else{
+      $scope.searchFormActive = $scope.searchFormActive ? false : true;
+      if(!$scope.searchFormActive) {
+        $scope.searchString = '';
+      }
+    }
+  };
+
+  $scope.toggleSearchFormBlur = function(){
+    if($scope.searchString == ''){
+      $scope.searchFormActive = false;
+    }
+  };
+
   var Today = new Date();
   $scope.currentDate = Today.getTime();
 
@@ -33,22 +59,6 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
     $scope.enableCompareShortcut = $location.path() != "/product_compare";
   });
 
-  $scope.searchFormActive = false;
-  $scope.searchString = '';
-
-  $scope.toggleSearchForm = function(){
-    if($scope.searchString != ''){
-      if(event.type != 'blur'){
-        console.log($scope.searchString);
-      }
-    }else{
-      $scope.searchFormActive = $scope.searchFormActive ? false : true;
-      if(!$scope.searchFormActive) {
-        $scope.searchString = '';
-      }
-    }
-  };
-
   $rootScope.comparedProducts = localStorageService.get('comparedProducts');
 
 });
@@ -64,4 +74,37 @@ appControllers.controller('ContactsCtrl', function($scope, $http){
       }
     }
   ]
+});
+
+appControllers.controller('SearchCtrl', function($scope, $location, $http, $rootScope){
+
+  $scope.searchString = $location.search().query;
+
+  $scope.searchProducts = function(){
+    if($scope.searchString){
+      $http.get($rootScope.domain +'/api/v1/sites/4/products', {
+        params: {
+          name_cont: $scope.searchString
+        }
+      }).success(function(data){
+        $scope.productsList = data;
+      }).error(function(){
+        console.error('Произошла ошибка');
+      });
+    }
+  };
+
+  $scope.searchProducts();
+
+  $scope.$on('$locationChangeSuccess', function() {
+    $rootScope.searchString = $rootScope.searchString || '';
+
+    $scope.searchString = $rootScope.searchString;
+    $scope.searchProducts();
+  });
+
+  $scope.isoOptions = {
+    layoutMode: 'fitRows'
+  };
+
 });
