@@ -283,6 +283,9 @@ body{
   width: 100%;
   border-bottom: solid 1px #ccc;
 }
+.wrapper .brief.brief-inner{
+  height: 90px;
+}
 .wrapper .brief .brief-item{
   display: table-cell;
   padding: 30px 60px;

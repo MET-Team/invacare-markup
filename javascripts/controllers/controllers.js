@@ -7,7 +7,6 @@ appControllers = angular.module("appControllers", [
 
   'googlemap-ng',
   'LocalStorageModule',
-  'stickyfloat-ng',
   'iso.directives'
 ]);
 
@@ -106,5 +105,51 @@ appControllers.controller('SearchCtrl', function($scope, $location, $http, $root
   $scope.isoOptions = {
     layoutMode: 'fitRows'
   };
+
+});
+
+appControllers.controller('DeliveryCtrl', function($scope){
+  $('.delivery-navigation').waypoint('sticky');
+
+  var itemsOffset = [];
+  $(".delivery-item").each(function(){
+    var offsetTop = $(this).offset().top;
+    itemsOffset.push(offsetTop);
+  });
+
+  $(document).on('scroll', function(){
+    var scrollTop = $('body').scrollTop();
+
+    var winHeight = $(window).height();
+
+    if(scrollTop <= itemsOffset[0]){
+      $('.delivery-navigation li').removeClass('active');
+      $('.delivery-navigation li').eq(0).addClass('active');
+    }else if(scrollTop > itemsOffset[0] && scrollTop <= itemsOffset[1]){
+      $('.delivery-navigation li').removeClass('active');
+      $('.delivery-navigation li').eq(1).addClass('active');
+    }else if(scrollTop > itemsOffset[1] && scrollTop <= itemsOffset[2]){
+      $('.delivery-navigation li').removeClass('active');
+      $('.delivery-navigation li').eq(2).addClass('active');
+    }else if(scrollTop > itemsOffset[2] && scrollTop <= itemsOffset[3]){
+      $('.delivery-navigation li').removeClass('active');
+      $('.delivery-navigation li').eq(3).addClass('active');
+    }
+
+    if(scrollTop <= 400){
+      $('.delivery-navigation li').removeClass('active');
+      $('.delivery-navigation li').eq(0).addClass('active');
+    }
+  });
+
+  $('.delivery-navigation li').click(function(){
+    $('.delivery-navigation li').removeClass('active');
+    $(this).addClass('active');
+
+    var index = $(this).index();
+
+    $("html, body").animate({scrollTop: $(".delivery-item").eq(index).offset().top - 120}, 400);
+
+  });
 
 });

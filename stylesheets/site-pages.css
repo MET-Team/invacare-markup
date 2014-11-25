@@ -1,4 +1,9 @@
 /* page-block-about */
+
+a{
+  color: #5098de;
+}
+
 .page-block-about{
   background: url('../images/bg-about.png') no-repeat 0 0 transparent;
   background-size: cover;
@@ -116,12 +121,22 @@
 
 /* page-block-delivery-payments */
 .page-block-delivery-payments .delivery{
-  padding: 40px 60px 72px;
+  padding: 40px 0 72px;
   min-height: 573px;
 }
 
 .page-block-delivery-payments .payment{
-  padding: 40px 60px 72px;
+  padding: 40px 0 72px;
+}
+
+.page-block-delivery-payments .payment .payment-grid td{
+  padding: 0 10px 10px 0;
+}
+.page-block-delivery-payments .payment .payment-grid td:last-child{
+  padding-right: 0;
+}
+.page-block-delivery-payments .payment .payment-grid tr:last-child td{
+  padding-bottom: 0;
 }
 
 .page-block-delivery-payments .delivery .title, .page-block-delivery-payments .payment .title{
@@ -130,9 +145,19 @@
 }
 .page-block-delivery-payments .delivery .text, .page-block-delivery-payments .payment .text{
   margin-top: 30px;
-  width: 50%;
   line-height: 28px;
   font-size: 16px;
+}
+.page-block-delivery-payments .delivery .text, .page-block-delivery-payments .payment .text p{
+  margin-bottom: 15px;
+}
+.page-block-delivery-payments .delivery .text, .page-block-delivery-payments .payment .text p:last-child{
+  margin-bottom: 0;
+}
+.page-block-delivery-payments .payment .ico-credit-system{
+  vertical-align: middle;
+  margin-left: 10px;
+  height: 40px;
 }
 
 .page-block-delivery-payments .delivery .delivery-types{
@@ -168,19 +193,12 @@
 
 .page-block-delivery-payments .payment .payments-list{
   margin-top: 50px;
-  display: table;
-  width: 100%;
-}
-.page-block-delivery-payments .payment .payments-list .payments-list-col{
-  width: 50%;
-  padding-right: 40px;
-  display: table-cell;
 }
 
 .page-block-delivery-payments .payment .payments-list .payment-item{
   padding: 30px;
   background: none #f2f2f2;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 .page-block-delivery-payments .payment .payments-list .payments-list-col .payment-item:last-child{
   margin-bottom: 0;
@@ -207,6 +225,108 @@
   color: #5098de;
   border-bottom: dotted 1px #5098de;
   cursor: pointer;
+}
+
+.page-block-delivery-payments .delivery .delivery-navigation{
+  padding: 20px 0 45px;
+  background: none #fff;
+  width: 100%;
+}
+.page-block-delivery-payments .delivery .delivery-navigation:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.page-block-delivery-payments .delivery .delivery-navigation.stuck {
+  position:fixed;
+  top:0;
+  transition: top 0.5s;
+  -webkit-transition: top 0.5s;
+}
+
+.page-block-delivery-payments .delivery .delivery-navigation ul li{
+  background: none #f2f2f2;
+  padding: 12px 20px;
+  float: left;
+  cursor: pointer;
+  color: #1e2326;
+}
+.page-block-delivery-payments .delivery .delivery-navigation ul li.active{
+  background: none #5098de;
+  color: #fff;
+  cursor: default;
+}
+
+.page-block-delivery-payments .delivery-list .delivery-item{
+  margin-bottom: 45px;
+}
+.page-block-delivery-payments .delivery-list .delivery-item p{
+  margin-bottom: 15px;
+  line-height: 26px;
+}
+.page-block-delivery-payments .delivery-list .delivery-item p:last-child{
+  margin-bottom: 0;
+}
+
+.page-block-delivery-payments .delivery-list .delivery-item:last-child{
+  margin-bottom: 0;
+}
+.page-block-delivery-payments .delivery-list .delivery-item .delivery-item-title{
+  font-size: 18px;
+  font-family: 'MuseoSansCyrl-500';
+  margin-bottom: 25px;
+}
+
+.page-block-delivery-payments .delivery-list .delivery-item .sub-list .sub-list-item{
+  margin-bottom: 30px;
+}
+.page-block-delivery-payments .delivery-list .delivery-item .sub-list .sub-list-item:last-child{
+  margin-bottom: 0;
+}
+.page-block-delivery-payments .delivery-list .delivery-item .sub-list .sub-list-item .sub-list-item-title{
+  font-family: 'MuseoSansCyrl-500';
+  margin-bottom: 20px;
+}
+
+.page-block-delivery-payments .delivery-list .delivery-item .delivery-city-search {
+  margin-bottom: 20px;
+}
+.page-block-delivery-payments .delivery-list .delivery-item .delivery-city-search:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.page-block-delivery-payments .delivery-list .delivery-item .delivery-city-search .inner{
+  height: 60px;
+  padding: 10px;
+  background: none #f2f2f2;
+  float: left;
+}
+.page-block-delivery-payments .delivery-list .delivery-item .delivery-city-search select{
+  height: 40px;
+  width: 280px;
+  border: medium none;
+}
+
+.page-block-delivery-payments .delivery-list .delivery-item a{
+  font-family: 'MuseoSansCyrl-500';
+  margin-right: 10px;
+}
+.page-block-delivery-payments .delivery-list .delivery-item a:after{
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url('../images/ico-blank-link.png') no-repeat 0 0 transparent;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.page-block-delivery-payments .delivery-companies td{
+  padding: 15px;
+}
+.page-block-delivery-payments .delivery-companies td:first-child{
+  padding-left: 0;
 }
 
 /* page-block-faq */
@@ -324,4 +444,9 @@
   line-height: 29px;
   font-family: 'MuseoSansCyrl-500';
   padding-right: 85px;
+}
+
+.page-block.page-block-info-part{
+  width: 1000px;
+  margin: 0 auto;
 }

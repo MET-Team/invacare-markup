@@ -1,71 +1,192 @@
-<div class="page-block page-block-delivery-payments">
+<div class="page-block page-block-info-part page-block-delivery-payments" ng-controller="DeliveryCtrl">
   <div class="delivery">
     <div class="title">Доставка</div>
-    <div class="text">
-      Таков первый разряд писем. Второй разряд это письма людей,
-      желающих служить народу и не находящих способа пивасика
-      приложения своих, очевидно, предполагаемых птичек
+
+    <div class="delivery-navigation">
+      <ul>
+        <li class="active">По России</li>
+        <li>В Беларусь и Казахстан</li>
+        <li>Самовывоз</li>
+        <li>Дополнительные услуги</li>
+      </ul>
     </div>
 
-    <div class="delivery-types">
+    <div class="delivery-list">
+      <div class="delivery-item">
+        <div class="delivery-item-title">Доставка по России</div>
+        <div class="delivery-item-content">
+          <p>
+            Услуга доставки по России предоставляется <span style="font-weight: bold">бесплатно</span> и включает в себя доставку до подъезда.
+            Занос на этаж, сборка и тестирование изделий оплачиваются отдельно и осуществляются только при доставке по г. Москве и Московской области.
+            В регионы заказ доставляется транспортными компаниями, которые, увы, не предоставляют услугу заноса на этаж и сборки.
+          </p>
 
-      <div class="delivery-type-item">
-        <div class="title">Электрические коляски</div>
-        <div class="delivery-list">
-          <table>
-            <tr class="gray">
-              <td>Москва</td>
-              <td></td>
-              <td>бесплатно</td>
-            </tr>
-            <tr>
-              <td>Московская область</td>
-              <td>до 30км</td>
-              <td>1000 руб.</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>от 30км</td>
-              <td>2000 руб.</td>
-            </tr>
-            <tr class="gray">
-              <td>Регионы</td>
-              <td></td>
-              <td>1000 руб.</td>
-            </tr>
-          </table>
+          <div class="sub-list">
+
+            <div class="sub-list-item">
+              <div class="sub-list-item-title">Города доставки</div>
+              <div class="sub-list-item-content">
+                <div class="delivery-city-search">
+                  <div class="inner">
+                    <select>
+                      <option>111</option>
+                    </select>
+                  </div>
+                </div>
+                <p>
+                  Если вы не нашли свой город в списке - уточните у менеджера о стоимости и условиях доставки по  вашему адресу
+                </p>
+              </div>
+            </div>
+
+            <div class="sub-list-item">
+              <div class="sub-list-item-title">Отслеживание местоположение груза</div>
+              <div class="sub-list-item-content">
+                <p>
+                  Уточните у менеджера какая транспортная компания везет вам груз и реквизиты товарно-транспортной накладной.
+                  Далее выберите в таблице нужную  транспортную компанию, пройдите по указанной  ссылке и введите реквизиты
+                </p>
+                <div class="delivery-companies">
+                  <table>
+                    <tr>
+                      <td>ПЭК</td>
+                      <td>
+                        <a href="kabinet.pecom.ru/status/?_ga=1.183469792.732415654.1416418392" target="_blank">kabinet.pecom.ru/status/?_ga=1.183469792.732415654.1416418392</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Деловые линии</td>
+                      <td>
+                        <a href="dellin.ru/tracker/" target="_blank">dellin.ru/tracker/</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Автотрейдинг</td>
+                      <td>
+                        <a href="ae5000.ru/recipients/state/" target="_blank">ae5000.ru/recipients/state/</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Байкал сервис</td>
+                      <td>
+                        <a href="baikalsr.ru/vidgets/tracking/" target="_blank">baikalsr.ru/vidgets/tracking/</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Стейл</td>
+                      <td>
+                        <a href="steil.ru/status/" target="_blank">steil.ru/status/</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ЖелДорЭкспедиция</td>
+                      <td>
+                        <a href="cabinet.jde.ru/index.html" target="_blank">cabinet.jde.ru/index.html</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
-      <div class="delivery-type-item">
-        <div class="title">Механические коляски</div>
-        <div class="delivery-list">
-          <table>
-            <tr class="gray">
-              <td>Москва</td>
-              <td></td>
-              <td>бесплатно</td>
-            </tr>
-            <tr>
-              <td>Московская область</td>
-              <td>до 30км</td>
-              <td>1000 руб.</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>от 30км</td>
-              <td>2000 руб.</td>
-            </tr>
-            <tr class="gray">
-              <td>Регионы</td>
-              <td></td>
-              <td>3000 руб.</td>
-            </tr>
-          </table>
+      <div class="delivery-item">
+        <div class="delivery-item-title">Доставка в Беларусь и Казахстан</div>
+        <div class="delivery-item-content">
+          <div class="sub-list">
+
+            <div class="sub-list-item">
+              <div class="sub-list-item-title">В Беларусь</div>
+              <div class="sub-list-item-content">
+                <p>
+                  Доставка осуществляется только по вашему конкретному адресу (например, адресу проживания) в следующих городах: Борисов, Брест, Витебск,  Гомель,  Гродно,  Добруш, Лида, Минск, Могилев, Орша.
+                </p>
+                <p>
+                  Ваш заказ отправляется по условиям и тарифам ТК “Деловые линии”, у которых нет терминалов хранения груза в Беларуси.
+                  Поэтому  указывайте пожалуйста точный адрес доставки и ожидайте прибытия изделия по указанному адресу.
+                </p>
+                <p>
+                  Стоимость доставки в Беларусь оплачивает покупатель.
+                  С тарифами и условиями вы можете ознакомиться по ссылке <a href="dellin.ru/service/international-freight/" target="_blank">dellin.ru/service/international-freight/</a> или уточнить у менеджера.
+                </p>
+              </div>
+            </div>
+
+            <div class="sub-list-item">
+              <div class="sub-list-item-title">В Казахстан</div>
+              <div class="sub-list-item-content">
+                <p>
+                  По Казахстану доставка осуществляется в следующие города:  Астана, Атырау, Актобе, Караганда, Кокшетау, Костанай, Павлодар, Петропавловск, Рудный, Семей, Темиртау, Уральск, Усть-Каменогорск, Экибастуз.
+                </p>
+                <p>
+                  Транспортная компания-перевозчик - ПЭК, с тарифами и условиями вы можете ознакомиться по ссылке <a href="pecom.ru/ru/services/directions/kazahstan/144601/" target="_blank">pecom.ru/ru/services/directions/kazahstan/144601/</a> или уточнить у менеджера.
+                </p>
+                <p>
+                  Стоимость доставки в Казахстан оплачивает покупатель.
+                </p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
 
-    </div>
+      <div class="delivery-item">
+        <div class="delivery-item-title">Самовывоз</div>
+        <div class="delivery-item-content">
+          <p>
+            Если вы хотите самостоятельно забрать свой заказ, договоритесь с менеджером о дате и подъезжайте на наш склад по адресу: г. Москва, Киевское шоссе, стр. 2, офис 520
+          </p>
+          <a href="javascript:void(0)" class="download-scheme">Скачать схему проезда</a>
+        </div>
+      </div>
 
+      <div class="delivery-item">
+        <div class="delivery-item-title">Дополнительные услуги</div>
+        <div class="delivery-item-content">
+          При доставке заказа по г. Москве и Москвоской области вы можете заказать ряд дополнительных услуг:
+
+          <div class="additional-service-list">
+            <ul>
+              <li>занос на этаж</li>
+              <li>сборка изделия и тестирование</li>
+            </ul>
+          </div>
+
+          <p>
+            Стоимость заноса на ваш этаж зависит от веса изделия и наличия в подъезде грузового лифта, но не превышает 1000 руб.
+            Точную стоимость заноса и сборки вашего заказа уточните, пожалуйста, у менеджера
+          </p>
+
+          <div class="sub-list">
+
+            <div class="sub-list-item">
+              <div class="sub-list-item-title">Сборка и демонстрация работоспособности</div>
+              <div class="sub-list-item-content">
+
+              </div>
+            </div>
+
+            <div class="sub-list-item">
+              <div class="sub-list-item-title">Подъем груза на грузовом лифте</div>
+              <div class="sub-list-item-content">
+
+              </div>
+            </div>
+
+            <div class="sub-list-item">
+              <div class="sub-list-item-title">Подъем груза при отсутствии грузового лифта (ручной подъем)</div>
+              <div class="sub-list-item-content">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

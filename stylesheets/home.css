@@ -59,9 +59,10 @@
 }
 .page-block-index .info .info-text{
   font-size: 18px;
-  margin-top: 30px;
+  margin: 30px auto 0;
   text-align: center;
   line-height: 30px;
+  width: 1000px;
 }
 .page-block-index .info .info-grid{
   display: table;
