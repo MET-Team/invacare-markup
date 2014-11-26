@@ -2,7 +2,7 @@
   <div class="main-card">
 
     <div class="breadcrumbs">
-      <a ng-href="#!/catalog?type={{carriageTypeIdToCaption[product.kind_id]}}"><span ng-bind="product.kind.name"></span> коляски</a>
+      <a ng-href="/catalog?type={{carriageTypeIdToCaption[product.kind_id]}}"><span ng-bind="product.kind.name"></span> коляски</a>
       <span class="arrow"></span>
       <span ng-bind="product.name"></span>
     </div>
@@ -36,12 +36,12 @@
 
           <div class="threed-hint overlay" ng-if="hintEnabled && product.images.length > 0">
             <div class="center">
-              <img src="images/ico-3d-hint-2.png" alt="" width="58" height="60" />
+              <img src="/images/ico-3d-hint-2.png" alt="" width="58" height="60" />
               <div class="hint-text">
                 Двигайте изображение
                 в любом направлении
               </div>
-              <img src="images/ico-3d-hint-1.png" alt="" width="66" height="66" />
+              <img src="/images/ico-3d-hint-1.png" alt="" width="66" height="66" />
               <div class="hint-text">
                 Используйте кнопки
                 для масштабирования
@@ -65,7 +65,7 @@
           <div class="other-item refunds">
             <div class="ico"></div>
             Возврат денег
-            <a href="#!/info" class="more">подробнее</a>
+            <a href="/info" class="more">подробнее</a>
           </div>
         </div>
 

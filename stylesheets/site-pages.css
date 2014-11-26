@@ -576,13 +576,14 @@ a{
 .page-block.page-block-info-part{
   width: 1000px;
   margin: 0 auto;
+  padding-left: 250px;
 }
 
 .nav-menu-info{
   position: absolute;
   top: 235px;
   left: 50%;
-  margin-left: -720px;
+  margin-left: -500px;
   z-index: 100;
 }
 .nav-menu-info ul li{
