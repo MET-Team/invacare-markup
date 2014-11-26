@@ -13,6 +13,8 @@ appControllers = angular.module("appControllers", [
 appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $location, $document, localStorageService){
 
   $scope.pageIsMain = false;
+  $scope.pageIsInfo = false;
+
   $scope.enableCompareShortcut = true;
   $scope.orderCallData = {};
 
@@ -53,9 +55,44 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
     console.log($scope.orderCallData)
   };
 
+  $scope.infoNavMenu = [
+    {
+      title: 'Доставка',
+      url: '/delivery'
+    },
+    {
+      title: 'Оплата',
+      url: '/payment'
+    },
+    {
+      title: 'Возврат и гарантии',
+      url: '/return_guarantee'
+    },
+    {
+      title: 'Частые вопросы',
+      url: '/faq'
+    },
+    {
+      title: 'Контакты',
+      url: '/contacts'
+    }
+  ];
+
   $scope.$on('$routeChangeStart', function() {
     $scope.pageIsMain = $location.path() == "/";
     $scope.enableCompareShortcut = $location.path() != "/product_compare";
+
+    $scope.pageIsInfo = false;
+    for(index in $scope.infoNavMenu){
+      if($scope.infoNavMenu.hasOwnProperty(index)){
+        $scope.infoNavMenu[index].active = false;
+        if($location.path() == $scope.infoNavMenu[index].url){
+          $scope.pageIsInfo = true;
+          $scope.infoNavMenu[index].active = true;
+        }
+      }
+    }
+
   });
 
   $rootScope.comparedProducts = localStorageService.get('comparedProducts');
@@ -109,6 +146,7 @@ appControllers.controller('SearchCtrl', function($scope, $location, $http, $root
 });
 
 appControllers.controller('DeliveryCtrl', function($scope){
+
   $('.delivery-navigation').waypoint('sticky');
 
   var itemsOffset = [];
@@ -149,6 +187,38 @@ appControllers.controller('DeliveryCtrl', function($scope){
     var index = $(this).index();
 
     $("html, body").animate({scrollTop: $(".delivery-item").eq(index).offset().top - 120}, 400);
+
+  });
+
+  $scope.cityList = [
+    {
+      id: 0,
+      value: ''
+    }
+  ];
+  $('#recommended .column li a').each(function(i){
+    var cityItem = {
+      id: i+1,
+      value: $(this).html()
+    };
+    $scope.cityList.push(cityItem);
+  });
+
+  $scope.selectedCity = null;
+
+  $(document).ready(function(){
+
+    $.getScript('//cdnjs.cloudflare.com/ajax/libs/select2/3.4.8/select2.min.js',function(){
+      $.getScript('//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js',function(){
+
+        $(".delivery-city-search select").select2({
+          formatNoMatches: '',
+          placeholder: "Выберите город",
+          allowClear: true
+        });
+
+      });//script
+    });//script
 
   });
 

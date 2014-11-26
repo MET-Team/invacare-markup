@@ -153,6 +153,14 @@
         </div>
       </div>
 
+      <div class="nav-menu-info" ng-if="pageIsInfo">
+        <ul>
+          <li ng-repeat="item in infoNavMenu" ng-class="{active: item.active}">
+            <a ng-href="#!{{item.url}}" ng-bind="item.title"></a>
+          </li>
+        </ul>
+      </div>
+
       <div class="container" ng-class="{'container-inner': !pageIsMain}">
         <div ng-view=""></div>
       </div>
