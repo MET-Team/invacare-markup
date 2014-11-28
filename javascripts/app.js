@@ -75,10 +75,16 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
 
     $location.html5Mode(true);
 
-}]).run(function($rootScope){
+}]).run(function($rootScope, localStorageService){
   $rootScope.domain = "http://white-m.ru";
+  $rootScope.site_id = 4;
+
+  $rootScope.userPassword = 'q1w2e3r4t5y6';
+
   $rootScope.comparedProducts = [];
   $rootScope.searchString = null;
+
+  $rootScope.userData = localStorageService.get('userData') || null;
 });
 
 App.filter("declOfNum", function() {

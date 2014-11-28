@@ -81,7 +81,7 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope,
         });
     }
 
-    $http.get($rootScope.domain +'/api/v1/sites/4/products', {
+    $http.get($rootScope.domain +'/api/v1/sites/'+ $rootScope.site_id +'/products', {
       params: searchParams
     }).success(function(data){
       $scope.productsList = data;
