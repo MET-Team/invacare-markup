@@ -107,46 +107,20 @@
     <div class="continue-button">
       <div class="inner" ng-click="nextStep()">Продолжить</div>
     </div>
-
-    <!--<div class="tabs">-->
-      <!--<div class="tab-item tab-completed">-->
-        <!--<div class="inner">-->
-          <!--Контакты-->
-          <!--<div class="ico-completed"></div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="tab-item tab-active">-->
-        <!--<div class="inner">Доставка</div>-->
-      <!--</div>-->
-      <!--<div class="tab-item">-->
-        <!--<div class="inner">Оплата</div>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="tab-content">-->
-      <!--<div class="tab-content-item"></div>-->
-      <!--<div class="tab-content-item tab-content-item-delivery">-->
-        <!--<div class="title">Доставка</div>-->
-        <!--<div class="delivery-list">-->
-          <!--<div class="delivery-item" ng-repeat="item in deliveryItems" ng-class="{selected: selectedDelivery == item}">-->
-            <!--<div ng-bind="item.title"></div>-->
-
-            <!--<div ng-if="item.priceRange">-->
-              <!--<div class="price">Стоимость от <span ng-bind="item.priceRange.from"></span> до <span class="summ"><span ng-bind="item.priceRange.to"></span> <span class="rouble">⃏</span></span></div>-->
-            <!--</div>-->
-
-            <!--<div ng-if="item.price" class="price" ng-bind="item.price"></div>-->
-
-            <!--<div class="choose-button" ng-click="toggleDeliveryItem(item)">Выбрать</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="tab-content-item"></div>-->
-    <!--</div>-->
-
-    <!--<div class="continue-button">-->
-      <!--<div class="inner">Продолжить</div>-->
-    <!--</div>-->
-
   </div>
+
+  <div class="modal fade" id="payForm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">Оплата</h4>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://money.yandex.ru/embed/shop.xml?account=41001594858318&quickpay=shop&payment-type-choice=on&writer=seller&targets=%D0%9E%D0%BF%D0%BB%D0%B0%D1%82%D0%B0+%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0&default-sum=2000&button-text=01&fio=on&mail=on&phone=on&successURL=http%3A%2F%2Finvacare.web%2F" width="450" height="198"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

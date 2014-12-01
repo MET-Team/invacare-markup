@@ -49,6 +49,78 @@
   text-align: center;
 }
 
+.page-block-index .test-drive{
+  background: none #f2f2f2;
+  padding: 20px;
+  text-align: center;
+}
+.page-block-index .test-drive .caption{
+  display: inline-block;
+  margin-right: 20px;
+  color: #797979;
+  font-size: 18px;
+  font-family: 'MuseoSansCyrl-500';
+}
+.page-block-index .test-drive .btn-order{
+  display: inline-block;
+  cursor: pointer;
+  font-family: 'MuseoSansCyrl-700';
+  font-size: 16px;
+  padding: 14px 35px;
+  color: #fff;
+  background: none #5098de;
+}
+.page-block-index .test-drive .btn-order:hover{
+  background: none #59a8f7;
+}
+
+.page-block-index .test-drive .order-form{
+  display: inline-block;
+  -webkit-transition: display 0.5s;
+  transition: display 0.5s;
+}
+
+.page-block-index .test-drive .order-form, .page-block-index .test-drive .intro{
+  -webkit-transition: display ease 0.5s;
+  transition: display ease 0.5s;
+}
+
+.page-block-index .test-drive .order-form .order-field{
+  width: 190px;
+  padding: 13px;
+  font-size: 16px;
+  font-family: 'MuseoSansCyrl-300';
+  border: medium none;
+  margin-right: 10px;
+}
+.page-block-index .test-drive .order-form .order-field:last-child{
+  margin-right: 0;
+}
+
+.page-block-index .test-drive .order-form .button{
+  background: none #5098de;
+  border: medium none;
+  font-family: 'MuseoSansCyrl-700';
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  width: 165px;
+  padding: 13px 30px;
+  outline: medium none;
+}
+.page-block-index .test-drive .order-form .button:hover{
+  background: none #59a8f7;
+}
+
+.page-block-index .test-drive .order-form .form-close{
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left: 10px;
+  color: #5098de;
+}
+
+
 .page-block-index .info{
   padding: 60px ;
 }

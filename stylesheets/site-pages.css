@@ -476,12 +476,60 @@ a{
   margin-bottom: 0;
 }
 
+.page-block-faq .faq-list .faq-item .faq-item-question{
+  font-family: 'MuseoSansCyrl-500';
+}
 .page-block-faq .faq-list .faq-item .faq-item-answer{
   margin-top: 10px;
+  line-height: 22px;
 }
-.page-block-faq .faq-list .faq-item .faq-item-question .caption,
-.page-block-faq .faq-list .faq-item .faq-item-answer .caption{
-  font-family: 'MuseoSansCyrl-500';
+.page-block-faq .faq-list .faq-item .faq-item-answer p{
+  margin-bottom: 15px;
+}
+.page-block-faq .faq-list .faq-item .faq-item-answer p:last-child{
+  margin-bottom: 0;
+}
+
+.page-block-faq .faq-list .faq-item .faq-item-answer ol{
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.page-block-faq .faq-list .faq-item .faq-item-answer ol li ul{
+  margin-top: 10px;
+}
+
+.page-block-faq .faq-list .faq-item .faq-item-answer ol li,
+.page-block-faq .faq-list .faq-item .faq-item-answer ul li{
+  margin-bottom: 10px;
+}
+.page-block-faq .faq-list .faq-item .faq-item-answer ol li:last-child,
+.page-block-faq .faq-list .faq-item .faq-item-answer ul li:last-child{
+  margin-bottom: 0;
+}
+.page-block-faq a:after{
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url('../images/ico-blank-link.png') no-repeat 0 0 transparent;
+  margin-left: 8px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.page-block-faq .notice{
+  font-weight: bold;
+}
+
+.page-block-faq .delivery-companies{
+  margin-bottom: 10px;
+}
+.page-block-faq .delivery-companies td{
+  padding: 10px;
+}
+.page-block-faq .delivery-companies td:first-child{
+  padding-left: 0;
 }
 
 /* page-block-return-guarantee */

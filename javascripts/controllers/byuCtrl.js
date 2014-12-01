@@ -1,4 +1,4 @@
-angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope, $http, localStorageService){
+angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope, $http, localStorageService, $location){
 
   $scope.productItem = localStorageService.get('productToBuy');
 
@@ -132,16 +132,13 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
     $scope.checkoutSteps[$scope.checkoutStepSelected].completed = false;
   };
 
-  $scope.registerSuccess = false;
-
-  $scope.saveUserLocal = function(){
-
+  $scope.sendMail = function(type, sendData){
     $http({
       method: 'post',
       url: '/send_mail/',
       params:{
         type: 'registration',
-        userData: $rootScope.userData
+        sendData: $rootScope.userData
       }
     })
       .success(function (data) {
@@ -155,8 +152,10 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
       }).error(function (){
         console.error('Произошла ошибка');
       });
-
   };
+
+  $scope.registerSuccess = false;
+  $scope.orderSuccess = false;
 
   $scope.registerUser = function(){
     $http.post($rootScope.domain + '/api/v1/users.json', {
@@ -171,10 +170,9 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
       }
     }).success(function(data){
         $rootScope.userData = data;
-//      localStorageService.set('userData', data);
 
         $scope.registerSuccess = true;
-        $scope.saveUserLocal();
+        $scope.sendMail('registration', $rootScope.userData);
 
       }).error(function(data){
         console.error('Регистрация не удалась, жаль', data);
@@ -187,19 +185,21 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
       if($scope.checkoutStepSelected == 0 && !$scope.registerSuccess){
 
-        //1. авторизация
+        // 1. авторизация
         $http.post($rootScope.domain+ '/api/v1/users/sign_in', {
           user: {
             email: $scope.checkoutData.email,
             password: $rootScope.userPassword
           }
         }).success(function(data){
-          $rootScope.userData.id = data.id;
+          $rootScope.userData.id = data.user_id;
+          $rootScope.userData.token = data.token;
+          $scope.registerSuccess = true;
         })
         .error(function(data){
             console.error('Авторизация не удалась, пробуем зарегистрироваться', data);
 
-            // в случае провальной авторизации регистрируем пользователя
+            // 2. в случае провальной авторизации регистрируем пользователя
             $scope.registerUser();
         });
       }
@@ -208,33 +208,43 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
     }else{
       $scope.checkoutData.delivery = $scope.selectedDelivery;
       $scope.checkoutData.payment = $scope.selectedPayment;
-      $scope.checkoutData.products = $scope.productItem;
+      $scope.checkoutData.product = $scope.productItem;
 
-      if($rootScope.userData && $scope.registerSuccess){
+      if($rootScope.userData && $scope.registerSuccess && !$scope.orderSuccess){
 
-        //TO-DO: 2. отправка заказа
-        console.log($rootScope.userData, $scope.checkoutData);
+        if($scope.checkoutData.payment.cash == true){
+          $location.path('/yandex_payment');
+          window.location.reload();
+          return false;
+        }
 
-        $http.post($rootScope.domain+ '/users/'+ $rootScope.userData.id +'/orders', {
+        // 3. отправка заказа
+        $http.post($rootScope.domain+ '/api/v1/users/'+ $rootScope.userData.id +'/orders', {
           user_id: $rootScope.userData.id,
           site_id: $rootScope.site_id,
           order: {
-            shipment_method_id: $scope.checkoutData.selectedDelivery.id,
-            payment_method: $scope.selectedPayment.cash,
-            address: '',
+            shipment_method_id: $scope.checkoutData.delivery.id,
+            payment_method: $scope.checkoutData.payment.cash,
+            address: 'Test',
             comment: 'Test',
-            order_products: [{
-              orderable_id: $scope.checkoutData.products.id,
+            order_products_attributes: [{
+              orderable_id: $scope.checkoutData.product.id,
               orderable_type: 'Product',
               quantity: 1
             }]
           }
+        },{
+          headers: {
+            'Authorization': 'Bearer ' + $rootScope.userData.token
+          }
         }).success(function(data){
             console.log(data);
 
-            //если безналичный расчет
-            if($scope.selectedPayment.cash == true){
+            $scope.sendMail('order', $scope.checkoutData);
 
+            //если безналичный расчет
+            if($scope.checkoutData.payment.cash == true){
+              $location.path('/yandex_payment');
             }
           })
           .error(function(data){

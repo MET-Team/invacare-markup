@@ -366,9 +366,10 @@
   cursor: pointer;
   background: none #5098de;
   color: #fff;
-  font-size: 24px;
-  padding: 20px 41px;
+  font-size: 16px;
+  padding: 17px;
   text-decoration: none;
+  vertical-align: middle;
 }
 .page-block-product .main-card .card-container .card-col.card-details .buy-button .button:hover{
   background: none #59a8f7;
@@ -378,6 +379,7 @@
   margin-left: 5px;
   color: #5098de;
   border: solid 1px #5098de;
+  padding: 16px;
 }
 
 .page-block-product .main-card .card-container .card-col.card-details .button.button-compare{
@@ -385,7 +387,7 @@
   color: #5098de;
   font-size: 16px;
   font-family: 'MuseoSansCyrl-500';
-  margin-top: 21px;
+  float: right;
 }
 .page-block-product .main-card .card-container .card-col.card-details .button.button-compare:before{
   content: '+';
@@ -396,6 +398,22 @@
 .page-block-product .main-card .card-container .card-col.card-details .button.button-compare.disabled{
   cursor: default;
   opacity: 0.5;
+}
+
+.page-block-product .main-card .card-container .card-col.card-details .button.button-credit{
+  cursor: pointer;
+  color: #808080;
+  font-size: 16px;
+  margin-top: 15px;
+}
+.page-block-product .main-card .card-container .card-col.card-details .button.button-credit:after{
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+  width: 10px;
+  height: 10px;
+  background: url('../images/ico-arrow-away.png') no-repeat 0 0 transparent;
 }
 
 .page-block-product .main-card.speciality{

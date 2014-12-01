@@ -16,7 +16,8 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
   $scope.pageIsInfo = false;
 
   $scope.enableCompareShortcut = true;
-  $scope.orderCallData = {};
+
+  $scope.orderTestDriveData = {};
 
   $scope.searchFormActive = false;
 
@@ -44,6 +45,11 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
     }
   };
 
+  $scope.OrderTestDriveFormIsOpen = false;
+  $scope.toggleOrderTestDriveForm = function(){
+    $scope.OrderTestDriveFormIsOpen = $scope.OrderTestDriveFormIsOpen ? false : true;
+  };
+
   var Today = new Date();
   $scope.currentDate = Today.getTime();
 
@@ -51,8 +57,8 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
     $scope.sidebarMenuIsOpen = $scope.sidebarMenuIsOpen ? false : true;
   };
 
-  $scope.orderCall = function(){
-    console.log($scope.orderCallData)
+  $scope.orderTestDrive = function(){
+    console.log($scope.orderTestDriveData)
   };
 
   $scope.infoNavMenu = [

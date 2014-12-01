@@ -53,6 +53,7 @@
         </div>
       </div>
       <div class="card-col card-details">
+        <div class="button button-compare" ng-click="compareProduct(product)" ng-class="{disabled: characters.length == 0 || compareDisabled}">Добавить товар к сравнению</div>
         <div class="artikul">Артикул: <span ng-bind="product.art"></span></div>
         <div class="name" ng-bind="product.name"></div>
         <div class="text" ng-bind-html="product.description"></div>
@@ -71,9 +72,9 @@
 
         <div class="buy-button">
           <div class="button" ng-click="buyProduct()">Купить за <span class="price"><span ng-bind="product.price"></span> <span class="rouble">⃏</span></span></div>
-          <div class="button button-test-drive">Тест-драйв</div>
+          <div class="button button-test-drive">Записаться на тест-драйв</div>
         </div>
-        <div class="button button-compare" ng-click="compareProduct(product)" ng-class="{disabled: characters.length == 0 || compareDisabled}">Добавить товар к сравнению</div>
+        <div class="button button-credit">Можно купить в кредит</div>
       </div>
     </div>
   </div>

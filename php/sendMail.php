@@ -27,7 +27,7 @@
       $mess .= '<br /><b>Сообщение:</b><br/> '. htmlspecialchars_decode($_GET['message']);
     }
 
-  if($messageType == 'order'){
+  if($messageType == 'order1'){
     $subject = 'Заказ с сайта Invacare.com.ru';
     
     $name = $_GET['name'];
@@ -51,12 +51,9 @@
 
   if($messageType == 'registration'){
     $subject = 'Контакты с сайта Invacare.com.ru';
+    $userData = json_decode($_GET['sendData']);
 
-    $name = $_GET['name'];
-    $email = $_GET['email'];
-    $phone = $_GET['phone'];
-
-    $mess = '<b>Имя:</b> '.$name.'<br /><b>Почта:</b> '.$email.'<br /><b>Телефон:</b> '.$phone;
+    $mess = '<b>Имя:</b> '.$userData->name.'<br /><b>Почта:</b> '.$userData->email.'<br /><b>Телефон:</b> '.$userData->phone;
   }
 
   $result = new stdClass();

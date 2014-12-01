@@ -206,6 +206,7 @@ angular.module('productCtrl', [
 
   $scope.buyProduct = function(){
     var productToBuy = {
+      id: $scope.product.id,
       name: $scope.product.name,
       art: $scope.product.art,
       price: $scope.product.price,

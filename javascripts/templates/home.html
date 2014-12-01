@@ -45,6 +45,24 @@
     </div>
   </div>
 
+  <div class="test-drive">
+
+    <div class="intro" ng-hide="OrderTestDriveFormIsOpen">
+      <div class="caption">Запишитесь на бесплатный тест-драйв от Invacare</div>
+      <div class="btn-order" ng-click="toggleOrderTestDriveForm()">Записаться на тест-драйв</div>
+    </div>
+
+    <div class="order-form" ng-show="OrderTestDriveFormIsOpen">
+      <form ng-submit="orderTestDrive()">
+        <input type="text" class="order-field" ng-model="orderTestDriveData.phone" placeholder="Введите телефон" />
+        <input type="text" class="order-field" ng-model="orderTestDriveData.email" placeholder="Введите почту" />
+        <input type="submit" value="Отправить" class="button" />
+        <div class="form-close" ng-click="toggleOrderTestDriveForm()">Отмена</div>
+      </form>
+    </div>
+
+  </div>
+
   <div class="info">
     <div class="info-title">Причины купить инвалидную коляску Invacare</div>
     <div class="info-text">
