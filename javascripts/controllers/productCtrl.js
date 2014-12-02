@@ -261,4 +261,16 @@ angular.module('productCtrl', [
     $scope.charactersMoreVisible = $scope.charactersMoreVisible ? false : true;
   };
 
+  $scope.OrderTestDriveFormIsOpen = false;
+
+  $scope.toggleOrderTestDriveForm = function(){
+    $scope.orderTestDriveData = {};
+    $scope.OrderTestDriveFormIsOpen = $scope.OrderTestDriveFormIsOpen ? false : true;
+  };
+
+  $scope.orderTestDrive = function(){
+    console.log($scope.orderTestDriveData)
+    $scope.toggleOrderTestDriveForm();
+  };
+
 });

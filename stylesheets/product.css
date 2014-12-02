@@ -987,3 +987,67 @@
   content: '';
   display: none;
 }
+
+.page-block-product .test-drive-form{
+  position: fixed;
+  top: 134px;
+  width: 560px;
+  left: 50%;
+  margin-left: -280px;
+  z-index: 1001;
+}
+.page-block-product .test-drive-form-overlay{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: none rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+.page-block-product .test-drive-form .form-title{
+  font-size: 30px;
+  font-family: 'MuseoSansCyrl-500';
+  text-align: center;
+  color: #fff;
+}
+.page-block-product .test-drive-form .form-description{
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  margin-top: 25px;
+  color: #fff;
+}
+
+.page-block-product .test-drive-form .form-horizontal{
+  width: 320px;
+  margin: 25px auto 0;
+  text-align: center;
+}
+.page-block-product .test-drive-form .form-horizontal .form-group{
+  margin-bottom: 10px;
+}
+.page-block-product .test-drive-form .form-horizontal .form-group:last-child{
+  margin-bottom: 0;
+  margin-top: 20px;
+  color: #fff;
+}
+.page-block-product .test-drive-form .form-horizontal .form-group .form-control{
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 15px;
+}
+
+.page-block-product .test-drive-form .form-horizontal .form-group .form-control.btn-order{
+  cursor: pointer;
+  text-align: center;
+  background: none #5098de;
+  color: #fff;
+  font-family: 'MuseoSansCyrl-700';
+  border: medium none;
+}
+.page-block-product .test-drive-form .form-horizontal .form-group:last-child span{
+  cursor: pointer;
+}

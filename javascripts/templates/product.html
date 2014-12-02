@@ -72,7 +72,7 @@
 
         <div class="buy-button">
           <div class="button" ng-click="buyProduct()">Купить за <span class="price"><span ng-bind="product.price"></span> <span class="rouble">⃏</span></span></div>
-          <div class="button button-test-drive">Записаться на тест-драйв</div>
+          <div class="button button-test-drive" ng-click="toggleOrderTestDriveForm()">Записаться на тест-драйв</div>
         </div>
         <div class="button button-credit">Можно купить в кредит</div>
       </div>
@@ -188,5 +188,33 @@
       </div>
     </div>
   </div>
+
+  <div class="test-drive-form" ng-show="OrderTestDriveFormIsOpen">
+    <div class="inner">
+      <div class="form-title">Запись на бесплатный тест-драйв</div>
+      <div class="form-description">
+        После заполнения форм вам перезвонит наш менеджер для уточнения
+        условий предоставления тест-драйва
+      </div>
+      <form class="form-horizontal" ng-submit="orderTestDrive()">
+        <div class="form-group">
+          <input type="text" placeholder="Введите имя" class="form-control" ng-model="orderTestDriveData.name" />
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Введите телефон" class="form-control" ng-model="orderTestDriveData.phone" />
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Введите почту" class="form-control" ng-model="orderTestDriveData.email" />
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Записаться" class="form-control btn-order" />
+        </div>
+        <div class="form-group">
+          <span ng-click="toggleOrderTestDriveForm()">Отмена</span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="test-drive-form-overlay" ng-show="OrderTestDriveFormIsOpen" ng-click="toggleOrderTestDriveForm()"></div>
 
 </div>
