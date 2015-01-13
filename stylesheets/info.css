@@ -5,7 +5,7 @@
   top: 0;
   bottom: 0;
   padding-top: 200px;
-  background: url('../images/sidebar_default.png') no-repeat center 0 #808080;
+  background: none #5098de;
   background-size: cover;
   z-index: 100;
   -webkit-backface-visibility: hidden;
@@ -27,14 +27,14 @@
 }
 
 .info-sidebar.opened .ico{
-  top: 90px;
-  left: 34px;
+  /*top: 90px;*/
+  /*left: 34px;*/
   cursor: pointer;
 }
 
-.info-sidebar.opened{
-  background: none #377db9;
-}
+/*.info-sidebar.opened{*/
+  /*background: none #377db9;*/
+/*}*/
 
 .info-container{
   padding-left: 350px;

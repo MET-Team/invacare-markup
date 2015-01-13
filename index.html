@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html ng-app="App">
+<html id="ng-app" ng-app="App">
   <head>
+    <base href="/">
+
     <meta charset="UTF-8">
-    <title>Invacare</title>
+
+    <title ng-bind="metaTags.pageTitle"></title>
+    <meta name="keywords" content="{{metaTags.pageKeyWords}}" />
+    <meta name="description" content="{{metaTags.pageDescription}}" />
+
+    <meta name="viewport" content="width=1280, user-scalable=no" />
+
     <link rel="stylesheet" href="/stylesheets/reset.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
 
@@ -17,11 +25,18 @@
 
     <link rel="stylesheet" href="/stylesheets/info.css" />
 
-    <script src="/javascripts/isotope/vendor/jquery-2.1.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
-    <script src="/javascripts/angular/angular.min.js"></script>
+    <script src="https://kupivkredit-test-fe.tcsbank.ru/widget/vkredit.js"></script>
 
+    <!--[if lte IE 9]>
+      <script src="//cdn.rawgit.com/jpillora/xdomain/0.6.17/dist/xdomain.min.js" slave="http://white-m.ru/proxy.html"></script>
+    <![endif]-->
+
+    <script src="/javascripts/angular/angular.min.js"></script>
     <script src="/javascripts/angular/angular-route.min.js"></script>
     <script src="/javascripts/angular/angular-animate.min.js"></script>
     <script src="/javascripts/angular/angular-sanitize.min.js"></script>
@@ -40,6 +55,9 @@
     <script src="/javascripts/waypoint/waypoints.min.js"></script>
     <script src="/javascripts/waypoint/waypoints-sticky.min.js"></script>
 
+    <link rel="stylesheet" href="/stylesheets/slick.css" />
+    <script src="/javascripts/slick.min.js"></script>
+
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
     <script src="/javascripts/3D/object2vr_player.js"></script>
@@ -47,15 +65,24 @@
     <script src="/javascripts/angular-object2vr.js"></script>
 
     <script src="/javascripts/app.js"></script>
-
     <script src="/javascripts/controllers/controllers.js"></script>
     <script src="/javascripts/controllers/catalogCtrl.js"></script>
+
     <script src="/javascripts/controllers/productCtrl.js"></script>
     <script src="/javascripts/controllers/productCompareCtrl.js"></script>
     <script src="/javascripts/controllers/byuCtrl.js"></script>
     <script src="/javascripts/controllers/infoCtrl.js"></script>
+    <script src="/javascripts/controllers/deliveryCtrl.js"></script>
 
-    <!--<script src="//tdcdn.blob.core.windows.net/toolbar/assets/prod/td.js" data-trackduck-id="53da4686c525d59522e5aa4b" async=""></script>-->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-57304282-1', 'auto');
+      ga('send', 'pageview');
+    </script>
 
   </head>
   <body>
@@ -63,7 +90,7 @@
 
       <div class="header-layout">
         <div class="email">
-          <a href="mailto:invacare@dontcare.ru">invacare@dontcare.ru</a>
+          <a ng-href="mailto:{{mainEmail}}" ng-bind="mainEmail"></a>
         </div>
         <div class="navigation">
           <ul>
@@ -103,19 +130,17 @@
 
         <ul class="catalog-links">
           <li>
-            <a href="/catalog?type=mechanic">Ручные инвалидные коляски</a>
+            <a href="/catalog/mechanic">Ручные инвалидные коляски</a>
           </li>
           <li>
-            <a href="/catalog?type=electric">Электрические коляски</a>
+            <a href="/catalog/electric">Электрические коляски</a>
           </li>
           <li>
-            <a href="/catalog?type=active">Активные коляски</a>
+            <a href="/catalog/active">Активные коляски</a>
           </li>
         </ul>
 
-        <div class="phone">
-          +7 495 765-56-56
-        </div>
+        <div class="phone" ng-bind="mainPhone"></div>
 
         <a ng-href="/product_compare" class="compared-products" ng-if="comparedProducts.length > 0 && enableCompareShortcut">
           К сравнению ({{comparedProducts.length}})
@@ -166,5 +191,34 @@
       </div>
 
     </div>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+          try {
+            w.yaCounter27356735 = new Ya.Metrika({id:27356735,
+              webvisor:true,
+              clickmap:true,
+              trackLinks:true,
+              accurateTrackBounce:true});
+          } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+          s = d.createElement("script"),
+          f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+          d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+      })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="//mc.yandex.ru/watch/27356735" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
   </body>
 </html>

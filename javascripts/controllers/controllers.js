@@ -4,13 +4,22 @@ appControllers = angular.module("appControllers", [
   'productCompareCtrl',
   'buyCtrl',
   'infoCtrl',
+  'DeliveryCtrl',
 
   'googlemap-ng',
-  'LocalStorageModule',
   'iso.directives'
-]);
+])
+  .directive('slickSlider', function(){
+    return{
+      restrict: "EAC",
+      link: function(scope, elements){
+        var element = $(elements[0]);
+        element.slick();
+      }
+    }
+  });
 
-appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $location, $document, localStorageService){
+appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location', '$document', '$http', function($rootScope, $scope, $location, $document, $http){
 
   $scope.pageIsMain = false;
   $scope.pageIsInfo = false;
@@ -45,6 +54,28 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
     }
   };
 
+  $scope.sendMail = function(type, sendData){
+    $http({
+      method: 'post',
+      url: '/send_mail/',
+      params: {
+        type: type,
+        sendData: sendData
+      }
+    })
+      .success(function (data) {
+        if(data.error){
+          console.error(data.error);
+          return false;
+        }
+        if(data.success){
+          console.log(data.success);
+        }
+      }).error(function (){
+        console.error('Произошла ошибка');
+      });
+  };
+
   $scope.OrderTestDriveFormIsOpen = false;
   $scope.toggleOrderTestDriveForm = function(){
     $scope.OrderTestDriveFormIsOpen = $scope.OrderTestDriveFormIsOpen ? false : true;
@@ -58,7 +89,8 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
   };
 
   $scope.orderTestDrive = function(){
-    console.log($scope.orderTestDriveData)
+    $scope.sendMail('test-drive', $scope.orderTestDriveData);
+    $scope.toggleOrderTestDriveForm();
   };
 
   $scope.infoNavMenu = [
@@ -101,9 +133,9 @@ appControllers.controller('ApplicationCtrl', function($rootScope, $scope, $locat
 
   });
 
-  $rootScope.comparedProducts = localStorageService.get('comparedProducts');
+//  $rootScope.comparedProducts = localStorageService.get('comparedProducts');
 
-});
+}]);
 
 appControllers.controller('ContactsCtrl', function($scope, $http){
   $scope.mapMarkers = [
@@ -148,84 +180,5 @@ appControllers.controller('SearchCtrl', function($scope, $location, $http, $root
   $scope.isoOptions = {
     layoutMode: 'fitRows'
   };
-
-});
-
-appControllers.controller('DeliveryCtrl', function($scope){
-
-  $('.delivery-navigation').waypoint('sticky');
-
-  var itemsOffset = [];
-  $(".delivery-item").each(function(){
-    var offsetTop = $(this).offset().top;
-    itemsOffset.push(offsetTop);
-  });
-
-  $(document).on('scroll', function(){
-    var scrollTop = $('body').scrollTop();
-
-    var winHeight = $(window).height();
-
-    if(scrollTop <= itemsOffset[0]){
-      $('.delivery-navigation li').removeClass('active');
-      $('.delivery-navigation li').eq(0).addClass('active');
-    }else if(scrollTop > itemsOffset[0] && scrollTop <= itemsOffset[1]){
-      $('.delivery-navigation li').removeClass('active');
-      $('.delivery-navigation li').eq(1).addClass('active');
-    }else if(scrollTop > itemsOffset[1] && scrollTop <= itemsOffset[2]){
-      $('.delivery-navigation li').removeClass('active');
-      $('.delivery-navigation li').eq(2).addClass('active');
-    }else if(scrollTop > itemsOffset[2] && scrollTop <= itemsOffset[3]){
-      $('.delivery-navigation li').removeClass('active');
-      $('.delivery-navigation li').eq(3).addClass('active');
-    }
-
-    if(scrollTop <= 400){
-      $('.delivery-navigation li').removeClass('active');
-      $('.delivery-navigation li').eq(0).addClass('active');
-    }
-  });
-
-  $('.delivery-navigation li').click(function(){
-    $('.delivery-navigation li').removeClass('active');
-    $(this).addClass('active');
-
-    var index = $(this).index();
-
-    $("html, body").animate({scrollTop: $(".delivery-item").eq(index).offset().top - 120}, 400);
-
-  });
-
-  $scope.cityList = [
-    {
-      id: 0,
-      value: ''
-    }
-  ];
-  $('#recommended .column li a').each(function(i){
-    var cityItem = {
-      id: i+1,
-      value: $(this).html()
-    };
-    $scope.cityList.push(cityItem);
-  });
-
-  $scope.selectedCity = null;
-
-  $(document).ready(function(){
-
-    $.getScript('//cdnjs.cloudflare.com/ajax/libs/select2/3.4.8/select2.min.js',function(){
-      $.getScript('//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js',function(){
-
-        $(".delivery-city-search select").select2({
-          formatNoMatches: '',
-          placeholder: "Выберите город",
-          allowClear: true
-        });
-
-      });//script
-    });//script
-
-  });
 
 });

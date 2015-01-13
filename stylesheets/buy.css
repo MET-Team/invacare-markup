@@ -141,6 +141,7 @@
   margin-top: 34px;
   background: none #f2f2f2;
   padding: 10px 20px 0;
+  font-family: 'MuseoSansCyrl-500';
 }
 .page-block-buy .column.checkout .tab-item{
   float: left;
@@ -149,6 +150,7 @@
   cursor: pointer;
   width: 33%;
   text-align: center;
+  color: #808080;
 }
 .page-block-buy .column.checkout .tab-item:last-child{
   padding-right: 0;
@@ -163,6 +165,11 @@
   position: relative;
   padding: 12px;
 }
+.page-block-buy .column.checkout .tab-item .inner .label{
+  position: relative;
+  z-index: 11;
+}
+
 .page-block-buy .column.checkout .tab-item.tab-completed .inner:before{
   content: '';
   position: absolute;
@@ -170,22 +177,34 @@
   right: 0;
   bottom: 0;
   top: 0;
-  border: solid 2px #5098de;
+  background: none #d9d9d9;
+  z-index: 10;
 }
+
 .page-block-buy .column.checkout .tab-item.tab-completed .inner:after{
   content: '';
   display: inline-block;
-  width: 8px;
-  height: 6px;
+  width: 14px;
+  height: 10px;
   background: url('../images/ico-checkout-type-completed.png') no-repeat 0 0 transparent;
   margin-left: 10px;
   vertical-align: middle;
+  z-index: 11;
+  position: relative;
 }
 
 .page-block-buy .column.checkout .tab-item.tab-active{
-  background: none #fff;
   color: #5098de;
   cursor: default;
+}
+.page-block-buy .column.checkout .tab-item.tab-active .inner:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  border: solid 2px #5098de;
 }
 
 .page-block-buy .column.checkout .tab-content{
@@ -196,6 +215,11 @@
 .page-block-buy .column.checkout .tab-content .title{
   font-size: 18px;
 }
+
+.page-block-buy .column.checkout .tab-content .checkout-errors{
+  color: #b94a48;
+}
+
 .page-block-buy .column.checkout .tab-content .delivery-list{
   margin-top: 30px;
 }
@@ -242,6 +266,10 @@
   cursor: pointer;
   text-align: center;
   color: #5098de;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list .delivery-item .choose-button:hover{
+  background: none #5098de;
+  color: #fff;
 }
 
 .page-block-buy .column.checkout .tab-content .delivery-list .delivery-item.selected .choose-button{
@@ -304,4 +332,28 @@
   padding: 15px 20px;
   line-height: 16px;
   height: auto;
+}
+.page-block-buy .checkout .tab-content .contacts .form-horizontal .form-control.error{
+  border: solid 1px #b94a48;
+}
+
+.page-block-buy .order-congrats{
+  position: absolute;
+  top: 300px;
+  width: 950px;
+  left: 50%;
+  margin-left: -475px;
+  background: none #f2f2f2;
+  padding: 20px;
+  z-index: 1001;
+}
+.page-block-buy .order-congrats-overlay{
+  position: fixed;
+  top: 200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: none #f2f2f2;
+  opacity: 0.3;
+  z-index: 1000;
 }

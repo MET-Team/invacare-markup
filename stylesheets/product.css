@@ -5,6 +5,12 @@
   z-index: 11;
 }
 
+.page-block-product .main-card .main-card-inner{
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 .page-block-product .main-card .breadcrumbs{
   position: absolute;
   left: 60px;
@@ -26,8 +32,8 @@
 
 .page-block-product .main-card .image-view{
   position: absolute;
-  left: 60px;
-  top: 100px;
+  left: 0;
+  top: 0;
   font-size: 18px;
   z-index: 100;
 }
@@ -81,6 +87,11 @@
   height: 506px;
   position: relative;
 }
+.page-block-product .main-card.transformations .card-container .card-col.card-image .image-container{
+  width: 454px;
+  height: 446px;
+}
+
 .page-block-product .main-card .card-container .card-col.card-image .image-container .animation-container,
 .page-block-product .main-card .card-container .card-col.card-image .image-container .threed-object{
   width: 506px;
@@ -493,7 +504,8 @@
 
 .page-block-product .main-card.speciality.promo-block,
 .page-block-product .main-card.speciality.promo-block .card-container{
-  height: 500px;
+  /*height: 500px;*/
+  height: auto;
   max-height: 500px;
   padding: 0;
 }

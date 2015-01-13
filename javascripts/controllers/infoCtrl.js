@@ -4,7 +4,8 @@ angular.module('infoCtrl', []).controller('InfoCtrl', function($scope, $http, $d
     $scope.menuItemIsOpen = false;
     $scope.menuItem = undefined;
 
-    $scope.sidebarTitle = "Интересная информация";
+    $scope.sidebarTitle = "";
+    $scope.sidebarTitle = "";
   };
 
   $scope.sidebarIco = {
@@ -33,16 +34,18 @@ angular.module('infoCtrl', []).controller('InfoCtrl', function($scope, $http, $d
 
   $scope.openMenuItem = function(index){
 
-    $scope.sidebarIco.class = 'scaleDown';
+////    $scope.sidebarIco.class = 'scaleDown';
+//
+//    setTimeout(function(){
+//      $scope.$apply(function(){
+////        $scope.sidebarIco = {
+////          img: 'images/ico_opened.png'
+////        };
+//
+//      });
+//    }, 150);
 
-    setTimeout(function(){
-      $scope.$apply(function(){
-        $scope.sidebarIco = {
-          img: 'images/ico_opened.png'
-        };
-        $scope.menuItemIsOpen = true;
-      });
-    }, 150);
+    $scope.menuItemIsOpen = true;
 
     $scope.menuItem = $scope.mainMenu[index];
     $http.get('javascripts/templates/info/'+ $scope.mainMenu[index].id +'.html', {cache: $templateCache}).success(function(data){
@@ -51,11 +54,11 @@ angular.module('infoCtrl', []).controller('InfoCtrl', function($scope, $http, $d
 
     $location.search('part', $scope.mainMenu[index].id);
 
-    setTimeout(function(){
-      $scope.$apply(function(){
-        $scope.sidebarIco.class = 'scaleUp';
-      });
-    }, 150);
+////    setTimeout(function(){
+////      $scope.$apply(function(){
+////        $scope.sidebarIco.class = 'scaleUp';
+////      });
+////    }, 150);
 
     $scope.sidebarTitle = $scope.menuItem.title;
 
@@ -78,17 +81,19 @@ angular.module('infoCtrl', []).controller('InfoCtrl', function($scope, $http, $d
   }
 
   $scope.closeMenuItem = function(){
-    $scope.sidebarIco.class = 'scaleDown';
+//    $scope.sidebarIco.class = 'scaleDown';
+//
+//    setTimeout(function () {
+//      $scope.$apply(function () {
+//        $scope.sidebarIco = {
+//          img: 'images/ico_default.png',
+//          class: 'scaleUp'
+//        };
+//
+//      });
+//    }, 150);
 
-    setTimeout(function () {
-      $scope.$apply(function () {
-        $scope.sidebarIco = {
-          img: 'images/ico_default.png',
-          class: 'scaleUp'
-        };
-        $scope.sidebarDefaults();
-      });
-    }, 150);
+    $scope.sidebarDefaults();
 
     $location.search('part', null);
   };

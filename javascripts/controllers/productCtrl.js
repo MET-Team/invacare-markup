@@ -2,7 +2,7 @@ angular.module('productCtrl', [
   'spritespin-ng',
   'angular-object2vr'
 ])
-.controller('ProductCtrl', function($scope, $http, $filter, localStorageService, $location, $routeParams, $rootScope){
+.controller('ProductCtrl', function($scope, $http, $filter, $location, $routeParams, $rootScope, localStorageService){
 
   $scope.productId = $routeParams.productId;
 
@@ -70,6 +70,11 @@ angular.module('productCtrl', [
   $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId)
     .success(function(data){
       $scope.product = data;
+
+      $rootScope.metaTags.pageTitle = $scope.product.meta_tags;
+      $rootScope.metaTags.pageKeyWords = $scope.product.keywords;
+      $rootScope.metaTags.pageDescription = $scope.product.page_description;
+
       $scope.totalPrice = $scope.product.price;
       $scope.recalcTotalPrice();
 
@@ -88,7 +93,6 @@ angular.module('productCtrl', [
           states: 1,
           fileextension: 'jpg',
           images: $scope.product.images
-//          imagepath: "http://fast.met.ru/3dnew/images/1254"
         },
         control: {
           wrapx: "1",
@@ -114,7 +118,7 @@ angular.module('productCtrl', [
           },
           zoom: {
             min: "1",
-            default: "1",
+            "default": "1",
             max: "2",
             centerx: "0",
             centery: "0"
@@ -246,7 +250,8 @@ angular.module('productCtrl', [
   };
 
   $scope.transformationsSpinConfig = {
-    disableAnimation: true
+    disableAnimation: true,
+    frameTime: '300'
   };
 
   $scope.spinObj = {
@@ -269,7 +274,7 @@ angular.module('productCtrl', [
   };
 
   $scope.orderTestDrive = function(){
-    console.log($scope.orderTestDriveData)
+    $scope.sendMail('test-drive', $scope.orderTestDriveData);
     $scope.toggleOrderTestDriveForm();
   };
 

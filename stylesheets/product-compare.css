@@ -37,7 +37,7 @@
   padding-right: 15px;
 }
 .page-block-product-compare .product-list .list-table tr td:last-child{
-  padding-right: 15px;
+  padding-right: 0;
 }
 
 .page-block-product-compare .product-list .list-table tr:first-child td{

@@ -55,7 +55,7 @@ body{
 
 .wrapper{
   width: 100%;
-  min-width: 1200px;
+  min-width: 1400px;
   margin: 0 auto;
 }
 
@@ -180,7 +180,7 @@ body{
   left: 0;
   top: 50px;
   right: 0;
-  z-index: 101;
+  z-index: 102;
   padding: 20px 60px;
   border-bottom: solid 1px #8a8c8c;
   text-align: center;
@@ -272,8 +272,8 @@ body{
 }
 .wrapper .brief .brief-item{
   display: table-cell;
-  padding: 30px 60px;
-  white-space: nowrap;
+  padding: 30px 40px;
+  /*white-space: nowrap;*/
 }
 .wrapper .brief .brief-item .ico{
   display: inline-block;

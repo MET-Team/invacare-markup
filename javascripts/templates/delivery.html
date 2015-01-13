@@ -26,19 +26,186 @@
             <div class="sub-list-item">
               <div class="sub-list-item-title">Бесплатно доставка осуществляется в города, представленные в списке:</div>
               <div class="sub-list-item-content">
-                <div class="delivery-city-search">
+                <div class="delivery-city-search" ng-class="{opened: SearchListIsOpen}">
                   <div class="inner">
-                    <select>
-                      <option ng-repeat="city in cityList" ng-selected="" ng-model="selectedCity">{{city.value}}</option>
-                    </select>
+                    <div class="search-field">
+                      <input type="text" value="" placeholder="Введите город" ng-model="deliveryCity" ng-keyup="searchDeliveryCity()" />
+                      <div class="caret" ng-click="toggleSearchList()"></div>
+                    </div>
+                    <div class="search-list">
+                      <div class="list-item" ng-repeat="item in cityListResult" ng-bind="item.value" ng-click="selectDeliveryCity(item)"></div>
+                    </div>
+                    <div class="delivery-result" ng-if="deliveryCitySelected">
+                      <div class="delivery-enabled" ng-if="deliveryEnabled">Доставка осуществляется бесплатно</div>
+                      <div class="delivery-disabled" ng-if="!deliveryEnabled">Уточните стоимость доставки у менеджера по телефону <span ng-bind="mainPhone"></span></div>
+                    </div>
                   </div>
                 </div>
+
                 <p>
                   Если вы не нашли свой город в списке - уточните у менеджера стоимость и условиях доставки по  вашему адресу
                 </p>
 
                 <ul id="recommended" style="display: none;">
-                  <div class="column"><li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Almaty/" class="">Алматы</a></li><li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Almetevsk/" class="">Альметьевск</a></li><li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Armavir/" class="">Армавир</a></li><li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Artem/" class="">Артем</a></li></div><div class="column"><li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Arkhangelsk/" class="">Архангельск</a></li><li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Astrakhan/" class="">Астрахань</a></li><li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Balakovo/" class="">Балаково</a></li><li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Barnaul/" class="">Барнаул</a></li></div><div class="column"><li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Belgorod/" class="">Белгород</a></li><li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Berezniki/" class="">Березники</a></li><li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Biysk/" class="">Бийск</a></li><li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Blagoveshchensk/" class="">Благовещенск</a></li></div><div class="column"><li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Borisoglebsk/" class="">Борисоглебск</a></li><li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Bratsk/" class="">Братск</a></li><li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Bryansk/" class="">Брянск</a></li><li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Budennovsk/" class="">Буденновск</a></li></div><div class="column"><li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Velikiy_Novgorod/" class="">Великий Новгород</a></li><li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Vladivostok/" class="">Владивосток</a></li><li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Vladimir/" class="">Владимир</a></li><li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Volgograd/" class="">Волгоград</a></li></div><div class="column"><li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Volgskyi/" class="">Волжский</a></li><li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Vologda/" class="">Вологда</a></li><li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Voronezh/" class="">Воронеж</a></li><li class="start_25" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Dzerzhinsk/" class="">Дзержинск</a></li></div><div class="column"><li class="start_26" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Ekaterinburg/" class="">Екатеринбург</a></li><li class="start_27" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Zelenodolsk/" class="">Зеленодольск</a></li><li class="start_33" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Ivanovo/" class="">Иваново</a></li><li class="start_33" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Izhevsk/" class="">Ижевск</a></li></div><div class="column"><li class="start_33" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Irkutsk/" class="">Иркутск</a></li><li class="start_34" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Yoshkar-Ola/" class="">Йошкар-Ола</a></li><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kazan/" class="">Казань</a></li><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kaliningrad/" class="">Калининград</a></li></div><div class="column"><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kaluga/" class="">Калуга</a></li><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kamensk-Uralskiy/" class="">Каменск-Уральский</a></li><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kemerovo/" class="">Кемерово</a></li><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kirov/" class="">Киров</a></li></div><div class="column"><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kostroma/" class="">Кострома</a></li><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Krasnodar/" class="">Краснодар</a></li><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Krasnoyarsk/" class="">Красноярск</a></li><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kuznetsk/" class="">Кузнецк</a></li></div><div class="column"><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kurgan/" class="">Курган</a></li><li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kursk/" class="">Курск</a></li><li class="start_50" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Lipetsk/" class="">Липецк</a></li><li class="start_59" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Magnitogorsk/" class="">Магнитогорск</a></li></div><div class="column"><li class="start_59" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Miass/" class="">Миасс</a></li><li class="start_59" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Moskva/" class="">Москва</a></li><li class="start_59" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Murmansk/" class="">Мурманск</a></li><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Naberezhnye_Chelny/" class="">Набережные Челны</a></li></div><div class="column"><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nalchik/" class="">Нальчик</a></li><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nevinnomyssk/" class="">Невинномысск</a></li><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Neftekamsk/" class="">Нефтекамск</a></li><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nizhnevartovsk/" class="">Нижневартовск</a></li></div><div class="column"><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nignekamsk/" class="">Нижнекамск</a></li><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nizhniy_Novgorod/" class="">Нижний Новгород</a></li><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nizhniy_Tagil/" class="">Нижний Тагил</a></li><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Novokuznetsk/" class="">Новокузнецк</a></li></div><div class="column"><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Novorossiysk/" class="">Новороссийск</a></li><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Novosibirsk/" class="">Новосибирск</a></li><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Novocheboksarsk/" class="">Новочебоксарск</a></li><li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Noyabrsk/" class="">Ноябрьск</a></li></div><div class="column"><li class="start_79" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Omsk/" class="">Омск</a></li><li class="start_79" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Orel/" class="">Орел</a></li><li class="start_79" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Orenburg/" class="">Оренбург</a></li><li class="start_79" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Orsk/" class="">Орск</a></li></div><div class="column"><li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Penza/" class="">Пенза</a></li><li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Perm/" class="">Пермь</a></li><li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Petrozavodsk/" class="">Петрозаводск</a></li><li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Prokopyevsk/" class="">Прокопьевск</a></li></div><div class="column"><li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Pskov/" class="">Псков</a></li><li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Pyatigorsk/" class="">Пятигорск</a></li><li class="start_91" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Rossosh/" class="">Россошь</a></li><li class="start_91" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Rostov-na-Donu/" class="">Ростов-на-Дону</a></li></div><div class="column"><li class="start_91" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Rybinsk/" class="">Рыбинск</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Salavat/" class="">Салават</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Samara/" class="">Самара</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Sankt-Peterburg/" class="">Санкт-Петербург</a></li></div><div class="column"><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Saransk/" class="">Саранск</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Saratov/" class="">Саратов</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Severodvinsk/" class="">Северодвинск</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Smolensk/" class="">Смоленск</a></li></div><div class="column"><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Sochi/" class="">Сочи</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Stavropol/" class="">Ставрополь</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/StariyOskol/" class="">Старый Оскол</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Sterlitamak/" class="">Стерлитамак</a></li></div><div class="column"><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Surgut/" class="">Сургут</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Sizran/" class="">Сызрань</a></li><li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Syktyvkar/" class="">Сыктывкар</a></li><li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Taganrog/" class="">Таганрог</a></li></div><div class="column"><li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tambov/" class="">Тамбов</a></li><li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tver/" class="">Тверь</a></li><li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tolyatti/" class="">Тольятти</a></li><li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tomsk/" class="">Томск</a></li></div><div class="column"><li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tuapse/" class="">Туапсе</a></li><li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tula/" class="">Тула</a></li><li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tumen/" class="">Тюмень</a></li><li class="start_123" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/UlanUde/" class="">Улан-Удэ</a></li></div><div class="column"><li class="start_123" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Ulyanovsk/" class="">Ульяновск</a></li><li class="start_123" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Ufa/" class="">Уфа</a></li><li class="start_124" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Xabarovsk/" class="">Хабаровск</a></li><li class="start_128" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Cheboksary/" class="">Чебоксары</a></li></div><div class="column"><li class="start_128" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Chelyabinsk/" class="">Челябинск</a></li><li class="start_128" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Cherepovets/" class="">Череповец</a></li><li class="start_128" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Chita/" class="">Чита</a></li><li class="start_129" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Shakhty/" class="">Шахты</a></li></div><div class="column"><li class="start_130" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Engels/" class="">Энгельс</a></li><li class="start_131" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Yaroslavl/" class="">Ярославль</a></li></div>
+                  <div class="column">
+                    <li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Almetevsk/" class="">Альметьевск</a></li>
+                    <li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Armavir/" class="">Армавир</a></li>
+                    <li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Artem/" class="">Артем</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Arkhangelsk/" class="">Архангельск</a></li>
+                    <li class="start_5" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Astrakhan/" class="">Астрахань</a></li>
+                    <li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Balakovo/" class="">Балаково</a></li>
+                    <li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Barnaul/" class="">Барнаул</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Belgorod/" class="">Белгород</a></li>
+                    <li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Berezniki/" class="">Березники</a></li>
+                    <li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Biysk/" class="">Бийск</a></li>
+                    <li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Blagoveshchensk/" class="">Благовещенск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Borisoglebsk/" class="">Борисоглебск</a></li>
+                    <li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Bratsk/" class="">Братск</a></li>
+                    <li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Bryansk/" class="">Брянск</a></li>
+                    <li class="start_16" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Budennovsk/" class="">Буденновск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Velikiy_Novgorod/" class="">Великий Новгород</a></li>
+                    <li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Vladivostok/" class="">Владивосток</a></li>
+                    <li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Vladimir/" class="">Владимир</a></li>
+                    <li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Volgograd/" class="">Волгоград</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Volgskyi/" class="">Волжский</a></li>
+                    <li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Vologda/" class="">Вологда</a></li>
+                    <li class="start_24" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Voronezh/" class="">Воронеж</a></li>
+                    <li class="start_25" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Dzerzhinsk/" class="">Дзержинск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_26" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Ekaterinburg/" class="">Екатеринбург</a></li>
+                    <li class="start_27" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Zelenodolsk/" class="">Зеленодольск</a></li>
+                    <li class="start_33" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Ivanovo/" class="">Иваново</a></li>
+                    <li class="start_33" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Izhevsk/" class="">Ижевск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_33" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Irkutsk/" class="">Иркутск</a></li>
+                    <li class="start_34" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Yoshkar-Ola/" class="">Йошкар-Ола</a></li>
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kazan/" class="">Казань</a></li>
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kaliningrad/" class="">Калининград</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kaluga/" class="">Калуга</a></li>
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kamensk-Uralskiy/" class="">Каменск-Уральский</a></li>
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kemerovo/" class="">Кемерово</a></li>
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kirov/" class="">Киров</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kostroma/" class="">Кострома</a></li>
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Krasnodar/" class="">Краснодар</a></li>
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Krasnoyarsk/" class="">Красноярск</a></li>
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kuznetsk/" class="">Кузнецк</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kurgan/" class="">Курган</a></li>
+                    <li class="start_49" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Kursk/" class="">Курск</a></li>
+                    <li class="start_50" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Lipetsk/" class="">Липецк</a></li>
+                    <li class="start_59" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Magnitogorsk/" class="">Магнитогорск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_59" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Miass/" class="">Миасс</a></li>
+                    <li class="start_59" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Moskva/" class="">Москва</a></li>
+                    <li class="start_59" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Murmansk/" class="">Мурманск</a></li>
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Naberezhnye_Chelny/" class="">Набережные Челны</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nalchik/" class="">Нальчик</a></li>
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nevinnomyssk/" class="">Невинномысск</a></li>
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Neftekamsk/" class="">Нефтекамск</a></li>
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nizhnevartovsk/" class="">Нижневартовск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nignekamsk/" class="">Нижнекамск</a></li>
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nizhniy_Novgorod/" class="">Нижний Новгород</a></li>
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Nizhniy_Tagil/" class="">Нижний Тагил</a></li>
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Novokuznetsk/" class="">Новокузнецк</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Novorossiysk/" class="">Новороссийск</a></li>
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Novosibirsk/" class="">Новосибирск</a></li>
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Novocheboksarsk/" class="">Новочебоксарск</a></li>
+                    <li class="start_75" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Noyabrsk/" class="">Ноябрьск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_79" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Omsk/" class="">Омск</a></li>
+                    <li class="start_79" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Orel/" class="">Орел</a></li>
+                    <li class="start_79" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Orenburg/" class="">Оренбург</a></li>
+                    <li class="start_79" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Orsk/" class="">Орск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Penza/" class="">Пенза</a></li>
+                    <li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Perm/" class="">Пермь</a></li>
+                    <li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Petrozavodsk/" class="">Петрозаводск</a></li>
+                    <li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Prokopyevsk/" class="">Прокопьевск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Pskov/" class="">Псков</a></li>
+                    <li class="start_87" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Pyatigorsk/" class="">Пятигорск</a></li>
+                    <li class="start_91" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Rossosh/" class="">Россошь</a></li>
+                    <li class="start_91" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Rostov-na-Donu/" class="">Ростов-на-Дону</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_91" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Rybinsk/" class="">Рыбинск</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Salavat/" class="">Салават</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Samara/" class="">Самара</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Sankt-Peterburg/" class="">Санкт-Петербург</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Saransk/" class="">Саранск</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Saratov/" class="">Саратов</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Severodvinsk/" class="">Северодвинск</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Smolensk/" class="">Смоленск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Sochi/" class="">Сочи</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Stavropol/" class="">Ставрополь</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/StariyOskol/" class="">Старый Оскол</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Sterlitamak/" class="">Стерлитамак</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Surgut/" class="">Сургут</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Sizran/" class="">Сызрань</a></li>
+                    <li class="start_110" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Syktyvkar/" class="">Сыктывкар</a></li>
+                    <li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Taganrog/" class="">Таганрог</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tambov/" class="">Тамбов</a></li>
+                    <li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tver/" class="">Тверь</a></li>
+                    <li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tolyatti/" class="">Тольятти</a></li>
+                    <li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tomsk/" class="">Томск</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tuapse/" class="">Туапсе</a></li>
+                    <li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tula/" class="">Тула</a></li>
+                    <li class="start_118" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Tumen/" class="">Тюмень</a></li>
+                    <li class="start_123" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/UlanUde/" class="">Улан-Удэ</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_123" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Ulyanovsk/" class="">Ульяновск</a></li>
+                    <li class="start_123" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Ufa/" class="">Уфа</a></li>
+                    <li class="start_124" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Xabarovsk/" class="">Хабаровск</a></li>
+                    <li class="start_128" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Cheboksary/" class="">Чебоксары</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_128" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Chelyabinsk/" class="">Челябинск</a></li>
+                    <li class="start_128" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Cherepovets/" class="">Череповец</a></li>
+                    <li class="start_128" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Chita/" class="">Чита</a></li>
+                    <li class="start_129" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Shakhty/" class="">Шахты</a></li>
+                  </div>
+                  <div class="column">
+                    <li class="start_130" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Engels/" class="">Энгельс</a></li>
+                    <li class="start_131" style="margin-left:-7px;"><a href="/ru/services/send/warehouses/Yaroslavl/" class="">Ярославль</a></li>
+                  </div>
                 </ul>
 
               </div>
@@ -48,45 +215,45 @@
               <div class="sub-list-item-title">Отслеживание местоположение груза</div>
               <div class="sub-list-item-content">
                 <p>
-                  Уточните у менеджера какая транспортная компания везет вам груз и реквизиты товарно-транспортной накладной.
-                  Далее выберите в таблице нужную  транспортную компанию, пройдите по указанной  ссылке и введите реквизиты
+                  Уточните у менеджера какая транспортная компания везет вам груз и номер товарно-транспортной накладной.
+                  Далее выберите в таблице нужную  транспортную компанию, пройдите по указанной  ссылке и введите номер
                 </p>
                 <div class="delivery-companies">
                   <table>
                     <tr>
                       <td>ПЭК</td>
                       <td>
-                        <a href="kabinet.pecom.ru/status/?_ga=1.183469792.732415654.1416418392" target="_blank">kabinet.pecom.ru/status/?_ga=1.183469792.732415654.1416418392</a>
+                        <a href="http://kabinet.pecom.ru/status/?_ga=1.183469792.732415654.1416418392" target="_blank">kabinet.pecom.ru/status/?_ga=1.183469792.732415654.1416418392</a>
                       </td>
                     </tr>
                     <tr>
                       <td>Деловые линии</td>
                       <td>
-                        <a href="dellin.ru/tracker/" target="_blank">dellin.ru/tracker/</a>
+                        <a href="http://dellin.ru/tracker/" target="_blank">dellin.ru/tracker/</a>
                       </td>
                     </tr>
                     <tr>
                       <td>Автотрейдинг</td>
                       <td>
-                        <a href="ae5000.ru/recipients/state/" target="_blank">ae5000.ru/recipients/state/</a>
+                        <a href="http://ae5000.ru/recipients/state/" target="_blank">ae5000.ru/recipients/state/</a>
                       </td>
                     </tr>
                     <tr>
                       <td>Байкал сервис</td>
                       <td>
-                        <a href="baikalsr.ru/vidgets/tracking/" target="_blank">baikalsr.ru/vidgets/tracking/</a>
+                        <a href="http://baikalsr.ru/vidgets/tracking/" target="_blank">baikalsr.ru/vidgets/tracking/</a>
                       </td>
                     </tr>
                     <tr>
                       <td>Стейл</td>
                       <td>
-                        <a href="steil.ru/status/" target="_blank">steil.ru/status/</a>
+                        <a href="http://steil.ru/status/" target="_blank">steil.ru/status/</a>
                       </td>
                     </tr>
                     <tr>
                       <td>ЖелДорЭкспедиция</td>
                       <td>
-                        <a href="cabinet.jde.ru/index.html" target="_blank">cabinet.jde.ru/index.html</a>
+                        <a href="http://cabinet.jde.ru/index.html" target="_blank">cabinet.jde.ru/index.html</a>
                       </td>
                     </tr>
                   </table>
@@ -191,7 +358,7 @@
                 <table class="price-grid">
                   <tr>
                     <td>
-                      Вес до 30кг
+                      Вес 0 - 29кг
                     </td>
                     <td class="value">
                       <span class="digits">200 руб.</span>
@@ -207,7 +374,7 @@
                   </tr>
                   <tr>
                     <td>
-                      Вес от 69кг
+                      Вес от 70кг
                     </td>
                     <td class="value">
                       <span class="digits">1000 руб.</span>
@@ -223,7 +390,7 @@
                 <table class="price-grid">
                   <tr>
                     <td>
-                      Вес 39-69кг
+                      Вес 0-69кг
                     </td>
                     <td class="value">
                       <span class="digits">100 руб.</span> за каждый этаж (<span class="digits">500 руб.</span> минимум)
@@ -231,7 +398,7 @@
                   </tr>
                   <tr>
                     <td>
-                      Вес от 69кг
+                      Вес от 70кг
                     </td>
                     <td class="value">
                       <span class="digits">200 руб.</span> за каждый этаж (<span class="digits">1000 руб.</span> минимум)

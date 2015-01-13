@@ -1,4 +1,4 @@
-angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope, $scope, $http, $location){
+angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope, $scope, $http, $location, $routeParams){
 
   $scope.isoOptions = {
     layoutMode: 'fitRows'
@@ -48,8 +48,8 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope,
 
   $scope.carriageTypeSelected = 'mechanic';
 
-  if($location.search().type) {
-    $scope.carriageTypeSelected = $location.search().type;
+  if($routeParams.carriageType) {
+    $scope.carriageTypeSelected = $routeParams.carriageType;
   }
 
   $scope.activeOptionsFilter = [];
@@ -88,13 +88,14 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope,
     }).error(function(){
       console.error('Произошла ошибка');
     });
+
   };
 
   $scope.getProducts();
 
   $scope.$on('$routeUpdate', function() {
-    if($location.search().type){
-      $scope.carriageTypeSelected = $location.search().type;
+    if($routeParams.carriageType){
+      $scope.carriageTypeSelected = $routeParams.carriageType;
       $scope.getProducts();
     }
   });
@@ -102,7 +103,9 @@ angular.module('catalogCtrl', []).controller('CatalogCtrl', function($rootScope,
   $scope.getCarriageOptions();
 
   $scope.changeType = function(type){
-    $location.search('type', type);
+
+    $location.path('/catalog/' + type);
+
     $scope.carriageTypeSelected = type;
     $scope.getCarriageOptions();
     $scope.activeOptionsFilter = [];

@@ -15,76 +15,77 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
     reloadOnSearch: false
   })
     .when("/catalog", {
-      templateUrl: "/javascripts/templates/catalog.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/catalog.html"
     })
-    .when("/catalog/:productId", {
-      templateUrl: "/javascripts/templates/product.html",
-      reloadOnSearch: false
+
+    .when("/catalog/:carriageType", {
+      templateUrl: "/javascripts/templates/catalog.html"
+    })
+
+    .when("/catalog/:carriageType/:productId", {
+      templateUrl: "/javascripts/templates/product.html"
     })
 
     .when("/buy", {
-      templateUrl: "/javascripts/templates/buy.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/buy.html"
     })
 
     .when("/delivery", {
-      templateUrl: "/javascripts/templates/delivery.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/delivery.html"
     })
     .when("/payment", {
-      templateUrl: "/javascripts/templates/payment.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/payment.html"
     })
     .when("/about", {
-      templateUrl: "/javascripts/templates/about.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/about.html"
     })
     .when("/contacts", {
-      templateUrl: "/javascripts/templates/contacts.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/contacts.html"
     })
     .when("/info", {
-      templateUrl: "/javascripts/templates/info.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/info.html"
     })
 
     .when("/faq", {
-      templateUrl: "/javascripts/templates/faq.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/faq.html"
     })
     .when("/return_guarantee", {
-      templateUrl: "/javascripts/templates/return_guarantee.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/return_guarantee.html"
     })
 
     .when("/product_compare", {
-      templateUrl: "/javascripts/templates/product_compare.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/product_compare.html"
     })
 
     .when("/search", {
-      templateUrl: "/javascripts/templates/search.html",
-      reloadOnSearch: false
+      templateUrl: "/javascripts/templates/search.html"
     })
 
     .otherwise({
-      templateUrl: '/javascripts/templates/404.html',
-      reloadOnSearch: false
+      templateUrl: '/javascripts/templates/404.html'
     });
 
     $location.html5Mode(true);
 
-}]).run(function($rootScope, localStorageService){
+}]).run(function($rootScope){
   $rootScope.domain = "http://white-m.ru";
   $rootScope.site_id = 4;
+
+  $rootScope.mainPhone = '+7 495 777-39-18';
+  $rootScope.mainEmail = 'info@invacare.com.ru';
 
   $rootScope.userPassword = 'q1w2e3r4t5y6';
 
   $rootScope.comparedProducts = [];
   $rootScope.searchString = null;
 
-  $rootScope.userData = localStorageService.get('userData') || null;
+  $rootScope.userData = $rootScope.userData || {};
+
+  $rootScope.metaTags = {
+    pageTitle: 'Invacare',
+    pageKeyWords: '',
+    pageDescription: ''
+  }
 });
 
 App.filter("declOfNum", function() {
