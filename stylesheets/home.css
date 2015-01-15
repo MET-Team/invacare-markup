@@ -206,10 +206,6 @@
   margin-bottom: 55px;
 }
 
-.page-block-index .reviews .slick-list{
-  padding: 0 100px;
-}
-
 .page-block-index .reviews .review-item{
   width: 775px;
   margin: 0 auto;
@@ -291,4 +287,51 @@
   left: 2px;
   font-weight: bold;
   font-size: 22px;
+}
+
+@media (max-width: 1034px){
+  .page-block-index .header .title{
+    font-size: 30px;
+  }
+  .page-block-index .header .summary{
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 26px;
+  }
+
+  .page-block-index .info .info-title{
+    font-size: 24px;
+  }
+  .page-block-index .info .info-text{
+    width: auto;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .page-block-index .info .info-grid .col.col-details{
+    padding: 40px 20px;
+  }
+  .page-block-index .info .info-grid .col.col-details .detail-item .detail-title{
+    font-size: 16px;
+  }
+  .page-block-index .info .info-grid .col.col-details .detail-item .detail-title .number{
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    padding-top: 6px;
+    margin-right: 10px;
+  }
+
+  .review-title{
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  .page-block-index .reviews .review-item .text{
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .page-block-index .carriage-transitions .transition-item .caption{
+    font-size: 14px;
+  }
 }

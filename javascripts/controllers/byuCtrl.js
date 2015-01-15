@@ -2,18 +2,6 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
   $scope.productItem = localStorageService.get('productToBuy');
 
-  $scope.checkoutData = {
-    name: '',
-    email: '',
-    phone: '',
-    delivery: 0,
-    payment: 0,
-    products: []
-  };
-
-  $scope.selectedPayment = null;
-  $scope.selectedDelivery = null;
-
   $scope.userDataErrors = {
     name: '',
     email: '',
@@ -48,13 +36,13 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   ];
 
   $scope.toggleDeliveryItem = function(item){
-    if($scope.selectedDelivery != item){
-      $scope.selectedDelivery = item;
+    if($rootScope.selectedDelivery != item){
+      $rootScope.selectedDelivery = item;
 
       $scope.deliveryError = '';
       $scope.checkoutComplete = true;
     }else{
-      $scope.selectedDelivery = null;
+      $rootScope.selectedDelivery = null;
     }
   };
 
@@ -75,13 +63,13 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   ];
 
   $scope.togglePaymentItem = function(item){
-    if($scope.selectedPayment != item){
-      $scope.selectedPayment = item;
+    if($rootScope.selectedPayment != item){
+      $rootScope.selectedPayment = item;
 
       $scope.paymentError = '';
       $scope.checkoutComplete = true;
     }else{
-      $scope.selectedPayment = null;
+      $rootScope.selectedPayment = null;
     }
   };
 
@@ -96,21 +84,43 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   ];
 
   $scope.checkoutStepSelected = 0;
-  $scope.registerSuccess = false;
-  $scope.orderSuccess = false;
+
+  $scope.setCheckoutStepByHash = function(currentStep){
+    if(currentStep){
+      switch(currentStep){
+        case 'contacts':
+          $scope.checkoutStepSelected = 0;
+          break;
+        case 'delivery':
+          $scope.checkoutStepSelected = 1;
+          break;
+        case 'payment':
+          $scope.checkoutStepSelected = 2;
+          break;
+        case 'thank_you':
+          $scope.checkoutStepSelected = 3;
+          break;
+        default:
+          $scope.checkoutStepSelected = 0;
+          break;
+      }
+    }
+  };
+
+  $scope.setCheckoutStepByHash($location.hash());
 
   $scope.authoriseUser = function(){
     $http.post($rootScope.domain+ '/api/v1/users/sign_in', {
       user: {
-        email: $scope.checkoutData.email,
+        email: $rootScope.checkoutData.email,
         password: $rootScope.userPassword
       }
     }).success(function(data){
         $rootScope.userData.id = data.user_id;
         $rootScope.userData.token = data.token;
-        $scope.registerSuccess = true;
+        $rootScope.registerSuccess = true;
 
-        $scope.sendMail('registration', $scope.checkoutData);
+        $scope.sendMail('registration', $rootScope.checkoutData);
 
       })
       .error(function(data){
@@ -124,19 +134,19 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   $scope.registerUser = function(){
     $http.post($rootScope.domain + '/api/v1/users.json', {
       user: {
-        email: $scope.checkoutData.email,
+        email: $rootScope.checkoutData.email,
         password: $rootScope.userPassword,
         password_confirmation: $rootScope.userPassword,
-        login: $scope.checkoutData.email,
-        phone: $scope.checkoutData.phone || '+7 999 999 99-99',
-        name: $scope.checkoutData.name || 'noname',
+        login: $rootScope.checkoutData.email,
+        phone: $rootScope.checkoutData.phone || '+7 999 999 99-99',
+        name: $rootScope.checkoutData.name || 'noname',
         site_id: $rootScope.site_id
       }
     }).success(function(data){
         $rootScope.userData = data.user;
         $rootScope.userData.token = data.token;
 
-        $scope.registerSuccess = true;
+        $rootScope.registerSuccess = true;
         $scope.sendMail('registration', $rootScope.userData.user);
 
       }).error(function(data){
@@ -149,7 +159,7 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
     $scope.userDataErrors.email = '';
 
-    if($scope.checkoutData.email == ''){
+    if($rootScope.checkoutData.email == ''){
       $scope.userDataErrors.email = 'Поле обязательно для заполнения';
       flag = false;
       $scope.checkoutComplete = false;
@@ -166,15 +176,16 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   };
 
   $scope.nextStep = function(){
+
     if($scope.checkoutStepSelected < $scope.checkoutSteps.length - 1){
       /* заполнение форм */
 
       if($scope.checkoutStepSelected == 0){
-
+        $location.hash('contacts');
         //проверка полей формы
         var continueStep = $scope.checkUserData();
 
-        if(continueStep && !$scope.registerSuccess){
+        if(continueStep && !$rootScope.registerSuccess){
           $scope.checkoutSteps[$scope.checkoutStepSelected].completed = true;
 
           $scope.userDataErrors.email = '';
@@ -189,7 +200,7 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
       if($scope.checkoutStepSelected == 1){
         // проверяем выбор доставки
-        if(!$scope.selectedDelivery){
+        if(!$rootScope.selectedDelivery){
           $scope.deliveryError = 'Укажите тип доставки';
           $scope.checkoutComplete = false;
           return false;
@@ -200,7 +211,7 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
       if($scope.checkoutStepSelected == 2){
         // проверяем выбор оплаты
-        if(!$scope.selectedPayment){
+        if(!$rootScope.selectedPayment){
           $scope.paymentError = 'Укажите тип оплаты';
           $scope.checkoutComplete = false;
           return false;
@@ -210,14 +221,41 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
       }
 
       $scope.checkoutStepSelected++;
+
+      switch($scope.checkoutStepSelected){
+        case 0:
+          $location.hash('contacts');
+          break;
+        case 1:
+          $location.hash('delivery');
+          break;
+        case 2:
+          $location.hash('payment');
+          break;
+//        case 3:
+//          console.log('thank_you.........end');
+//          return false;
+//
+//          $location.hash('thank_you');
+//          break;
+        default:
+          $location.hash('contacts');
+          break;
+      }
     }else{
+
+      console.log('make order', $rootScope.checkoutData, $rootScope.userData, $rootScope.registerSuccess, $rootScope.orderSuccess);
+
       /* оформление покупки */
 
-      $scope.checkoutData.delivery = $scope.selectedDelivery;
-      $scope.checkoutData.payment = $scope.selectedPayment;
-      $scope.checkoutData.product = $scope.productItem;
+      $rootScope.checkoutData.delivery = $rootScope.selectedDelivery;
+      $rootScope.checkoutData.payment = $rootScope.selectedPayment;
+      $rootScope.checkoutData.product = $scope.productItem;
 
-      if($rootScope.userData && $scope.registerSuccess && !$scope.orderSuccess){
+      if($rootScope.userData && $rootScope.registerSuccess && !$rootScope.orderSuccess){
+
+        console.log('send order');
+
 
         if(!$scope.checkoutComplete){
           return false;
@@ -228,12 +266,12 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
           user_id: $rootScope.userData.id,
           site_id: $rootScope.site_id,
           order: {
-            shipment_method_id: $scope.checkoutData.delivery.id,
-            payment_method: $scope.checkoutData.payment.cash,
+            shipment_method_id: $rootScope.checkoutData.delivery.id,
+            payment_method: $rootScope.checkoutData.payment.cash,
             address: 'Test',
             comment: 'Test',
             order_products_attributes: [{
-              orderable_id: $scope.checkoutData.product.id,
+              orderable_id: $rootScope.checkoutData.product.id,
               orderable_type: 'Product',
               quantity: 1
             }]
@@ -246,7 +284,7 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
             var orderResponse = data;
             if(orderResponse){
-              if($scope.checkoutData.payment.cash && $scope.checkoutData.payment.title == 'Электронные деньги'){
+              if($rootScope.checkoutData.payment.cash && $rootScope.checkoutData.payment.title == 'Электронные деньги'){
 
                 // 4. подтверждаем оплату безналом
                 $http.post($rootScope.domain+ '/api/v1/users/'+ $rootScope.userData.id +'/orders/'+ orderResponse.id +'/set_reserve_pay_online_money_ext',{
@@ -260,16 +298,18 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
                   .error(function(data){
                     console.error(data);
                   });
-              }else{
-                $scope.orderThanks = 'Ваш заказ принят. В ближайшее время наш менеджер с Вами свяжется для уточнения деталей доставки.';
               }
+
+              console.log('orderSuccess');
+              $location.hash('thank_you');
+
+              $scope.orderThanks = 'Ваш заказ принят. В ближайшее время наш менеджер с Вами свяжется для уточнения деталей доставки.';
+
+              $scope.sendMail('order', $rootScope.checkoutData);
+
+              $rootScope.orderSuccess = true;
+              localStorageService.set('productToBuy', null);
             }
-
-            $scope.sendMail('order', $scope.checkoutData);
-
-            $scope.orderSuccess = true;
-            localStorageService.set('productToBuy', null);
-
           })
           .error(function(data){
             console.error(data);
@@ -277,6 +317,10 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
       }
     }
+
+    $scope.$on('$locationChangeSuccess', function(newState, oldState){
+      $scope.setCheckoutStepByHash($location.hash());
+    });
   };
 
 });

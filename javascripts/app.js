@@ -65,7 +65,7 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
       templateUrl: '/javascripts/templates/404.html'
     });
 
-    $location.html5Mode(true);
+    $location.html5Mode(true).hashPrefix('!');
 
 }]).run(function($rootScope){
   $rootScope.domain = "http://white-m.ru";
@@ -85,7 +85,22 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
     pageTitle: 'Invacare',
     pageKeyWords: '',
     pageDescription: ''
-  }
+  };
+
+  $rootScope.checkoutData = {
+    name: '',
+    email: '',
+    phone: '',
+    delivery: 0,
+    payment: 0,
+    products: []
+  };
+  $rootScope.selectedPayment = null;
+  $rootScope.selectedDelivery = null;
+
+  $rootScope.registerSuccess = false;
+  $rootScope.orderSuccess = false;
+
 });
 
 App.filter("declOfNum", function() {
@@ -93,4 +108,13 @@ App.filter("declOfNum", function() {
     var cases = [2, 0, 1, 1, 1, 2];
     return textVariants[(number % 100 > 4 && number % 100 < 20 ? 2 : cases[(number % 10 < 5 ? number % 10 : 5)])];
   };
+});
+
+$(function(){
+  var userAgent = detect.parse(navigator.userAgent);
+  $(window).load(function(){
+    if(userAgent.device.type == 'Mobile' || userAgent.device.type == 'Tablet'){
+      $('meta[name=viewport]').attr('content','width=1024, user-scalable=no');
+    }
+  });
 });

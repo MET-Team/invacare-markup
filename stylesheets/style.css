@@ -105,6 +105,8 @@ body{
 .header-layout .navigation{
   display: inline-block;
   vertical-align: top;
+  position: relative;
+  top: 1px;
 }
 .header-layout .navigation ul li{
   display: inline-block;
@@ -117,7 +119,7 @@ body{
 
 .header-layout .search{
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
   line-height: 10px;
   font-size: 14px;
   opacity: 0.5;
@@ -212,6 +214,10 @@ body{
 .nav-menu-layout .logo{
   float: left;
 }
+.nav-menu-layout .logo img{
+  width: 101px;
+}
+
 .nav-menu-layout .phone{
   float: right;
   font-size: 18px;
@@ -381,5 +387,69 @@ body{
 @media (max-width: 980px){
   .page-block-index .reviews .review-item, .page-block-index .header .inner{
     width: auto !important;
+  }
+}
+
+@media (max-width: 1034px){
+  .wrapper{
+    min-width: 1024px;
+    width: 1024px;
+  }
+
+  .header-layout{
+    padding: 20px 40px;
+    text-align: inherit;
+  }
+  .header-layout .email{
+    font-size: 12px;
+    margin-right: 20px;
+  }
+  .header-layout .navigation ul li{
+    margin-right: 15px;
+    font-size: 12px;
+  }
+  .header-layout .search{
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  .header-layout .search .caption{
+    font-size: 12px;
+  }
+  .header-layout .search .caption:before{
+    width: 12px;
+    height: 12px;
+    background-size: 100%;
+    position: relative;
+    top: -1px;
+  }
+
+  .nav-menu-layout{
+    padding: 20px 40px;
+    min-width: 1024px;
+  }
+  .nav-menu-layout .logo img{
+    width: 90px;
+  }
+  .nav-menu-layout .catalog-links li{
+    font-size: 14px;
+    margin-right: 30px;
+  }
+  .nav-menu-layout .phone{
+    font-size: 16px;
+  }
+  .nav-menu-layout .phone:before{
+    width: 14px;
+    height: 14px;
+    background-size: 100%!important;
+  }
+
+  .wrapper .brief .brief-item{
+    padding: 15px 10px!important;
+  }
+  .wrapper .brief .brief-item .ico{
+    width: 40px!important;
+  }
+  .wrapper .brief .brief-item .title{
+    margin-left: 10px!important;
   }
 }

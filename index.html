@@ -9,7 +9,7 @@
     <meta name="keywords" content="{{metaTags.pageKeyWords}}" />
     <meta name="description" content="{{metaTags.pageDescription}}" />
 
-    <meta name="viewport" content="width=1280, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="/stylesheets/reset.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
@@ -31,6 +31,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
     <script src="https://kupivkredit-test-fe.tcsbank.ru/widget/vkredit.js"></script>
+
+    <script src="/javascripts/detect.js"></script>
 
     <!--[if lte IE 9]>
       <script src="//cdn.rawgit.com/jpillora/xdomain/0.6.17/dist/xdomain.min.js" slave="http://white-m.ru/proxy.html"></script>
@@ -125,7 +127,7 @@
 
       <div class="nav-menu-layout" ng-class="{'nav-menu-layout-black': !pageIsMain}">
         <a href="/" class="logo">
-          <img src="/images/logo.png" alt="" width="101" height="18" />
+          <img src="/images/logo.png" alt="" />
         </a>
 
         <ul class="catalog-links">

@@ -692,3 +692,59 @@ a{
   font-family: 'MuseoSansCyrl-500';
   color: #1e2326;
 }
+
+@media (max-width: 1034px){
+  .nav-menu-info{
+    margin-left: -470px;
+  }
+  .page-block.page-block-info-part{
+    padding-left: 255px;
+    padding-right: 20px;
+  }
+  .page-block.page-block-info-part:before{
+    left: 215px;
+  }
+
+  .page-block-delivery-payments .delivery .delivery-navigation ul li{
+    padding: 12px;
+    font-size: 14px;
+  }
+  .page-block-delivery-payments .delivery .title, .page-block-delivery-payments .payment .title,
+  .page-block-return-guarantee .title,
+  .page-block-faq .title,
+  .page-block-contacts .title{
+    font-size: 20px;
+  }
+  .page-block-delivery-payments .delivery .delivery-navigation{
+    padding-bottom: 25px;
+  }
+  .page-block-delivery-payments .delivery-list .delivery-item .delivery-item-title{
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .page-block-delivery-payments .delivery-list .delivery-item .delivery-item-content,
+  .page-block-delivery-payments .payment .payments-list .payment-item .text,
+  .page-block-return-guarantee .text, .page-block-return-guarantee .text,
+  .page-block-faq .faq-list .faq-item .faq-item-answer,
+  .page-block-contacts .communication-type .text{
+    font-size: 14px;
+    line-height: 26px;
+  }
+  .page-block-delivery-payments .delivery-list .delivery-item .sub-list .sub-list-item{
+    margin-bottom: 20px;
+  }
+  .page-block-delivery-payments .delivery-list .delivery-item a.download-scheme{
+    padding: 10px 25px;
+  }
+  .page-block-delivery-payments .payment .payments-list .payment-item .title,
+  .page-block-contacts .communication-type .title{
+    font-size: 16px;
+  }
+
+  .page-block-about .page-title{
+    font-size: 30px;
+  }
+  .page-block-about .page-content, .page-block-about .copyright{
+    font-size: 16px;
+  }
+}

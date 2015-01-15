@@ -539,6 +539,7 @@
   top: -3px;
   display: block;
   margin: 0 auto;
+  max-width: 100%;
 }
 
 .page-block-product .main-card.schema .schema-list{
@@ -1062,4 +1063,80 @@
 }
 .page-block-product .test-drive-form .form-horizontal .form-group:last-child span{
   cursor: pointer;
+}
+
+@media (max-width: 1034px){
+  .page-block-product .main-card{
+    padding: 100px 40px;
+  }
+  .page-block-product .main-card .breadcrumbs{
+    left: 40px;
+  }
+  .page-block-product .main-card .card-container .card-col.card-image{
+    vertical-align: top;
+  }
+  .page-block-product .main-card .card-container .card-col.card-image .image-container,
+  .page-block-product .main-card .card-container .card-col.card-image .image-container .animation-container{
+    width: 406px!important;
+    height: 406px!important;
+  }
+  .page-block-product .main-card .card-container .card-col.card-details{
+    font-size: 16px;
+  }
+  .page-block-product .main-card .card-container .card-col.card-details .name{
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .page-block-product .main-card .card-container .card-col.card-details .text{
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 26px;
+  }
+  .page-block-product .main-card .card-container .card-col.card-details .other{
+    margin-top: 15px;
+  }
+  .page-block-product .main-card .card-container .card-col.card-details .buy-button{
+    margin-top: 20px;
+  }
+  .page-block-product .main-card .card-container .card-col.card-details .buy-button .button,
+  .page-block-product .main-card .card-container .card-col.card-details .buy-button .button.button-test-drive{
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .page-block-product .main-card.speciality{
+    padding: 40px 40px 90px;
+  }
+  .page-block-product .main-card.speciality .card-container .card-col.card-details{
+    padding: 0;
+  }
+
+  .page-block-product .main-card.speciality .card-container .card-col.card-details .title{
+    font-size: 24px;
+  }
+  .page-block-product .main-card.speciality.speciality-control .card-container .card-col.card-details{
+    padding-left: 40px;
+  }
+  .page-block-product .main-card.speciality.promo-block .card-col.card-image.right img{
+    max-height: 400px;
+  }
+
+  .page-block-product .gallery .gallery-item .caption{
+    font-size: 12px;
+    top: 48%;
+  }
+
+  .page-block-product .technical-characteristics{
+    padding: 100px 40px;
+  }
+  .page-block-product .technical-characteristics .characters-grid .grid-col.col-right{
+    display: none;
+  }
+  .page-block-product .technical-characteristics .characters-grid .grid-col.col-left table tr td{
+    font-size: 14px;
+    padding: 12px 19px;
+  }
+  .page-block-product .total-cost{
+    padding: 40px;
+  }
 }

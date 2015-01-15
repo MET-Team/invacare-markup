@@ -156,3 +156,38 @@
   border-radius: 50%;
   border-color: rgba(255,255,255,0.3);
 }
+
+@media (max-width: 1034px){
+  .info-sidebar{
+    display: none;
+  }
+  .info-container{
+    padding-left: 0;
+  }
+  .menu-item-content{
+    left: -40px;
+  }
+  .main-menu .menu-item{
+    padding: 20px 25px
+  }
+  .main-menu .menu-item .title{
+    font-size: 24px;
+  }
+  .main-menu .menu-item .summary{
+    font-size: 16px;
+  }
+
+  .menu-item-content .title{
+    font-size: 30px;
+  }
+  .menu-item-content .title-2{
+    font-size: 16px;
+  }
+  .menu-item-content .content{
+    font-size: 14px;
+    line-height: 26px;
+  }
+  .menu-item-content .content p{
+    margin-bottom: 25px;
+  }
+}

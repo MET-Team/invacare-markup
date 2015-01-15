@@ -218,7 +218,7 @@ angular.module('productCtrl', [
     };
 
     localStorageService.set('productToBuy', productToBuy);
-    $location.path('/buy');
+    $location.path('/buy').hash('contacts');
   };
 
   $scope.compareProduct = function(product){
@@ -276,6 +276,85 @@ angular.module('productCtrl', [
   $scope.orderTestDrive = function(){
     $scope.sendMail('test-drive', $scope.orderTestDriveData);
     $scope.toggleOrderTestDriveForm();
+  };
+
+  /* credit */
+  var Today = new Date();
+  $scope.creditData = {
+    orderNumber: Today.getTime()
+  };
+
+  $scope.creditBuy = function(){
+    var vkredit;
+
+    var callback_close = function(decision) {
+      var result = '';
+      switch(decision) {
+        case 'ver':
+          result = 'Ваша заявка предварительно одобрена.';
+          break;
+        case 'agr':
+          result = 'Ваша заявка одобрена! Поздравляем!';
+          break;
+        case 'rej':
+          result = 'К сожалению, заявка отклонена банком.';
+          break;
+        case '':
+          result = 'Вы не заполнили заявку до конца';
+          break;
+        default:
+          //result = 'Ваша заявка находится на рассмотрении';
+          break;
+      }
+
+      vkredit.closeForm();
+
+    };
+
+    var callback_decision = function(decision) {
+      console.log('Пришел статус: ' + decision);
+    };
+
+    var callback_before_close = function(wantClose) {
+      console.log('Клиент нажал крестик, потом (1-Да, 0-Нет): ' + wantClose);
+    };
+
+    var callback_form_complete = function(value) {
+      console.log('Клиент заполнил форму');
+    };
+
+    var callback_accept = function(value) {
+      console.log('Клиент принял решение по заявке: ' + value);
+    };
+
+    $http({
+      method: 'post',
+      url: '/php/prepareCreditOrder.php',
+      params: {
+        orderNumber : $scope.creditData.orderNumber,
+        product: {
+          name: $scope.product.name,
+          price: $scope.product.price
+        }
+      }
+    }).success(function(data){
+
+      vkredit = new VkreditWidget(1, 155555, {
+        order: data.order,
+        sig: data.sig,
+        callbackUrl: $location.path(),
+        onClose: callback_close,
+        onDecision: callback_decision,
+        onBeforeClose: callback_before_close,
+        onFormComplete: callback_form_complete,
+        onAccept: callback_accept
+      });
+
+//      vkredit.openWidget();
+
+    }).error(function(data){
+      console.error(data);
+    });
   };
 
 });
