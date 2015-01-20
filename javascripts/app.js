@@ -14,59 +14,60 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
     templateUrl: "/javascripts/templates/home.html",
     reloadOnSearch: false
   })
-    .when("/catalog", {
-      templateUrl: "/javascripts/templates/catalog.html"
-    })
 
-    .when("/catalog/:carriageType", {
-      templateUrl: "/javascripts/templates/catalog.html"
-    })
+  .when("/catalog", {
+    templateUrl: "/javascripts/templates/catalog.html"
+  })
 
-    .when("/catalog/:carriageType/:productId", {
-      templateUrl: "/javascripts/templates/product.html",
-      reloadOnSearch: false
-    })
+  .when("/catalog/:carriageType", {
+    templateUrl: "/javascripts/templates/catalog.html"
+  })
 
-    .when("/buy", {
-      templateUrl: "/javascripts/templates/buy.html"
-    })
+  .when("/catalog/:carriageType/:productId", {
+    templateUrl: "/javascripts/templates/product.html",
+    reloadOnSearch: false
+  })
 
-    .when("/delivery", {
-      templateUrl: "/javascripts/templates/delivery.html"
-    })
-    .when("/payment", {
-      templateUrl: "/javascripts/templates/payment.html"
-    })
-    .when("/about", {
-      templateUrl: "/javascripts/templates/about.html"
-    })
-    .when("/contacts", {
-      templateUrl: "/javascripts/templates/contacts.html"
-    })
-    .when("/info", {
-      templateUrl: "/javascripts/templates/info.html"
-    })
+  .when("/buy", {
+    templateUrl: "/javascripts/templates/buy.html"
+  })
 
-    .when("/faq", {
-      templateUrl: "/javascripts/templates/faq.html"
-    })
-    .when("/return_guarantee", {
-      templateUrl: "/javascripts/templates/return_guarantee.html"
-    })
+  .when("/delivery", {
+    templateUrl: "/javascripts/templates/delivery.html"
+  })
+  .when("/payment", {
+    templateUrl: "/javascripts/templates/payment.html"
+  })
+  .when("/about", {
+    templateUrl: "/javascripts/templates/about.html"
+  })
+  .when("/contacts", {
+    templateUrl: "/javascripts/templates/contacts.html"
+  })
+  .when("/info", {
+    templateUrl: "/javascripts/templates/info.html"
+  })
 
-    .when("/product_compare", {
-      templateUrl: "/javascripts/templates/product_compare.html"
-    })
+  .when("/faq", {
+    templateUrl: "/javascripts/templates/faq.html"
+  })
+  .when("/return_guarantee", {
+    templateUrl: "/javascripts/templates/return_guarantee.html"
+  })
 
-    .when("/search", {
-      templateUrl: "/javascripts/templates/search.html"
-    })
+  .when("/product_compare", {
+    templateUrl: "/javascripts/templates/product_compare.html"
+  })
 
-    .otherwise({
-      templateUrl: '/javascripts/templates/404.html'
-    });
+  .when("/search", {
+    templateUrl: "/javascripts/templates/search.html"
+  })
 
-    $location.html5Mode(true);
+  .otherwise({
+    templateUrl: '/javascripts/templates/404.html'
+  });
+
+  $location.html5Mode(true);
 
 }]).run(function($rootScope){
   $rootScope.domain = "http://white-m.ru";

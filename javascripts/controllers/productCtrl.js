@@ -96,7 +96,6 @@ angular.module('productCtrl', [
           order: data.order,
           sig: data.sig,
           callbackUrl: window.location.href,
-          isShortForm: true,
           onClose: callback_close,
           onDecision: callback_decision,
           onBeforeClose: callback_before_close,
