@@ -25,7 +25,8 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
 
   .when("/catalog/:carriageType/:productId", {
     templateUrl: "/javascripts/templates/product.html",
-    reloadOnSearch: false
+    reloadOnSearch: false,
+    caseInsensitiveMatch: false
   })
 
   .when("/buy", {
