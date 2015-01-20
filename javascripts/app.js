@@ -23,7 +23,8 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
     })
 
     .when("/catalog/:carriageType/:productId", {
-      templateUrl: "/javascripts/templates/product.html"
+      templateUrl: "/javascripts/templates/product.html",
+      reloadOnSearch: false
     })
 
     .when("/buy", {
@@ -65,7 +66,7 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
       templateUrl: '/javascripts/templates/404.html'
     });
 
-    $location.html5Mode(true).hashPrefix('!');
+    $location.html5Mode(true);
 
 }]).run(function($rootScope){
   $rootScope.domain = "http://white-m.ru";

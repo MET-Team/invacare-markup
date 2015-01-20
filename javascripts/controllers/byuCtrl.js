@@ -50,15 +50,44 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   $scope.paymentItems = [
     {
       title: 'Электронные деньги',
-      cash: true
+      cash: true,
+      value: 0
     },
     {
       title: 'Наличными',
-      cash: false
+      cash: false,
+      value: 1
     },
     {
       title: 'Банковской картой',
-      cash: true
+      cash: true,
+      value: 2
+    }
+  ];
+
+  $scope.EMoneyTypeListSelected = {
+    name: 'PC'
+  };
+  $scope.EMoneyTypeList = [
+    {
+      title: 'Кошелек в Яндекс.Деньгах',
+      name: 'PC'
+    },
+    {
+      title: 'Счет мобильного телефона',
+      name: 'MC'
+    },
+    {
+      title: 'Кошелек в системе WebMoney',
+      name: 'WM'
+    },
+    {
+      title: 'Сбербанк: оплата по SMS или Сбербанк Онлайн',
+      name: 'SB'
+    },
+    {
+      title: 'Альфа-Клик',
+      name: 'AB'
     }
   ];
 
@@ -244,8 +273,6 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
       }
     }else{
 
-      console.log('make order', $rootScope.checkoutData, $rootScope.userData, $rootScope.registerSuccess, $rootScope.orderSuccess);
-
       /* оформление покупки */
 
       $rootScope.checkoutData.delivery = $rootScope.selectedDelivery;
@@ -253,10 +280,6 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
       $rootScope.checkoutData.product = $scope.productItem;
 
       if($rootScope.userData && $rootScope.registerSuccess && !$rootScope.orderSuccess){
-
-        console.log('send order');
-
-
         if(!$scope.checkoutComplete){
           return false;
         }
@@ -284,7 +307,7 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
             var orderResponse = data;
             if(orderResponse){
-              if($rootScope.checkoutData.payment.cash && $rootScope.checkoutData.payment.title == 'Электронные деньги'){
+              if($rootScope.checkoutData.payment.cash && $rootScope.checkoutData.payment.value == 0){
 
                 // 4. подтверждаем оплату безналом
                 $http.post($rootScope.domain+ '/api/v1/users/'+ $rootScope.userData.id +'/orders/'+ orderResponse.id +'/set_reserve_pay_online_money_ext',{
@@ -300,15 +323,43 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
                   });
               }
 
-              console.log('orderSuccess');
-              $location.hash('thank_you');
+              if($rootScope.checkoutData.payment.cash){
+                /* делаем запрос на оформление оплаты */
 
-              $scope.orderThanks = 'Ваш заказ принят. В ближайшее время наш менеджер с Вами свяжется для уточнения деталей доставки.';
+                var requestParams = {
+                  scid: '19148',
+                  ShopID: '25500',
+                  CustomerNumber: $rootScope.checkoutData.email,
+                  Sum: 1,
+                  custName: $rootScope.checkoutData.name,
+                  custEMail: $rootScope.checkoutData.email,
+                  cps_email: $rootScope.checkoutData.email,
+                  cps_phone: $rootScope.checkoutData.phone,
+                  shopSuccessURL: 'http://yandex.ru/'
+                };
 
-              $scope.sendMail('order', $rootScope.checkoutData);
+                if ($rootScope.checkoutData.payment.value == 0) {
+                  requestParams.paymentType = $scope.EMoneyTypeListSelected.name;
+                } else {
+                  if ($rootScope.checkoutData.payment.value == 2) {
+                    requestParams.paymentType = 'AC';
+                  }
+                }
 
-              $rootScope.orderSuccess = true;
-              localStorageService.set('productToBuy', null);
+                var requestString = $.param(requestParams);
+
+                window.location.href = 'https://money.yandex.ru/eshop.xml?' + requestString;
+
+              }else{
+                $location.hash('thank_you');
+
+                $scope.orderThanks = 'Ваш заказ принят. В ближайшее время наш менеджер с Вами свяжется для уточнения деталей доставки.';
+
+                $scope.sendMail('order', $rootScope.checkoutData);
+
+                $rootScope.orderSuccess = true;
+                localStorageService.set('productToBuy', null);
+              }
             }
           })
           .error(function(data){

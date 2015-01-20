@@ -277,6 +277,24 @@
   color: #fff;
 }
 
+.page-block-buy .column.checkout .tab-content .delivery-list .payment-item.e-money .payment-sub-list{
+  display: none;
+  margin-top: 20px;
+  font-size: 14px;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list .payment-item.e-money.selected .payment-sub-list{
+  display: block;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list .payment-item.e-money .payment-sub-list .sub-list-item{
+  margin-bottom: 10px;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list .payment-item.e-money .payment-sub-list .sub-list-item:last-child{
+  margin-bottom: 0;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list .payment-item.e-money .payment-sub-list .sub-list-item label{
+  cursor: pointer;
+}
+
 .page-block-buy .column.checkout .continue-button{
   background: none #f2f2f2;
   color: #fff;
@@ -350,6 +368,35 @@
 .page-block-buy .order-congrats-overlay{
   position: fixed;
   top: 200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: none #f2f2f2;
+  opacity: 0.3;
+  z-index: 1000;
+}
+
+.page-block-buy .payment-form{
+  position: fixed;
+  z-index: 1001;
+}
+.page-block-buy .payment-form .form-container{
+  position: fixed;
+  width: 500px;
+  top: 150px;
+  left: 50%;
+  margin-left: -250px;
+  background: none #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 3px #cecece;
+  z-index: 1001;
+}
+.page-block-buy .payment-form:before{
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;

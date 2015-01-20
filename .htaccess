@@ -7,7 +7,7 @@ RewriteRule ^send_mail/?$	php/sendMail.php [L,QSA]
 
 RewriteRule ^yandex_payment/?$	php/yandex_payment.php [L,QSA]
 
-RewriteCond     %{REQUEST_URI} !^(/index\.php|/img|/js|/css|/robots\.txt|/favicon\.ico)
+RewriteCond     %{REQUEST_URI} !^(/index\.html|/img|/js|/css|/robots\.txt|/favicon\.ico)
 RewriteCond     %{REQUEST_FILENAME} !-f
 RewriteCond     %{REQUEST_FILENAME} !-d
 RewriteRule .               /index.html              [L]

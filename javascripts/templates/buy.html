@@ -99,8 +99,16 @@
         <div class="inner">
           <div class="checkout-errors" nf-if="paymentError" ng-bind="paymentError"></div>
           <div class="delivery-list">
-            <div class="delivery-item" ng-repeat="item in paymentItems" ng-class="{selected: selectedPayment == item}">
+            <div class="delivery-item payment-item" ng-repeat="item in paymentItems" ng-class="{selected: selectedPayment == item, 'e-money': item.value == 0}">
               <div ng-bind="item.title"></div>
+              <div class="payment-sub-list" ng-if="item.value == 0">
+                <div class="sub-list-item" ng-repeat="eType in EMoneyTypeList">
+                  <label>
+                    <input type="radio" ng-model="EMoneyTypeListSelected.name" ng-value="eType.name" />
+                    <span ng-bind="eType.title"></span>
+                  </label>
+                </div>
+              </div>
               <div class="choose-button" ng-click="togglePaymentItem(item)">Выбрать</div>
             </div>
           </div>
