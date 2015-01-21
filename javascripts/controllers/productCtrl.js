@@ -209,7 +209,7 @@ angular.module('productCtrl', [
     $scope.functionTotalOpened = $scope.functionTotalOpened ? false : true;
   };
 
-  $scope.buyProduct = function(){
+  $scope.buyProduct = function(buttonType){
     var productToBuy = {
       id: $scope.product.id,
       name: $scope.product.name,
@@ -217,6 +217,8 @@ angular.module('productCtrl', [
       price: $scope.product.price,
       photo: $scope.product.photo
     };
+
+    ga('send', 'event', 'button-buy', 'click', 'buy-button-'+ buttonType);
 
     localStorageService.set('productToBuy', productToBuy);
     $location.path('/buy').hash('contacts');
@@ -272,10 +274,16 @@ angular.module('productCtrl', [
   $scope.toggleOrderTestDriveForm = function(){
     $scope.orderTestDriveData = {};
     $scope.OrderTestDriveFormIsOpen = $scope.OrderTestDriveFormIsOpen ? false : true;
+    if($scope.OrderTestDriveFormIsOpen){
+      ga('send', 'event', 'test-drive', 'click', 'open test-drive product form');
+    }
   };
 
   $scope.orderTestDrive = function(){
     $scope.sendMail('test-drive', $scope.orderTestDriveData);
+
+    ga('send', 'event', 'test-drive', 'click', 'send test-drive product form');
+
     $scope.toggleOrderTestDriveForm();
   };
 

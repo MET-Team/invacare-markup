@@ -54,6 +54,11 @@ appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location
     }
   };
 
+  $scope.goToCatalog = function(){
+    ga('send', 'event', 'button-catalog', 'click', 'button-catalog-main');
+    $location.path('/catalog');
+  };
+
   $scope.sendMail = function(type, sendData){
     $http({
       method: 'post',
@@ -79,6 +84,9 @@ appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location
   $scope.OrderTestDriveFormIsOpen = false;
   $scope.toggleOrderTestDriveForm = function(){
     $scope.OrderTestDriveFormIsOpen = $scope.OrderTestDriveFormIsOpen ? false : true;
+    if($scope.OrderTestDriveFormIsOpen){
+      ga('send', 'event', 'test-drive', 'click', 'open test-drive homepage form');
+    }
   };
 
   var Today = new Date();
@@ -90,6 +98,9 @@ appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location
 
   $scope.orderTestDrive = function(){
     $scope.sendMail('test-drive', $scope.orderTestDriveData);
+
+    ga('send', 'event', 'test-drive', 'click', 'send test-drive homepage form');
+
     $scope.toggleOrderTestDriveForm();
   };
 

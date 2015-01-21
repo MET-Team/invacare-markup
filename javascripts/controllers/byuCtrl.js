@@ -31,7 +31,7 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
     {
       id: 2,
       title: 'Доставка по России, Казахстану, Белоруссии транспортной компанией',
-      price: 'Бесплатно'
+      price: 'Бесплатно по РФ. До Беларуси и Казахстана - по тарифам Транспортной компании.'
     }
   ];
 
@@ -49,9 +49,9 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   // false – наличные, true - безналичные
   $scope.paymentItems = [
     {
-      title: 'Электронные деньги',
+      title: 'Банковской картой',
       cash: true,
-      value: 0
+      value: 2
     },
     {
       title: 'Наличными',
@@ -59,9 +59,9 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
       value: 1
     },
     {
-      title: 'Банковской картой',
+      title: 'Электронные деньги',
       cash: true,
-      value: 2
+      value: 0
     }
   ];
 
@@ -72,10 +72,6 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
     {
       title: 'Кошелек в Яндекс.Деньгах',
       name: 'PC'
-    },
-    {
-      title: 'Счет мобильного телефона',
-      name: 'MC'
     },
     {
       title: 'Кошелек в системе WebMoney',

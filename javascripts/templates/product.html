@@ -72,7 +72,7 @@
           </div>
 
           <div class="buy-button">
-            <div class="button" ng-click="buyProduct()">Купить за <span class="price"><span ng-bind="product.price"></span> <span class="rouble">⃏</span></span></div>
+            <div class="button" ng-click="buyProduct('main')">Купить за <span class="price"><span ng-bind="product.price"></span> <span class="rouble">⃏</span></span></div>
             <div class="button button-test-drive" ng-click="toggleOrderTestDriveForm()">Записаться на тест-драйв</div>
           </div>
           <div class="button button-credit" ng-click="creditBuy()">Можно купить в кредит</div>
@@ -188,7 +188,7 @@
   <div class="main-card total-cost">
     <div class="card-container">
       <div class="card-buy-button">
-        <a ng-click="buyProduct()" href="javascript:void(0)" class="button">Купить за <span class="price"><span ng-bind="totalPrice"></span> <span class="rouble">⃏</span></span></a>
+        <a ng-click="buyProduct('bottom')" href="javascript:void(0)" class="button">Купить за <span class="price"><span ng-bind="totalPrice"></span> <span class="rouble">⃏</span></span></a>
       </div>
     </div>
   </div>
