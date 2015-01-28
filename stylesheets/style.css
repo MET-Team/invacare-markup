@@ -55,7 +55,6 @@ body{
 
 .wrapper{
   width: 100%;
-  min-width: 1400px;
   margin: 0 auto;
 }
 
@@ -391,10 +390,10 @@ body{
 }
 
 @media (max-width: 1034px){
-  .wrapper{
-    min-width: 1024px;
-    width: 1024px;
-  }
+  /*.wrapper{*/
+    /*max-width: 1024px;*/
+    /*width: 1024px;*/
+  /*}*/
 
   .header-layout{
     padding: 20px 40px;

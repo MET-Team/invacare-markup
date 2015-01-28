@@ -11,8 +11,7 @@ var App = angular.module('App', [
 App.config(['$routeProvider', '$locationProvider', function($routes, $location) {
 
   $routes.when("/", {
-    templateUrl: "/javascripts/templates/home.html",
-    reloadOnSearch: false
+    templateUrl: "/javascripts/templates/home.html"
   })
 
   .when("/catalog", {
@@ -25,12 +24,12 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
 
   .when("/catalog/:carriageType/:productId", {
     templateUrl: "/javascripts/templates/product.html",
-    reloadOnSearch: false,
-    caseInsensitiveMatch: false
+    reloadOnSearch: false
   })
 
   .when("/buy", {
-    templateUrl: "/javascripts/templates/buy.html"
+    templateUrl: "/javascripts/templates/buy.html",
+    reloadOnSearch: false
   })
 
   .when("/delivery", {
@@ -70,7 +69,7 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
 
   $location.html5Mode(true);
 
-}]).run(function($rootScope){
+}]).run(function($rootScope, localStorageService){
   $rootScope.domain = "http://white-m.ru";
   $rootScope.site_id = 4;
 
@@ -85,25 +84,10 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
   $rootScope.userData = $rootScope.userData || {};
 
   $rootScope.metaTags = {
-    pageTitle: 'Invacare',
-    pageKeyWords: '',
-    pageDescription: ''
+    pageTitle: 'Инвалидные коляски Invacare Магазин инвалидных колясок',
+    pageKeyWords: 'инвалидные коляски, купить инвалидную коляску, кресло коляска инвалидная, инвалидное кресло, invacare, коляски invacare, магазины инвалидных колясок, инвалидные коляски с электроприводом, активные инвалидные коляски,  инвалидное кресло купить, кресло коляска , инвалидная коляска, инвалидные кресла',
+    pageDescription: 'Инвалидные коляски Invacare из Германии, США и Швеции. С ручным и электроприводом, вертикализаторы, коляски активного типа. Официальный магазин, гарантия до 3х лет. Бесплатная доставка по РФ. Запишитесь на бесплатный тест-драйв коляски!'
   };
-
-  $rootScope.checkoutData = {
-    name: '',
-    email: '',
-    phone: '',
-    delivery: 0,
-    payment: 0,
-    products: []
-  };
-  $rootScope.selectedPayment = null;
-  $rootScope.selectedDelivery = null;
-
-  $rootScope.registerSuccess = false;
-  $rootScope.orderSuccess = false;
-
 });
 
 App.filter("declOfNum", function() {

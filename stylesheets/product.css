@@ -58,6 +58,9 @@
   color: #fff;
   cursor: default;
 }
+.page-block-product .main-card .image-view .view-item-video{
+  font-size: 14px;
+}
 
 .page-block-product .main-card .card-container{
   display: table;
@@ -648,6 +651,10 @@
   height: 0;
 }
 
+.page-block-product .gallery .gallery-item img{
+  width: 100%;
+  height: 100%;
+}
 .page-block-product .gallery .gallery-item .caption{
   color: #fff;
   text-align: center;

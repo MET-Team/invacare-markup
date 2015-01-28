@@ -205,6 +205,10 @@
   bottom: 0;
   top: 0;
   border: solid 2px #5098de;
+  background: none transparent;
+}
+.page-block-buy .column.checkout .tab-item.tab-active .inner:after{
+  display: none;
 }
 
 .page-block-buy .column.checkout .tab-content{
