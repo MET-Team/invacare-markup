@@ -19,9 +19,9 @@
           </div>
         </td>
       </tr>
-      <tr ng-repeat="compareItem in compareList">
+      <tr ng-repeat="compareItem in compareList track by $index">
         <td ng-bind="compareItem.title"></td>
-        <td ng-repeat="listItem in compareItem.list" ng-bind-html="listItem.value"></td>
+        <td ng-repeat="listItem in compareItem.list track by $index" ng-bind-html="listItem.value"></td>
       </tr>
     </table>
   </div>

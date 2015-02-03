@@ -80,9 +80,9 @@ angular.module('productCtrl', [
 
       $scope.compareDisabled = $scope.comparedProductsExists($scope.product);
 
-      if($rootScope.comparedProducts.length == 2){
-        $scope.compareDisabled = true;
-      }
+//      if($rootScope.comparedProducts.length == 2){
+//        $scope.compareDisabled = true;
+//      }
 
       $scope.threedConfig = {
         input: {

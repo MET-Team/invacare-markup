@@ -10,51 +10,38 @@ angular.module('productCompareCtrl', [])
       var listItem = $scope.compareList[index];
 
       if(listItem.title == characterItem.name){
-        return true;
+        return listItem;
       }
     }
     return false;
   };
 
   if($scope.comparedProducts.length > 0){
-
     for(var comparedItem in $scope.comparedProducts){
       var characters = $scope.comparedProducts[comparedItem].characters;
-      var compareListItem = {
-        list: []
-      };
-
-      compareListItem.list.push({
-        value: ''
-      });
 
       for(var characterIndex in characters){
-        var characterItem = characters[characterIndex];
+        var characterItem = characters[characterIndex],
+            compareListItem = {
+              title: characterItem.name,
+              list: []
+            };
 
-        if($scope.compareList.length && compareListExists(characterItem)){
-          for(var index in $scope.compareList){
-            var listItem = $scope.compareList[index];
+        for(var characterIndexInner in $scope.comparedProducts){
+          compareListItem.list[characterIndexInner] = {
+            value: '&mdash;'
+          };
+        }
 
-            if(listItem.title == characterItem.name){
-              listItem.list[comparedItem] = {
-                value: characterItem.value
-              };
-            }
-          }
+        var existedItem = compareListExists(characterItem);
+
+        if($scope.compareList.length && existedItem){
+          existedItem.list[comparedItem].value = characterItem.value;
         }else{
-          var compareListItem = {
-            title: characterItem.name,
-            list: []
-          };
-
-          compareListItem.list[comparedItem] = {
-            value: characterItem.value
-          };
-
+          compareListItem.list[comparedItem].value = characterItem.value;
           $scope.compareList.push(compareListItem);
         }
       }
-
     }
   }
 

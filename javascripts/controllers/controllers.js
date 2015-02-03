@@ -254,7 +254,7 @@ appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location
 
   });
 
-//  $rootScope.comparedProducts = localStorageService.get('comparedProducts');
+  $rootScope.comparedProducts = localStorageService.get('comparedProducts');
 
 }]);
 
