@@ -356,7 +356,7 @@ body{
   width: 560px;
   left: 50%;
   margin-left: -280px;
-  z-index: 1001;
+  z-index: 1101;
 }
 .callback-form-overlay{
   position: fixed;
@@ -365,7 +365,7 @@ body{
   right: 0;
   bottom: 0;
   background: none rgba(0, 0, 0, 0.8);
-  z-index: 1000;
+  z-index: 1100;
 }
 
 .callback-form .form-title{

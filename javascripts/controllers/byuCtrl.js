@@ -24,6 +24,8 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   $scope.deliveryError = '';
   $scope.paymentError = '';
 
+  $scope.showRemoteServerError = false;
+
   $scope.checkoutComplete = false;
 
   $scope.removeItem = function(){
@@ -194,6 +196,8 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
         $scope.sendMail('registration', $scope.checkoutData);
 
+        $scope.showRemoteServerError = false;
+
       })
       .error(function(data){
         console.error('Авторизация не удалась, пробуем зарегистрироваться', data);
@@ -223,6 +227,7 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
       }).error(function(data){
         console.error('Регистрация не удалась, жаль', data);
+        $scope.showRemoteServerError = true;
       });
   };
 
@@ -278,6 +283,10 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
         break;
       default :
         break;
+    }
+
+    if($scope.showRemoteServerError){
+      return false;
     }
 
     return true;
@@ -336,6 +345,8 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
           return false;
         }
 
+        $scope.showRemoteServerError = false;
+
         // 3. отправка заказа
         $http.post($rootScope.domain+ '/api/v1/users/'+ $rootScope.userData.id +'/orders', {
           user_id: $rootScope.userData.id,
@@ -361,6 +372,8 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
             if(orderResponse){
               if($scope.checkoutData.payment.cash && $scope.checkoutData.payment.value == 0){
 
+                $scope.showRemoteServerError = false;
+
                 // 4. подтверждаем оплату безналом
                 $http.post($rootScope.domain+ '/api/v1/users/'+ $rootScope.userData.id +'/orders/'+ orderResponse.id +'/set_reserve_pay_online_money_ext', {
                   user_id: $rootScope.userData.id,
@@ -373,9 +386,11 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
                 })
                   .success(function(data){
                     console.log(data);
+                    $scope.showRemoteServerError = false;
                   })
                   .error(function(data){
                     console.error(data);
+                    $scope.showRemoteServerError = true;
                   });
               }
 
@@ -416,13 +431,14 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
               $scope.orderThanks = 'Ваш заказ принят. В ближайшее время наш менеджер с Вами свяжется для уточнения деталей доставки.';
 
-              if($scope.checkoutData.payment.value == 3){
+                if($scope.checkoutData.payment.value == 3){
                 $scope.orderThanks += '<br/><br/>' +
                   'Счет будет отправлен Вам в течение 3х часов (в текущий или ближайший будний день).<br/>' +
                   'Если Вы не получили счет, пожалуйста, свяжитесь с нами по телефону +7 495 777-39-18 или оставьте заявку на <a href="/">обратный звонок.</a>';
               }
 
               $scope.orderSuccess = true;
+              $scope.showRemoteServerError = false;
 
               $scope.removeItem();
               localStorageService.set('checkoutData', null);
@@ -430,6 +446,7 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
           })
           .error(function(data){
             console.error(data);
+            $scope.showRemoteServerError = true;
           });
       }
     }

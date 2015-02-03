@@ -55,6 +55,13 @@
     </div>
 
     <div class="tab-content">
+      <div class="checkout-errors remote-error" ng-if="showRemoteServerError">
+        Что-то пошло не так.<br/>
+        Пожалуйста, обновите страницу и повторите последнее действие, или свяжитесь с нашими менеджерами по телфону:<br/>
+        <span ng-bind="mainPhone"></span>.<br/>
+        Вы также можете заказать <span class="callback" ng-click="toggleOrderCallbackForm()">обратный звонок</span>, и наши менеджеры сами свяжутся с вами в ближайшее время!
+      </div>
+
       <div class="tab-content-item" ng-show="checkoutStepSelected == 0">
         <div class="title">Контактные данные</div>
         <div class="inner contacts">
@@ -121,7 +128,14 @@
     </div>
   </div>
 
-  <div class="order-congrats" ng-if="orderSuccess" ng-bind-html="orderThanks"></div>
+  <div class="order-congrats" ng-if="orderSuccess">
+    Ваш заказ принят. В ближайшее время наш менеджер с Вами свяжется для уточнения деталей доставки.
+    <div ng-if="checkoutData.payment.value == 3">
+      <br/>
+      Счет будет отправлен Вам в течение 3х часов (в текущий или ближайший будний день).<br/>
+      Если Вы не получили счет, пожалуйста, свяжитесь с нами по телефону <span ng-bind="mainPhone"></span> или оставьте заявку на <span class="callback" ng-click="toggleOrderCallbackForm()">обратный звонок.</span>
+    </div>
+  </div>
   <div class="order-congrats-overlay" ng-if="orderSuccess"></div>
 
 </div>
