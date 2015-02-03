@@ -11,11 +11,11 @@
     echo 123;
   };
 
-  if($messageType == 'call'){
+  if($messageType == 'callback'){
     $subject = 'Заявка на перезвон с сайта Invacare.com.ru';
 
-    $name = $_GET['name'];
-    $phone = $_GET['phone'];
+    $name = $sendData->name;
+    $phone = $sendData->phone;
 
     $mess = '';
 
@@ -27,7 +27,7 @@
   }
 
   if($messageType == 'feedback'){
-    $subject = 'Сообщение с сайта f43.met.ru';
+    $subject = 'Сообщение с сайта Invacare.com.ru';
 
     $email = $_GET['email'];
     $mess = '<b>E-mail:</b> '. $email;
@@ -37,6 +37,10 @@
 
   if($messageType == 'order'){
     $subject = 'Заказ с сайта Invacare.com.ru';
+
+    if($sendData->payment->value == 3){
+      $subject .= ' ОТПРАВИТЬ СЧЕТ ВРУЧНУЮ';
+    }
 
     $userInfo = '
       <b>имя</b> - '.$sendData->name.'<br />
@@ -52,6 +56,10 @@
       <b>артикул</b> - '.$sendData->product->art.'<br />
       <b>стоимость</b> - '.$sendData->product->price.'<br />
     ';
+
+    if($sendData->payment->value == 3){
+      $orderInfo .= '<br /><br />ОТПРАВИТЬ СЧЕТ ВРУЧНУЮ';
+    }
 
     $mess .= $userInfo.$orderInfo;
   }
@@ -134,15 +142,24 @@
 
     $userMail->Body = '
         Здравствуйте, '. $sendData->name .'!<br/>
-        Вы оформили покупку на сайте invacare.com.ru. Информация о заказае:<br/><br/>
+        Вы оформили покупку на сайте <a href="http://invacare.com.ru/" target="_blank">invacare.com.ru</a>. Информация о заказае:<br/><br/>
 
         <b>Товар</b> - '. $sendData->product->name .'<br/>
         <b>Артикул</b> - '. $sendData->product->art .'<br/>
-        <b>Стоимость</b> - '. $sendData->product->price .' руб.<br/><br/>
+        <b>Стоимость</b> - '. $sendData->product->price .' руб.<br/><br/>';
 
-        Наши менеджеры свяжутся с Вами в течение часа для уточнения деталей доставки.<br/><br/>
+    if($sendData->payment->value == 3){
+      $userMail->Body .= '
+        Счет будет отправлен Вам в течение 3х часов (в текущий или ближайший будний день).<br/>
+        Если Вы не получили счет, пожалуйста, свяжитесь с нами по телефону +7 495 777-39-18 или оставьте заявку на обратный звонок на нашем сайте <a href="http://invacare.com.ru/" target="_blank">invacare.com.ru</a>
+        <br/><br/>
+      ';
+    }else{
+      $userMail->Body .= 'Наши менеджеры свяжутся с Вами в течение часа для уточнения деталей доставки.<br/><br/>';
+    }
 
-        Спасибо, что выбрали invacare.com.ru!<br/>
+    $userMail->Body .= '
+        Спасибо, что выбрали <a href="http://invacare.com.ru/" target="_blank">invacare.com.ru</a>!<br/>
         С наилучшими пожеланиями,<br/>
         компания МЕТ.
       ';

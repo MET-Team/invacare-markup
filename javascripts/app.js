@@ -88,6 +88,10 @@ App.config(['$routeProvider', '$locationProvider', function($routes, $location) 
     pageKeyWords: 'инвалидные коляски, купить инвалидную коляску, кресло коляска инвалидная, инвалидное кресло, invacare, коляски invacare, магазины инвалидных колясок, инвалидные коляски с электроприводом, активные инвалидные коляски,  инвалидное кресло купить, кресло коляска , инвалидная коляска, инвалидные кресла',
     pageDescription: 'Инвалидные коляски Invacare из Германии, США и Швеции. С ручным и электроприводом, вертикализаторы, коляски активного типа. Официальный магазин, гарантия до 3х лет. Бесплатная доставка по РФ. Запишитесь на бесплатный тест-драйв коляски!'
   };
+
+  $rootScope.basketProduct = localStorageService.get('productToBuy') || null;
+  $rootScope.basketCount = $rootScope.basketProduct ? 1 : 0;
+
 });
 
 App.filter("declOfNum", function() {

@@ -693,7 +693,47 @@ a{
   color: #1e2326;
 }
 
-@media (max-width: 1034px){
+.page-block.page-block-404{
+  position: absolute;
+  top: -200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: none #fff;
+  z-index: 1100;
+  text-align: center;
+  padding: 150px 0;
+}
+.page-block.page-block-404 .page-head{
+  font-size: 200px;
+  color: #5098de;
+  font-family: 'MuseoSansCyrl-700';
+}
+.page-block.page-block-404 .page-title{
+  font-size: 40px;
+  font-family: 'MuseoSansCyrl-700';
+  margin-top: 25px;
+}
+.page-block.page-block-404 .page-content{
+  width: 700px;
+  margin: 25px auto 0;
+  line-height: 26px;
+}
+.page-block.page-block-404 .btn-main{
+  cursor: pointer;
+  text-align: center;
+  background: none #5098de;
+  color: #fff;
+  font-size: 16px;
+  font-family: 'MuseoSansCyrl-700';
+  border: medium none;
+  margin-top: 25px;
+  padding: 12px 15px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+@media (max-width: 1300px){
   .nav-menu-info{
     margin-left: -470px;
   }

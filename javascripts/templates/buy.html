@@ -99,7 +99,7 @@
         <div class="inner">
           <div class="checkout-errors" nf-if="paymentError" ng-bind="paymentError"></div>
           <div class="delivery-list">
-            <div class="delivery-item payment-item" ng-repeat="item in paymentItems" ng-class="{selected: selectedPayment.value == item.value, 'e-money': item.value == 0}">
+            <div class="delivery-item payment-item" ng-repeat="item in paymentItems" ng-class="{selected: selectedPayment.value == item.value, 'e-money': item.value == 0, disabled: item.disabled}">
               <div ng-bind="item.title"></div>
               <div class="payment-sub-list" ng-if="item.value == 0">
                 <div class="sub-list-item" ng-repeat="eType in EMoneyTypeList">
@@ -121,9 +121,7 @@
     </div>
   </div>
 
-  <div class="order-congrats" ng-if="orderSuccess">
-    Ваш заказ принят. В ближайшее время наш менеджер с Вами свяжется для уточнения деталей доставки
-  </div>
+  <div class="order-congrats" ng-if="orderSuccess" ng-bind-html="orderThanks"></div>
   <div class="order-congrats-overlay" ng-if="orderSuccess"></div>
 
 </div>

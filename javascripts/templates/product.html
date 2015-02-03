@@ -21,7 +21,7 @@
 
             <div class="animation-container" ng-show="viewItemSelected == 0" ng-class="{'enable-rotation': product.rotation_images.length > 0}" sprite-spin="spinObj" spin-images="product.rotation_images" spin-ready="spinReady"></div>
             <div class="spin-ico" ng-show="viewItemSelected == 0 && spinObj.spinReady && product.rotation_images.length > 1">Прокрутить 360&deg;</div>
-            <div class="spin-legend" ng-show="spinObj.spinReady && product.rotation_images.length > 1">Используйте мышь для прокрутки</div>
+            <div class="spin-legend" ng-show="viewItemSelected == 0 && spinObj.spinReady && product.rotation_images.length > 1">Используйте мышь для прокрутки</div>
 
             <div class="threed-object-container">
               <div class="zoom-slider" ng-show="viewItemSelected == 1" ng-if="product.images.length > 0">
@@ -51,6 +51,10 @@
                 </div>
                 <button class="continue btn btn-default" ng-click="continueView()">Продолжить</button>
               </div>
+            </div>
+
+            <div class="video-container" ng-show="viewItemSelected == 2">
+              <iframe width="506" height="506" ng-src="{{videoPath}}"></iframe>
             </div>
 
           </div>
@@ -199,7 +203,7 @@
     <div class="inner">
       <div class="form-title">Запись на бесплатный тест-драйв</div>
       <div class="form-description">
-        После заполнения форм вам перезвонит наш менеджер для уточнения
+        После заполнения формы вам перезвонит наш менеджер для уточнения
         условий предоставления тест-драйва
       </div>
       <form class="form-horizontal" ng-submit="orderTestDrive()">

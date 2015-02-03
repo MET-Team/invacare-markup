@@ -29,7 +29,42 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   $scope.removeItem = function(){
     $scope.productItem = null;
     localStorageService.set('productToBuy', $scope.productItem);
+    $rootScope.basketCount = 0;
   };
+
+  // false – наличные, true - безналичные
+  $scope.paymentItems = [
+    {
+      title: 'Банковской картой',
+      cash: true,
+      value: 2
+    },
+    {
+      title: 'Наличными',
+      cash: false,
+      value: 1
+    },
+    {
+      title: 'Электронные деньги',
+      cash: true,
+      value: 0
+    },
+    {
+      title: 'По счету через любое отделение банка',
+      cash: false,
+      value: 3
+    }
+  ];
+
+  $scope.checkSelectedDelivery = function(){
+    if($scope.selectedDelivery && $scope.selectedDelivery.id == 2){
+      $scope.paymentItems[1].disabled = true;
+    }else{
+      $scope.paymentItems[1].disabled = false;
+    }
+  };
+
+  $scope.checkSelectedDelivery();
 
   $scope.deliveryItems = [
     {
@@ -53,6 +88,8 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
     if($scope.selectedDelivery != item){
       $scope.selectedDelivery = item;
 
+      $scope.checkSelectedDelivery();
+
       $scope.deliveryError = '';
       $scope.checkoutComplete = true;
     }else{
@@ -60,25 +97,6 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
     }
     localStorageService.set('selectedDelivery', $scope.selectedDelivery);
   };
-
-  // false – наличные, true - безналичные
-  $scope.paymentItems = [
-    {
-      title: 'Банковской картой',
-      cash: true,
-      value: 2
-    },
-    {
-      title: 'Наличными',
-      cash: false,
-      value: 1
-    },
-    {
-      title: 'Электронные деньги',
-      cash: true,
-      value: 0
-    }
-  ];
 
   $scope.EMoneyTypeListSelected = {
     name: 'PC'
@@ -103,16 +121,18 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   ];
 
   $scope.togglePaymentItem = function(item){
-    if($scope.selectedPayment != item){
-      $scope.selectedPayment = item;
+    if(!item.disabled){
+      if($scope.selectedPayment != item){
+        $scope.selectedPayment = item;
 
-      $scope.paymentError = '';
-      $scope.checkoutComplete = true;
-    }else{
-      $scope.selectedPayment = null;
+        $scope.paymentError = '';
+        $scope.checkoutComplete = true;
+      }else{
+        $scope.selectedPayment = null;
+      }
+
+      localStorageService.set('selectedPayment', $scope.selectedPayment);
     }
-
-    localStorageService.set('selectedPayment', $scope.selectedPayment);
   };
 
   $scope.checkoutSteps = [
@@ -131,8 +151,6 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
   $scope.checkoutStepSelected = 0;
 
   $scope.setCheckoutStepByHash = function(currentStep){
-
-    //TO-DO: сделать проверку заполненности шагов и авторизацию при заполненности данных пользователя
 
     if(currentStep){
       switch(currentStep){
@@ -153,6 +171,11 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
           $scope.checkoutStepSelected = 0;
           break;
       }
+
+      ga('send', 'event', 'basket', 'click', currentStep + ' step');
+
+    }else{
+      $location.hash('contacts');
     }
   };
 
@@ -339,7 +362,11 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
               if($scope.checkoutData.payment.cash && $scope.checkoutData.payment.value == 0){
 
                 // 4. подтверждаем оплату безналом
-                $http.post($rootScope.domain+ '/api/v1/users/'+ $rootScope.userData.id +'/orders/'+ orderResponse.id +'/set_reserve_pay_online_money_ext',{
+                $http.post($rootScope.domain+ '/api/v1/users/'+ $rootScope.userData.id +'/orders/'+ orderResponse.id +'/set_reserve_pay_online_money_ext', {
+                  user_id: $rootScope.userData.id,
+                  site_id: $rootScope.site_id,
+                  id: orderResponse.id
+                }, {
                   headers: {
                     'Authorization': 'Bearer ' + $rootScope.userData.token
                   }
@@ -352,6 +379,8 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
                   });
               }
 
+              $scope.sendMail('order', $scope.checkoutData);
+
               if($scope.checkoutData.payment.cash){
                 /* делаем запрос на оформление оплаты */
 
@@ -359,7 +388,7 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
                   scid: '19148',
                   ShopID: '25500',
                   CustomerNumber: $scope.checkoutData.email,
-                  Sum: 1,
+                  Sum: $scope.checkoutData.product.price,
                   custName: $scope.checkoutData.name,
                   custEMail: $scope.checkoutData.email,
                   cps_email: $scope.checkoutData.email,
@@ -377,6 +406,8 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
                 var requestString = $.param(requestParams);
 
+                ga('send', 'event', 'basket', 'click', 'payment operation');
+
                 window.location.href = 'https://money.yandex.ru/eshop.xml?' + requestString;
 
               }
@@ -385,11 +416,15 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
 
               $scope.orderThanks = 'Ваш заказ принят. В ближайшее время наш менеджер с Вами свяжется для уточнения деталей доставки.';
 
-              $scope.sendMail('order', $scope.checkoutData);
+              if($scope.checkoutData.payment.value == 3){
+                $scope.orderThanks += '<br/><br/>' +
+                  'Счет будет отправлен Вам в течение 3х часов (в текущий или ближайший будний день).<br/>' +
+                  'Если Вы не получили счет, пожалуйста, свяжитесь с нами по телефону +7 495 777-39-18 или оставьте заявку на <a href="/">обратный звонок.</a>';
+              }
 
               $scope.orderSuccess = true;
 
-              localStorageService.set('productToBuy', null);
+              $scope.removeItem();
               localStorageService.set('checkoutData', null);
             }
           })

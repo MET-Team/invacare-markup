@@ -1072,7 +1072,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 1034px){
+@media (max-width: 1300px){
   .page-block-product .main-card{
     padding: 100px 40px;
   }

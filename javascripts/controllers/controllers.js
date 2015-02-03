@@ -19,7 +19,7 @@ appControllers = angular.module("appControllers", [
     }
   });
 
-appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location', '$document', '$http', function($rootScope, $scope, $location, $document, $http){
+appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location', '$document', '$http', 'localStorageService', function($rootScope, $scope, $location, $document, $http, localStorageService){
 
   $scope.pageIsMain = false;
   $scope.pageIsInfo = false;
@@ -27,6 +27,7 @@ appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location
   $scope.enableCompareShortcut = true;
 
   $scope.orderTestDriveData = {};
+  $scope.orderCallbackData = {};
 
   $scope.searchFormActive = false;
 
@@ -102,6 +103,23 @@ appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location
     ga('send', 'event', 'test-drive', 'click', 'send test-drive homepage form');
 
     $scope.toggleOrderTestDriveForm();
+  };
+
+  $scope.OrderCallbackFormIsOpen = false;
+  $scope.toggleOrderCallbackForm = function(){
+    $scope.OrderCallbackFormIsOpen = $scope.OrderCallbackFormIsOpen ? false : true;
+    $scope.orderCallbackData = {};
+    if($scope.OrderCallbackFormIsOpen){
+      ga('send', 'event', 'callback', 'click', 'open callback form');
+    }
+  };
+
+  $scope.orderCallback = function(){
+    $scope.sendMail('callback', $scope.orderCallbackData);
+
+    ga('send', 'event', 'callback', 'click', 'send callback form');
+
+    $scope.toggleOrderCallbackForm();
   };
 
   $scope.infoNavMenu = [
@@ -214,8 +232,6 @@ appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location
 
   $scope.$on('$routeChangeSuccess', function() {
 
-    console.log($location.path())
-
     //проверка $location.path() и вывод мета-тегов при совпадении
     var currentPage = null;
     for(index in $scope.pagesMetaTags){
@@ -235,8 +251,6 @@ appControllers.controller('ApplicationCtrl', ['$rootScope', '$scope', '$location
       $rootScope.metaTags.pageKeyWords = currentPage.keywords;
       $rootScope.metaTags.pageDescription = currentPage.description;
     }
-
-    console.log(currentPage, $rootScope.metaTags)
 
   });
 
@@ -259,6 +273,12 @@ appControllers.controller('ContactsCtrl', function($scope, $http){
 
 appControllers.controller('SearchCtrl', function($scope, $location, $http, $rootScope){
 
+  $scope.carriageTypeIdToCaption = {
+    6: 'active',
+    1: 'mechanic',
+    2: 'electric'
+  };
+
   $scope.searchString = $location.search().query;
 
   $scope.searchProducts = function(){
@@ -269,6 +289,19 @@ appControllers.controller('SearchCtrl', function($scope, $location, $http, $root
         }
       }).success(function(data){
         $scope.productsList = data;
+
+        if($scope.productsList.length > 0){
+          for(index in $scope.productsList){
+            $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productsList[index].id)
+              .success(function(data){
+                if(data){
+                  $scope.productsList[index].type = $scope.carriageTypeIdToCaption[data.kind_id];
+                }
+              }).error(function(){
+                console.error('Произошла ошибка');
+              });
+          }
+        }
       }).error(function(){
         console.error('Произошла ошибка');
       });

@@ -2,7 +2,7 @@ angular.module('productCtrl', [
   'spritespin-ng',
   'angular-object2vr'
 ])
-.controller('ProductCtrl', function($scope, $http, $filter, $location, $routeParams, $rootScope, localStorageService){
+.controller('ProductCtrl', function($scope, $http, $filter, $location, $routeParams, $rootScope, localStorageService, $sce){
 
   $scope.productId = $routeParams.productId;
 
@@ -136,48 +136,53 @@ angular.module('productCtrl', [
         }
       };
 
-    }).error(function(){
-      console.error('Произошла ошибка');
-    });
-
-  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/tech_specs')
-    .success(function(data){
-      if(data.length) {
-        $scope.characters = data;
-        $scope.compareTechSpecs = data;
-      }else{
-        $scope.compareDisabled = true;
+      if($scope.product.video_embed_code){
+        $scope.videoPath = $sce.trustAsResourceUrl('//www.youtube.com/embed/' + $scope.product.video_embed_code);
       }
-    }).error(function(){
-      console.error('Произошла ошибка');
-    });
 
-  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/features')
-    .success(function(data){
-      $scope.components = data;
-    }).error(function(){
-      console.error('Произошла ошибка');
-    });
+      $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/tech_specs')
+        .success(function(data){
+          if(data.length) {
+            $scope.characters = data;
+            $scope.compareTechSpecs = data;
+          }else{
+            $scope.compareDisabled = true;
+          }
+        }).error(function(){
+          console.error('Произошла ошибка');
+        });
 
-  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/photo_elements')
-    .success(function(data){
-      $scope.photo_elements = data;
-    }).error(function(){
-      console.error('Произошла ошибка');
-    });
+      $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/features')
+        .success(function(data){
+          $scope.components = data;
+        }).error(function(){
+          console.error('Произошла ошибка');
+        });
 
-  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/transformations')
-    .success(function(data){
-      $scope.transformations = data;
-    }).error(function(){
-      console.error('Произошла ошибка');
-    });
+      $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/photo_elements')
+        .success(function(data){
+          $scope.photo_elements = data;
+        }).error(function(){
+          console.error('Произошла ошибка');
+        });
 
-  $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/ad_blocks')
-    .success(function(data){
-      $scope.ad_blocks = data;
+      $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/transformations')
+        .success(function(data){
+          $scope.transformations = data;
+        }).error(function(){
+          console.error('Произошла ошибка');
+        });
+
+      $http.get($rootScope.domain +'/api/v1/products/'+ $scope.productId +'/ad_blocks')
+        .success(function(data){
+          $scope.ad_blocks = data;
+        }).error(function(){
+          console.error('Произошла ошибка');
+        });
+
     }).error(function(){
       console.error('Произошла ошибка');
+      $location.path('/404');
     });
 
   $scope.showOptionsByType = function(index){
@@ -221,6 +226,8 @@ angular.module('productCtrl', [
     ga('send', 'event', 'button-buy', 'click', 'buy-button-'+ buttonType);
 
     localStorageService.set('productToBuy', productToBuy);
+    $rootScope.basketCount++;
+
     $location.path('/buy').hash('contacts');
   };
 
@@ -288,7 +295,7 @@ angular.module('productCtrl', [
   };
 
   $scope.creditBuy = function(){
-    window.open('/credit/'+ $scope.product.id,'_blank');
+    window.open('/credit/'+ $scope.product.id, '_blank');
   };
 
 });

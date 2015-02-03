@@ -125,7 +125,7 @@
         </form>
       </div>
 
-      <div class="nav-menu-layout" ng-class="{'nav-menu-layout-black': !pageIsMain}">
+      <div class="nav-menu-layout nav-menu-layout-black">
         <a href="/" class="logo">
           <img src="/images/logo.png" alt="" />
         </a>
@@ -142,7 +142,18 @@
           </li>
         </ul>
 
-        <div class="phone" ng-bind="mainPhone"></div>
+        <div class="basket">
+          <div class="caption">
+            <a href="/buy" rel="nofollow">
+              <span class="toggle-part">Корзина (</span><span ng-bind="basketCount">0</span><span class="toggle-part">)</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="phone">
+          <span ng-bind="mainPhone"></span>
+          <div class="callback" ng-click="toggleOrderCallbackForm()">Заказать обратный звонок</div>
+        </div>
 
         <a ng-href="/product_compare" class="compared-products" ng-if="comparedProducts.length > 0 && enableCompareShortcut">
           К сравнению ({{comparedProducts.length}})
@@ -191,6 +202,30 @@
       <div class="container" ng-class="{'container-inner': !pageIsMain}">
         <div ng-view=""></div>
       </div>
+
+      <div class="callback-form" ng-show="OrderCallbackFormIsOpen">
+        <div class="inner">
+          <div class="form-title">Заказ обратного звонка</div>
+          <div class="form-description">
+            После заполнения формы вам перезвонит наш менеджер
+          </div>
+          <form class="form-horizontal" ng-submit="orderCallback()">
+            <div class="form-group">
+              <input type="text" placeholder="Введите имя" class="form-control" ng-model="orderCallbackData.name" />
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Введите телефон" class="form-control" ng-model="orderCallbackData.phone" />
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Заказать" class="form-control btn-order" />
+            </div>
+            <div class="form-group">
+              <span ng-click="toggleOrderCallbackForm()">Отмена</span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="callback-form-overlay" ng-show="OrderCallbackFormIsOpen" ng-click="toggleOrderCallbackForm()"></div>
 
     </div>
 

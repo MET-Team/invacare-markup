@@ -289,7 +289,7 @@
   font-size: 22px;
 }
 
-@media (max-width: 1034px){
+@media (max-width: 1300px){
   .page-block-index .header .title{
     font-size: 30px;
   }

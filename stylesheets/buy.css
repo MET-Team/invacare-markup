@@ -298,6 +298,17 @@
 .page-block-buy .column.checkout .tab-content .delivery-list .payment-item.e-money .payment-sub-list .sub-list-item label{
   cursor: pointer;
 }
+.page-block-buy .column.checkout .tab-content .delivery-list .payment-item.disabled{
+  opacity: 0.5;
+  cursor: default;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list .payment-item.disabled .choose-button{
+  cursor: default;
+}
+.page-block-buy .column.checkout .tab-content .delivery-list .payment-item.disabled .choose-button:hover{
+  background: none #fff;
+  color: #5098de;
+}
 
 .page-block-buy .column.checkout .continue-button{
   background: none #f2f2f2;
@@ -368,6 +379,7 @@
   background: none #f2f2f2;
   padding: 20px;
   z-index: 1001;
+  line-height: 24px;
 }
 .page-block-buy .order-congrats-overlay{
   position: fixed;
