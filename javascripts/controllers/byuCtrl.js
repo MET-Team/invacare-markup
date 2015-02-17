@@ -354,8 +354,8 @@ angular.module('buyCtrl', []).controller('BuyCtrl', function($rootScope, $scope,
           order: {
             shipment_method_id: $scope.checkoutData.delivery.id,
             payment_method: $scope.checkoutData.payment.cash,
-            address: 'Test',
-            comment: 'Test',
+            address: '',
+            comment: '',
             order_products_attributes: [{
               orderable_id: $scope.checkoutData.product.id,
               orderable_type: 'Product',

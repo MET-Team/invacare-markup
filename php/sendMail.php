@@ -83,7 +83,7 @@
 
   $mail = new PHPMailer();
   $mail->CharSet = 'utf-8';
-  $mail->Subject = 'Test - '.$subject;
+  $mail->Subject = $subject;
   $mail->FromName = 'info@invacare.com.ru';
   $mail->From = 'info@invacare.com.ru';
   $mail->AddAddress('info@invacare.com.ru');
